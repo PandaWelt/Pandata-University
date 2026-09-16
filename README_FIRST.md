@@ -1,33 +1,14 @@
-# PandaBank Astra-Ready Workspace
+# PandaBank — foundation handoff
 
-This is a cleaned copy of the current PandaBank prototype plus the documents Astra needs to continue it safely. The original C++ source has not been repaired or reorganized in this package. The known vector and text-input defects remain intentionally available as the first guided learning mission.
+The first foundation pass is complete. This archive contains the same prototype, Git checkpoints, the original upload for recovery, and a prepared learning loop. Mission 001 has not been solved or attempted for you.
 
-## Start here
+1. Extract to a development folder; do not overwrite a folder with newer changes. This extracted repository becomes your working PandaBank source in both Visual Studio and the course.
+2. Read `course/missions/001_stable_object_identity.md` and write its prediction in `course/evidence/001.md` before editing code.
+3. Follow `docs/BUILD_WINDOWS.md` to build Debug/x64 and put SDL2.dll beside the executable. Windows build/launch is still awaiting local verification.
+4. Attempt only the mission's allowed regions. Share your prediction, attempted diff, first error or observed result for feedback. Saved hints are available offline.
 
-1. Keep your original PandaBank folder as a backup.
-2. Extract this archive to a normal development path on the Windows PC.
-3. Open the extracted folder as the Work/Codex local workspace, or attach the archive if a local workspace is unavailable.
-4. Select GPT-6 Astra.
-5. Paste the complete contents of `ASTRA_START_PROMPT.md` into the new session.
-6. Let Astra inspect the repository and present its first-run plan.
-7. Reject any plan that proposes rebuilding all of PandaBank or completing the first learning mission for you.
+Current audit: `docs/CURRENT_STATE.md`. Session state: `course/PROGRESS.md` and `course/state.json`. Rules: `AGENTS.md` and `docs/DECISION_LOG.md`. Recovery: `docs/RECOVERY.md`. Validation and changed files: `docs/FOUNDATION_HANDOFF.md`.
 
-The existing Visual Studio solution is under `visualstudio/`. Its project file currently contains absolute paths from the original machine. Astra is instructed to preserve the baseline, then introduce a portable build without pretending the current build has been verified when its environment cannot run Visual Studio.
+Only application source change: direct `<cstdint>` include. The existing Visual Studio x64 paths are now repository-relative. The spawning/input target code and all dependencies are untouched. GCC syntax checks passed with warnings; this is not a successful Windows build or GUI test.
 
-## Important documents
-
-- `AGENTS.md`: persistent rules for every coding session.
-- `docs/PANDABANK_PRODUCT_SPEC.md`: product vision and boundaries.
-- `docs/COURSE_DESIGN.md`: learning loop and teaching behavior.
-- `docs/CURRENT_STATE.md`: evidence-based audit of the uploaded prototype.
-- `docs/ARCHITECTURE_RULES.md`: target structure and migration constraints.
-- `docs/THIRD_PARTY_STATUS.md`: dependency and license gaps to resolve.
-- `docs/ROADMAP.md`: chronological implementation and learning sequence.
-- `docs/DECISION_LOG.md`: locked, provisional, deferred, and open decisions.
-- `course/scaffold_manifest.json`: registry for temporary and accepted code.
-- `course/PROGRESS.md`: durable cross-session status.
-- `course/missions/001_stable_object_identity.md`: first guided repair mission.
-
-## Core principle
-
-There is one PandaBank codebase. The course dashboard, Visual Studio, automated tests, and release build must all operate on this same repository. There is no tutorial copy that must later be exported or merged into the real application.
+Next learner mission after 001: debugging/assertions (002). CMake migration is prepared separately and not implemented. Product vision remains in `docs/PANDABANK_PRODUCT_SPEC.md`; it is not a statement of existing features. No dashboard or export layer exists: you edit ordinary C++ files in this repository.

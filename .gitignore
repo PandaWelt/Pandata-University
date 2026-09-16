@@ -1,4 +1,4 @@
-# Visual Studio state
+# Visual Studio per-user state
 .vs/
 *.suo
 *.user
@@ -7,7 +7,7 @@
 *.ipch
 *.vsidx
 
-# C/C++ build output
+# Build trees at any depth; vendored x64 inputs are explicitly retained below.
 [Bb]uild/
 [Oo]ut/
 [Dd]ebug/
@@ -15,8 +15,10 @@
 x64/
 x86/
 Win32/
+cmake-build-*/
 CMakeFiles/
 CMakeCache.txt
+CMakeUserPresets.json
 cmake_install.cmake
 CTestTestfile.cmake
 Testing/
@@ -27,12 +29,36 @@ compile_commands.json
 *.ilk
 *.exp
 *.exe
+*.dll
+*.lib
+*.a
+*.so
+*.dylib
+*.tlog
+*.lastbuildstate
 
-# Runtime/user-local state
+# Supplied dependency inputs, not PandaBank build products.
+!thirdparty/SDL2/lib/x64/
+thirdparty/SDL2/lib/x64/*
+!thirdparty/SDL2/lib/x64/SDL2.lib
+!thirdparty/SDL2/lib/x64/SDL2main.lib
+!thirdparty/SDL2/lib/x64/SDL2test.lib
+!thirdparty/SDL2/lib/x64/SDL2.dll
+
+# Recovery archive is delivered separately from Git-tracked source.
+/recovery/
+
+# Runtime/user-local state (fixtures must receive narrow exceptions if added).
 imgui.ini
 *.db
 *.db-shm
 *.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3-shm
+*.sqlite3-wal
 *.log
 
 # OS/editor noise

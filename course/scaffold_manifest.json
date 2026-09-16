@@ -18,5 +18,52 @@
     "block_on_course_runtime_dependency": true,
     "block_on_unverified_third_party_license": true
   },
-  "entries": []
+  "entries": [
+    {
+      "id": "INFRA-CSTDINT-001",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "src/UI/AppUISetup.cpp: #include <cstdint>",
+      "purpose": "Declare std::uint64_t directly instead of depending on transitive includes.",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "acceptance_evidence": "GCC 13.3 C++20 syntax check failed before, passed after; docs/validation/ui-syntax.txt. Learner review pending; Windows build not run.",
+      "release_blocking": false
+    },
+    {
+      "id": "INFRA-VS-PATHS-001",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "visualstudio/Pandata.bank.vcxproj: Debug/Release x64 AdditionalIncludeDirectories and AdditionalLibraryDirectories",
+      "purpose": "Use repository-relative paths in existing native project.",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "acceptance_evidence": "14 prefix-only substitutions; all 30 file/path references resolve. Native Windows compile/link/smoke still pending.",
+      "release_blocking": true
+    },
+    {
+      "id": "THIRDPARTY-IMGUI",
+      "classification": "THIRD_PARTY",
+      "location": "thirdparty/imgui/",
+      "purpose": "Existing UI and SDL2/OpenGL3 backends, 1.92.8 WIP.",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "acceptance_evidence": "Byte-identical to upload; exact commit and full core license notice unresolved. See docs/THIRD_PARTY_STATUS.md.",
+      "release_blocking": true
+    },
+    {
+      "id": "THIRDPARTY-SDL2",
+      "classification": "THIRD_PARTY",
+      "location": "thirdparty/SDL2/",
+      "purpose": "Existing window/events/context headers and Windows x64 binaries.",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "acceptance_evidence": "Header 2.32.2 and SDL_copying.h observed; binary provenance pending; byte-identical to upload.",
+      "release_blocking": true
+    }
+  ],
+  "notes": [
+    "No TEMPORARY_SCAFFOLD introduced; no Mission 001 solution supplied.",
+    "Infrastructure classification does not imply full platform validation; see per-entry evidence.",
+    "Generated outputs are excluded by .gitignore; the original SDL2.pdb is preserved outside Git.",
+    "Release policy is recorded, not yet enforced by an automated build gate."
+  ]
 }

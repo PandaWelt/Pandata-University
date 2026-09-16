@@ -38,3 +38,11 @@ Statuses: **Locked**, **Provisional**, **Deferred**, or **Open only if blocking*
 ## Question policy
 
 Do not reopen locked decisions. For provisional decisions, first produce a concrete recommendation with cost, learning burden, licensing, reversibility, and effect on the product. Ask only immediately before implementation if approval is required. Defer anything that does not block the current chronological mission.
+
+## Foundation decisions — 2026-09-16
+
+- **Adopted, narrow stabilization:** keep all filenames and source layout. Add direct `<cstdint>` include and normalize the existing x64 project paths. No behavior rewrite. These changes are reversible by selective Git reversion; native Windows validation is pending.
+- **Provisional build execution:** defer CMake implementation because this environment lacks CMake and Windows tools. Prepared migration lives at `course/migrations/portable_cmake.md`; the native VS project remains the current build entry point. No dependency or second-language dashboard toolchain was added.
+- **Course state:** use Markdown plus `course/state.json` and an evidence form now. No dashboard prerequisite. Mission 001 remains unattempted; next learner mission is local debugging/assertions (002).
+- **Dependency preservation:** pin supplied bytes by inventory, not an invented WIP commit. Resolve notices/provenance before distribution. Supplied SDL libraries/DLL are dependency inputs; PDB remains recoverable outside Git source history.
+- **Approval boundary unchanged:** no new cost, account, publication, dependency license change, destructive step or second-language dashboard implementation was authorized or performed.

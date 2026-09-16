@@ -1,0 +1,8 @@
+PASS: all 139 original files matched the upload before edits.
+PASS: all thirdparty files remain byte-identical to original upload.
+PASS: AppUISetup.cpp differs only by <cstdint> include; mission target code unchanged.
+PASS: native project differs only by 14 path-prefix replacements.
+PASS: XML parses and all 30 source/header/resource/include/library path references resolve after ProjectDir expansion.
+NOT RUN: MSBuild, MSVC, Windows SDK resource compilation, executable linking, GUI smoke.
+PASS: JSON bookkeeping parses; 12 ignore-rule cases retain dependency inputs and exclude generated/user state.
+PASS: git diff --check with cr-at-eol (original CRLF source/project bytes retained).

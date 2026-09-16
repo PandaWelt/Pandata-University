@@ -103,3 +103,27 @@ Explain why unique object names alone would not fix the bug if the code still pu
 ## Mastery record
 
 Do not mark stable identity durable after this mission alone. Schedule a later mission involving selection or deletion where the concept must be applied again without copying this repair.
+
+## Foundation handoff — 2026-09-16 (no solution patch)
+
+Status: ready for prediction; not attempted. Windows build/smoke pending.
+Build instructions: `docs/BUILD_WINDOWS.md`. Evidence form: `course/evidence/001.md`.
+
+Read-only during this mission: `thirdparty/`, `src/main.cpp`, animation/widget implementations, and build files unless a separately identified build blocker requires help. Only the regions listed above are the learning target. The foundation pass added `<cstdint>` at the top of the file, so line numbers shifted; use the function names below as anchors.
+
+Concrete map:
+
+| Code location | What to observe |
+|---|---|
+| `PopupEditor::SpawnButton()` | A clicked type records a request; this is not itself vector insertion. |
+| `AppUISetup()` | Called every frame from `main.cpp`; its static popup and spawner survive calls. |
+| `ObjectSpawner::spawn()` | `emplace_back(object)` stores a value copy, including its fixed text buffer. |
+| `ObjectSpawner::drawAll()` | A reference in the range loop denotes one stored element. Compare the loop's variable with each call's actual argument. |
+
+`PushID` adds an identity scope and `PopID` removes it. A repeated hidden label such as `##object` can be valid under different stable scopes. The numeric cast chooses the integer ID overload; it does not create a new object or make an unstable identity stable. The current 64-bit-to-int narrowing is a future large-ID concern, not a request for a new ID system now. A display name and a widget identity have different jobs.
+
+Before editing, write your prediction in `course/evidence/001.md`, then run the Debug build. A compiler/tooling failure is recorded as blocked validation, not a failed understanding check. The foundation syntax checks cannot pass this mission for you.
+
+For input testing, dismiss the selection popup before clicking the canvas. Distinguish the pre-existing `box2` demo at (200,200) from objects spawned at (100,100). Use the existing logging route or Visual Studio Watch to distinguish overlap from missing storage. Keep any temporary staggering/logging inside the permitted regions and register retained temporary code in the scaffold manifest. Do not modify animation to make the test look cleaner.
+
+Checkpoint before edits: inspect `git status --short`, then commit only intended files if there is existing work. For rollback, save the attempted diff and selectively restore only your own edits after reviewing it; never hard-reset the repository. After success, record prediction, build/smoke results, explanation, transfer, assistance level and commit ID. Update `course/state.json` and `course/PROGRESS.md` together. Mission 002 unlocks only when behavior has been observed; mastering the concept remains a separate later review.

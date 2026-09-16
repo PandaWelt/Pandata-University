@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-16",
+  "phase": 0,
+  "active_mission": "001_stable_object_identity",
+  "baseline_ref": "uploaded-baseline",
+  "foundation_ref": "foundation-ready",
+  "mission_status_values": [
+    "not_attempted",
+    "in_progress",
+    "blocked",
+    "awaiting_review",
+    "completed"
+  ],
+  "missions": {
+    "001_stable_object_identity": {
+      "status": "not_attempted",
+      "readiness": "prediction_ready_windows_validation_pending",
+      "attempts": 0,
+      "assistance_level": 0,
+      "evidence": "course/evidence/001.md",
+      "completion_commit": null
+    },
+    "002_debugging_invariants": {
+      "status": "not_attempted",
+      "unlocks_after": "001_stable_object_identity:completed"
+    }
+  },
+  "validation": {
+    "gcc_application_syntax": "passed_with_existing_warnings",
+    "native_project_paths": "passed_static_checks",
+    "windows_debug_build": "not_run",
+    "windows_release_build": "not_run",
+    "gui_smoke": "not_run",
+    "cmake": "not_implemented"
+  },
+  "concepts": {
+    "vector_value_storage": "introduced",
+    "range_loop_references": "introduced",
+    "frame_state": "introduced",
+    "stable_imgui_ids": "practiced_with_help",
+    "header_source_build": "introduced"
+  },
+  "next_action": "Chris writes the Mission 001 prediction before editing code."
+}

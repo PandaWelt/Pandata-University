@@ -127,12 +127,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\CREATIVE\ART\PROJECTS\Pandata.Bank\src\UI;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\bin;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\src;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\SDL2\include;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\imgui\backends;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\UI;$(ProjectDir)..\bin;$(ProjectDir)..\src;$(ProjectDir)..\thirdparty\SDL2\include;$(ProjectDir)..\thirdparty\imgui\backends;$(ProjectDir)..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\thirdparty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -145,12 +145,12 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\CREATIVE\ART\PROJECTS\Pandata.Bank\src\UI;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\bin;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\src;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\SDL2\include;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\imgui\backends;D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\UI;$(ProjectDir)..\bin;$(ProjectDir)..\src;$(ProjectDir)..\thirdparty\SDL2\include;$(ProjectDir)..\thirdparty\imgui\backends;$(ProjectDir)..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\CREATIVE\ART\PROJECTS\Pandata.Bank\thirdparty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\thirdparty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

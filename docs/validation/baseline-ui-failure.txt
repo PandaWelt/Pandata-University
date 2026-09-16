@@ -1,0 +1,7 @@
+Observed before foundation include fix, GCC 13.3.0, Linux x86_64.
+Command: g++ -std=c++20 -Wall -Wextra -fsyntax-only -Ithirdparty/imgui -Isrc/UI src/UI/AppUISetup.cpp src/UI/AppUIConfig.cpp src/Inputs/InputConfig.cpp
+Exit code: 1
+Primary errors (excerpt):
+src/UI/AppUISetup.cpp:42:22: error: uint64_t in namespace std does not name a type
+src/UI/AppUISetup.cpp:397:14: error: uint64_t in namespace std does not name a type
+Cascading member/identifier errors followed; existing warnings also occurred. Adding only <cstdint> made the same command return 0; see ui-syntax.txt.

@@ -1,0 +1,42 @@
+GCC 13.3.0, Linux x86_64; syntax only, not a link or runtime test.
+Command: g++ -std=c++20 -Wall -Wextra -fsyntax-only -Ithirdparty/imgui -Isrc/UI src/UI/AppUISetup.cpp src/UI/AppUIConfig.cpp src/Inputs/InputConfig.cpp
+Exit code: 0
+src/UI/AppUISetup.cpp:429:41: warning: extra tokens at end of #undef directive
+  429 |                                 #undef X(name)
+      |                                         ^
+src/UI/AppUISetup.cpp: In member function ‘void BaseObjects::BasicBox(const char*)’:
+src/UI/AppUISetup.cpp:80:43: warning: unused parameter ‘id’ [-Wunused-parameter]
+   80 |                 void BasicBox(const char* id)
+      |                               ~~~~~~~~~~~~^~
+src/UI/AppUISetup.cpp: In member function ‘float Animation::interpolate(float) const’:
+src/UI/AppUISetup.cpp:317:24: warning: enumeration value ‘bounceIn’ not handled in switch [-Wswitch]
+  317 |                 switch (interpType)
+      |                        ^
+src/UI/AppUISetup.cpp: In member function ‘void ObjectSpawner::spawn(const ObjectType&)’:
+src/UI/AppUISetup.cpp:371:28: warning: statement is a reference, not call, to function ‘ObjectSpawner::PrintVector’ [-Waddress]
+  371 |                 PrintVector;
+      |                            ^
+src/UI/AppUISetup.cpp:371:28: warning: statement has no effect [-Wunused-value]
+src/UI/AppUISetup.cpp: In member function ‘void ObjectSpawner::drawAll()’:
+src/UI/AppUISetup.cpp:375:35: warning: unused variable ‘obj’ [-Wunused-variable]
+  375 |                 for (BaseObjects& obj : sceneObjects)
+      |                                   ^~~
+src/UI/AppUISetup.cpp: In static member function ‘static void ObjectSpawner::PrintVector(const std::vector<BaseObjects>&)’:
+src/UI/AppUISetup.cpp:390:35: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<BaseObjects>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  390 |                 for (int i = 0; i < objects.size(); i++)
+      |                                 ~~^~~~~~~~~~~~~~~~
+src/UI/AppUISetup.cpp: In member function ‘void PopupEditor::SpawnButton()’:
+src/UI/AppUISetup.cpp:418:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  418 |                 if (ImGui::Button("Spawn Object"))
+      |                 ^~
+src/UI/AppUISetup.cpp:420:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  420 |                         ImGui::SameLine();
+      |                         ^~~~~
+src/UI/AppUISetup.cpp: In member function ‘void PopupEditor::PopupWindow()’:
+src/UI/AppUISetup.cpp:437:34: warning: unused variable ‘popup_flags’ [-Wunused-variable]
+  437 |                 ImGuiWindowFlags popup_flags =
+      |                                  ^~~~~~~~~~~
+src/UI/AppUISetup.cpp: In function ‘void AppUISetup(ImVec4&)’:
+src/UI/AppUISetup.cpp:448:25: warning: unused parameter ‘clear_color’ [-Wunused-parameter]
+  448 | void AppUISetup(ImVec4& clear_color)
+      |                 ~~~~~~~~^~~~~~~~~~~
