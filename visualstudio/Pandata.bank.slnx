@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Pandata.bank.vcxproj" Id="9ab9ba92-eb9e-43de-9e79-6fa36e840cdb" />
+</Solution>

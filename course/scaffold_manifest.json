@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "classifications": [
+    "TEMPORARY_SCAFFOLD",
+    "PRODUCTION_INFRASTRUCTURE",
+    "THIRD_PARTY",
+    "GENERATED_OUTPUT"
+  ],
+  "status_values": [
+    "active",
+    "review_scheduled",
+    "reviewed_and_accepted",
+    "replaced",
+    "removed"
+  ],
+  "release_policy": {
+    "block_on_active_temporary_scaffold": true,
+    "block_on_course_runtime_dependency": true,
+    "block_on_unverified_third_party_license": true
+  },
+  "entries": []
+}
