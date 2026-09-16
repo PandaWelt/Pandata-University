@@ -367,16 +367,18 @@ BaseObjects object;
 		object.id = nextId++;
 		object.name = std::string(ObjectTypeName(type)) + std::string("_") + std::to_string(object.id);
 		object.type = type;
+		object.posX = 100.0f + static_cast<float>(sceneObjects.size()) * 120.0f;
+		object.posY = 100.0f;
 		sceneObjects.emplace_back(object);
-		PrintVector;
+		PrintVector(sceneObjects);
 	}
 	void drawAll()
 	{
 		for (BaseObjects& obj : sceneObjects)
 		{
-			ImGui::PushID(static_cast<int>(object.id));
+			ImGui::PushID(static_cast<int>(obj.id));
 
-			object.Draw("##object");
+			obj.Draw("##object");
 			ImGui::PopID();
 		}
 	}
@@ -468,8 +470,10 @@ void AppUISetup(ImVec4& clear_color)
 
 	static ObjectSpawner spawner;
 	{
-			if (popup.spawnRequested) {
-				spawner.spawn(popup.requestedObject); }
+		if (popup.spawnRequested) {
+			spawner.spawn(popup.requestedObject);
+			popup.spawnRequested = false;
+		}
 
 			spawner.drawAll();
 	}
