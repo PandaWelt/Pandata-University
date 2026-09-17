@@ -1,40 +1,35 @@
 # Course Progress
 
-## Current position — 2026-09-16
+## Current position — Mission 001 reviewed, 2026-09-16
 
-- Phase 0: preserve and stabilize prototype.
-- Active mission: `001_stable_object_identity`, **not attempted**; prediction ready, Windows validation pending.
-- Baseline: `uploaded-baseline` = `3b9a6b7fac5dd9f53c0876dd90922197e39fc910`.
-- Foundation checkpoint: `foundation-ready`. Recovery: `docs/RECOVERY.md`.
-- Bookkeeping: `course/state.json` is the compact state record; this file records human context. Update both at a session checkpoint; resolve disagreements from actual evidence, never infer mastery.
-- Build: GCC application syntax passes with existing warnings; native project path checks pass. Windows Debug/Release, link and GUI smoke have NOT run. CMake is a prepared migration only.
-- Temporary scaffolds: 0. Two supplied infrastructure edits await learner/platform review; two dependency inventories have unresolved release evidence.
-- Release is not ready: known mission bug, unverified native build/runtime, license/provenance gaps, no behavior test suite or persistence. Missing future features are not requirements to implement now.
-
-## Observed versus reported
-
-Previously reported/screenshot: Windows window, canvas, boxes/text, popup. Source supports those paths. No application was launched here. The retained defects and detailed audit are in `docs/CURRENT_STATE.md`.
+- Phase 0: stabilize prototype.
+- Mission 001: **completed with guided assistance**, accepted against submitted source and Chris's runtime evidence. Review: `course/evidence/001_review.md`.
+- Active mission: `002_debugging_invariants`, **not attempted**, ready for the first debugger observation.
+- Windows Debug/x64 build/link and two-text-object smoke: **passed, user-reported** in `course/evidence/001.md`. Reviewer did not run Windows/GUI. Release: not reported.
+- Reviewer GCC syntax check on submitted AppUISetup.cpp: passed, existing unrelated warnings remain. See `docs/validation/mission001-review.txt`.
+- Chris reports commit message `Complete Mission 001 stable object identity`. ZIP omits .git and commit hash, so history verification is unavailable. Keep Chris's existing local Git repository; do not replace it with old foundation history.
+- Foundation refs remain historical: uploaded-baseline / foundation-ready. They are not present in this source-only ZIP. See `docs/RECOVERY.md`.
+- Temporary scaffold count: **2**, M001-SPACING and M001-LOGGING. Both already existed in the submitted repair; now tracked.
+- CMake remains a prepared migration. No dashboard, persistence, new runtime features, or Mission 002 assertion code was implemented.
 
 ## Concept confidence
 
 | Concept | State | Next evidence |
 |---|---|---|
-| Vector values | introduced | Explain growth versus overlap. |
-| Loop references | introduced | Trace current stored element through drawing. |
-| Frame/request lifetime | introduced | One click, one insertion across idle frames. |
-| Stable ImGui IDs | practiced_with_help | Independent text/focus, then later transfer. |
-| Header/source/build relationship | introduced | Review direct cstdint include; focused later lesson. |
+| Vector values | practiced_with_help | Observe insertion before/after in the debugger. |
+| Loop references | practiced_with_help | Apply again without copying a repair in a later model mission. |
+| Frame/request lifetime | practiced_with_help | Distinguish one-call assertions from across-frame observation. |
+| Stable ImGui IDs | practiced_with_help | Another UI example in 002; later selection/deletion review before durable. |
+| Header/source/build relationships | introduced | Focused later lesson. |
+| Debugger observation / assertions | introduced / not yet practiced | Mission 002. |
 
-Foundation work does not advance Chris's concept confidence. Do not mark stable IDs durable from one repair.
+## Exact next action
 
-## Resume / offline use
+Open `src/UI/AppUISetup.cpp` in Visual Studio, select Debug/x64, and place a breakpoint on `sceneObjects.emplace_back(object);` inside `ObjectSpawner::spawn()`. Start with F5 and choose EditableTextBox once. Record `sceneObjects.size()` before insertion, press F10 once, then record it again in `course/evidence/002.md`. This is observation only; do not add assertions yet. The mission gives the remaining steps and saved hints.
 
-1. Read `AGENTS.md`, this file, decisions, `course/state.json` and active mission.
-2. Inspect `git status --short`; preserve unrelated work.
-3. Chris writes prediction in `course/evidence/001.md`; then build per `docs/BUILD_WINDOWS.md` and work on the allowed regions.
-4. Use mission's saved hints offline. Record attempts and observed results. Build failures and behavior failures are separate.
-5. Review the diff and manual evidence; update state/progress/scaffold entries, then commit only intended files.
-6. Unlock `002_debugging_invariants` only after Mission 001 passes. Full CMake work stays in `course/migrations/portable_cmake.md`; do not treat it as the next feature or build a dashboard.
+## Resume and checkpoint
+
+Read AGENTS.md, state.json, this progress file and Mission 002. Inspect local Git status before edits. Use existing working build instructions; no new setup is needed if Debug already runs. Keep the completed Mission 001 repair. After each attempt record observations and assistance in the evidence form. Mission 002 completion requires the learner's Debug checks, deliberate-fault demonstration and Release evidence; it is not unlocked by a syntax check alone.
 
 ## Session log
 
@@ -50,3 +45,15 @@ Foundation work does not advance Chris's concept confidence. Do not mark stable 
 - Next exact action: write Mission 001's prediction tracing the click through `SpawnButton`, `AppUISetup`, `spawn`, and `drawAll` before changing code.
 
 Append future entries with date, mission/time, attempted changes, evidence, assistance level, confidence changes, scaffold changes and next action.
+
+
+### 2026-09-16 — Mission 001 review and Mission 002 preparation
+
+- Chris's attempt: persistent flag reset; per-element ID/draw; actual logging call; temporary horizontal placement. Scoped to mission regions.
+- Evidence: prediction and repeated breakpoint before fix; reported Debug build/link, one-click count, idle stability, independent editable text/focus after fix; correct object/ID explanation.
+- Decision: accept Mission 001 complete; advance guided confidence without claiming durable mastery. Carry the missing future-UI transfer example into 002 without reopening 001.
+- Reviewer validation: source diff versus foundation; GCC C++20 syntax pass; dependency/native build bytes unchanged. Commit hash unavailable because Git metadata is omitted.
+- Scaffold: registered two existing diagnostic regions, added no code.
+- Assistance: Chris reported guided / duration unknown / fine. This session only reviewed and prepared instructions.
+- Updated course state, evidence review, current-state audit, recovery guidance and next mission. Application/third-party/build bytes preserved.
+- Next: the breakpoint-and-F10 observation above, then write the Debug-only checks yourself using Mission 002.

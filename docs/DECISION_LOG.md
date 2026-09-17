@@ -46,3 +46,10 @@ Do not reopen locked decisions. For provisional decisions, first produce a concr
 - **Course state:** use Markdown plus `course/state.json` and an evidence form now. No dashboard prerequisite. Mission 001 remains unattempted; next learner mission is local debugging/assertions (002).
 - **Dependency preservation:** pin supplied bytes by inventory, not an invented WIP commit. Resolve notices/provenance before distribution. Supplied SDL libraries/DLL are dependency inputs; PDB remains recoverable outside Git source history.
 - **Approval boundary unchanged:** no new cost, account, publication, dependency license change, destructive step or second-language dashboard implementation was authorized or performed.
+
+## Mission 001 review — 2026-09-16
+
+- Accept the submitted repair based on source inspection and Chris's explicit Debug/smoke evidence; label local runtime results user-reported. Reviewer syntax success does not substitute for a GUI test.
+- Advance to Mission 002 debugging/assertions; do not redo Mission 001 or implement the checks for Chris. Carry the future-UI transfer example into 002; confidence stays guided, not durable.
+- Register retained diagnostic spacing/logging without changing source. Keep spacing during 002; review Release logging in 002. No broader layout work.
+- ZIP omitted Git history: preserve Chris's existing local .git and report commit hash unavailable. Do not manufacture a matching commit or restore old foundation history over his work.

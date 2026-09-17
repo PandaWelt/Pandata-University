@@ -2,7 +2,7 @@
   "schema_version": 1,
   "updated": "2026-09-16",
   "phase": 0,
-  "active_mission": "001_stable_object_identity",
+  "active_mission": "002_debugging_invariants",
   "baseline_ref": "uploaded-baseline",
   "foundation_ref": "foundation-ready",
   "mission_status_values": [
@@ -14,32 +14,46 @@
   ],
   "missions": {
     "001_stable_object_identity": {
-      "status": "not_attempted",
-      "readiness": "prediction_ready_windows_validation_pending",
-      "attempts": 0,
-      "assistance_level": 0,
+      "status": "completed",
+      "readiness": "accepted_source_and_reported_runtime",
+      "attempts": null,
+      "assistance_level": "guided",
       "evidence": "course/evidence/001.md",
-      "completion_commit": null
+      "completion_commit": null,
+      "review": "course/evidence/001_review.md",
+      "completion_commit_message": "Complete Mission 001 stable object identity",
+      "commit_verification": "user_reported_history_not_in_submission",
+      "submission_sha256": "d9b7fd8ed2f3428c60901548a4ad831bb6524fd5d29546fd6e3f884244244217"
     },
     "002_debugging_invariants": {
       "status": "not_attempted",
-      "unlocks_after": "001_stable_object_identity:completed"
+      "unlocks_after": "001_stable_object_identity:completed",
+      "readiness": "ready",
+      "evidence": "course/evidence/002.md",
+      "attempts": 0,
+      "assistance_level": "none"
     }
   },
   "validation": {
     "gcc_application_syntax": "passed_with_existing_warnings",
     "native_project_paths": "passed_static_checks",
-    "windows_debug_build": "not_run",
-    "windows_release_build": "not_run",
-    "gui_smoke": "not_run",
-    "cmake": "not_implemented"
+    "windows_debug_build": "passed_user_reported",
+    "windows_release_build": "not_reported",
+    "gui_smoke": "passed_user_reported",
+    "cmake": "not_implemented",
+    "gcc_mission001_syntax": "passed_with_existing_warnings"
   },
   "concepts": {
-    "vector_value_storage": "introduced",
-    "range_loop_references": "introduced",
-    "frame_state": "introduced",
+    "vector_value_storage": "practiced_with_help",
+    "range_loop_references": "practiced_with_help",
+    "frame_state": "practiced_with_help",
     "stable_imgui_ids": "practiced_with_help",
     "header_source_build": "introduced"
   },
-  "next_action": "Chris writes the Mission 001 prediction before editing code."
+  "next_action": "In Visual Studio Debug/x64, put a breakpoint on sceneObjects.emplace_back(object), run and choose EditableTextBox once, then record size before and after F10 in course/evidence/002.md.",
+  "review_followups": [
+    "Mission 002: give another UI example requiring stable identity.",
+    "Later selection/deletion mission: independent stable-ID transfer before durable status.",
+    "Commit hash unavailable in submission; preserve existing local Git history."
+  ]
 }

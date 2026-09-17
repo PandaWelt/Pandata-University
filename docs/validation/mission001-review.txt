@@ -1,0 +1,13 @@
+Mission 001 review, 2026-09-16
+Submission ZIP SHA-256: d9b7fd8ed2f3428c60901548a4ad831bb6524fd5d29546fd6e3f884244244217
+Submitted AppUISetup.cpp SHA-256: ecd116adfd79de08125a38786158f4849b32c7c63ef159a306371aa86bcc8ef2
+
+Executed from submitted repository root:
+g++ -std=c++20 -Wall -Wextra -fsyntax-only -Ithirdparty/imgui -Isrc/UI src/UI/AppUISetup.cpp
+Exit code: 0, GCC 13.3.0, Linux x86_64.
+Warnings remain: extra tokens on #undef, unused parameters/variable, missing bounceIn switch case, signed/unsigned loop comparison, misleading indentation.
+This checks syntax only, not linking, MSVC compilation, GUI behavior or release readiness.
+
+Compared against the foundation archive: only src/UI/AppUISetup.cpp and course/evidence/001.md differ among submitted files. Source diff is confined to Mission 001 regions. All supplied thirdparty files match the foundation bytes. Native build files match the foundation bytes.
+No .git metadata or commit hash submitted. Commit message reported: Complete Mission 001 stable object identity. Commit existence is user-reported; history/hash cannot be independently verified.
+Windows Debug build/link and UI smoke: passed according to Chris's submitted course/evidence/001.md. Not re-run by the reviewer. Release remains not reported.

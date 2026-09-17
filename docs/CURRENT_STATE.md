@@ -1,6 +1,8 @@
 # Current Prototype State
 
-Audit basis: all 139 files in `PandataBank_Astra_Ready.zip`, inspected on 2026-09-16. `reference/current-ui.png` is historical user evidence, not a run performed here. Baseline: Git tag `uploaded-baseline`; exact original archive retained in `recovery/original-upload.zip`. This document distinguishes source inspection, compiler checks, and unverified runtime behavior.
+Latest basis: submitted `PandataBank_Mission001.zip`, reviewed against the foundation archive on 2026-09-16. Mission 001 is complete by source review plus Chris's reported Windows Debug/smoke evidence. Reviewer GCC syntax check passed; Windows/GUI was not re-run here. `reference/current-ui.png` remains historical, not a new screenshot.
+
+The submission omits `.git`, `recovery/`, `bin/` and SDL2.pdb; it is a source-only transfer, not proof those were deleted locally. Historical baseline identifiers remain documented in RECOVERY.md; no commit hash can be verified from this ZIP.
 
 ## What exists
 
@@ -49,30 +51,21 @@ thirdparty/
 
 There is no observed database, persistence layer, asset model, naming tree, automated test suite, CMake configuration, course dashboard, or file registry yet.
 
-## Confirmed object-spawning defect
+## Mission 001 — repaired by Chris
 
-The vector does not replace element zero. Three interacting defects make it look that way:
+- AppUISetup consumes the spawn request and clears it after the call. Idle frames no longer take that branch until another selection.
+- ObjectSpawner::spawn copies one BaseObjects value into sceneObjects and calls PrintVector(sceneObjects).
+- drawAll uses each stored obj both for its pushed ID and for Draw; each stored object's text array is used.
+- Temporary placement offsets new objects horizontally by 120 pixels per existing object. This is diagnostic spacing, not a layout/drag system; sufficiently many objects go offscreen.
+- Chris reports one-click/one-object, no idle growth, and two independently editable text buffers that survive focus changes. See course/evidence/001.md and 001_review.md. Source inspection supports these results; live Windows behavior was not independently rerun.
+- M001-SPACING and M001-LOGGING track retained temporary positioning and console diagnostics. No assertion checks have been implemented yet; those belong to Mission 002.
+- Current integer ID cast is sufficient for the small mission test; narrowing large 64-bit IDs and broader identity requirements remain deferred, not certified solved for all scales.
 
-1. `PopupEditor::spawnRequested` is set to `true` but never consumed/reset. After one click, `spawn()` runs every frame and the vector grows continuously.
-2. `ObjectSpawner::drawAll()` iterates with `obj` but renders the member variable `object` instead. Every vector element therefore redraws the same latest template object.
-3. `drawAll()` pushes `object.id`, not `obj.id`, producing duplicate ImGui identities for the repeated widgets.
-
-Every spawned object also begins at the same default position, so correctly stored objects would still overlap until placement or temporary staggering is introduced.
-
-## Source-supported spawned text-input diagnosis
-
-The source contains an identity/buffer chain consistent with the reported focus failure; runtime confirmation remains pending:
-
-- the latest spawner object receives a new ID every frame because spawning never stops;
-- every rendered copy uses that one ID and one object's text buffer;
-- ImGui cannot preserve a stable active widget across frames;
-- the input loses focus or appears non-interactive.
-
-Mission 001 intentionally leaves these target lines unfixed so Chris can diagnose and repair them with guided support.
+The old runaway-request/template-rendering diagnosis is historical and explained in Mission 001's assignment/review. Do not reintroduce or redo the repair.
 
 ## Additional code findings
 
-- `PrintVector;` references a function without calling it. A real call needs arguments, such as `PrintVector(sceneObjects);`.
+- PrintVector is now called. It prints the whole collection on each insertion, is not Debug-only, and has rough formatting; track as diagnostic scaffolding rather than permanent logging.
 - `#undef X(name)` should be `#undef X`.
 - `DefinedText` and `DefinedTextBox` currently call editable `InputTextMultiline`; their implementation does not yet match the name.
 - `Animation` does not explicitly initialize `startTime`, and `interpValue()` calculates progress before checking `isRunning`. The current `R` and `G` instances have static storage and receive zero-initialization; an automatic instance would not have that protection. Do not claim the current static instances read an indeterminate start time.
@@ -92,17 +85,17 @@ The Visual Studio project targets toolset `v143`, Windows SDK `10.0`, and C++20.
 - The project links `SDL2.lib` and `opengl32.lib`; it does not link `SDL2main.lib`. `main.cpp` defines `SDL_MAIN_HANDLED` and supplies ordinary `main`.
 - No post-build rule deploys `SDL2.dll`. The Windows instructions explicitly copy the supplied DLL beside the executable.
 - `.slnx` availability depends on the installed Visual Studio version. Open the `.vcxproj` directly if the IDE cannot open the solution format; compatibility has not been tested here.
-- `bin/` and `bin/fonts/` are empty. No external font is loaded by the current app. Git does not retain empty directories; no runtime asset was omitted.
+- The foundation had empty bin/fonts directories; this ZIP omits them. No current file font is loaded. No runtime font asset is required.
 - Resource input `Pandata.bank.rc` is UTF-16, includes `winres.h`, and contains no active icon/dialog/accelerator resource definitions. It remains unchanged and Windows-resource compilation remains untested.
-- `AppUISetup.cpp` lacked a direct `<cstdint>` include: GCC 13.3 rejected `std::uint64_t`. Adding that include is the sole application-source edit. All Mission 001 target code remains unchanged.
+- `AppUISetup.cpp` lacked a direct `<cstdint>` include: GCC 13.3 rejected `std::uint64_t`. The foundation added that include. Chris subsequently repaired the Mission 001 regions; this review changes no application source.
 - GCC syntax checks now pass for all four application `.cpp` files, with existing warnings in `AppUISetup.cpp`. Syntax success is not a link, build, behavior test, or proof of MSVC compatibility.
 - This Linux host has no `cl`, `msbuild`, Windows resource compiler/SDK, `cmake`, `ninja`, `pkg-config`, or MinGW compiler on PATH. `/usr/include/SDL2/SDL.h` and `/usr/include/GL/gl.h` are absent. The bundled headers let `main.cpp` pass syntax checking; the bundled Windows `.lib`/DLL files do not provide a Linux link path.
-- No native Windows build, executable link, or GUI smoke test was run. No CMake implementation was added because it cannot be verified here. See `docs/BUILD_WINDOWS.md` and `course/migrations/portable_cmake.md`.
+- The reviewer has not run a native Windows build/link/GUI test. Chris reports Debug/x64 build/link and Mission 001 smoke passed; Release remains unreported. No CMake implementation was added. See `docs/BUILD_WINDOWS.md` and `course/migrations/portable_cmake.md`.
 - Dependency identifiers: ImGui header reports `1.92.8 WIP`; SDL headers report `2.32.2`. Exact ImGui commit and SDL binary provenance remain unverified. See `THIRD_PARTY_STATUS.md`.
 
-The original ignore rule `x64/` hid the supplied SDL directory. The revised ignore file retains precisely the supplied DLL and three import/static library files while ignoring generated outputs, PDBs and caches. No original file was deleted. The supplied PDB remains on disk and in the recovery archive, not Git source history.
+The original ignore rule `x64/` hid the supplied SDL directory. The revised ignore file retains precisely the supplied DLL and three import/static library files while ignoring generated outputs, PDBs and caches. No original file was deleted. The foundation retained PDB/recovery files outside Git source history; they are not included in this later submission.
 
-## Current learning level evidenced by the code
+## Learning exposure and next evidence
 
 The user has working exposure to:
 
@@ -116,7 +109,7 @@ The user has working exposure to:
 - SDL/ImGui initialization and Visual Studio linking;
 - basic animation interpolation.
 
-The immediate gaps are not “syntax from zero.” They are object identity versus copies, persistent frame state, ownership, separation of responsibilities, declarations/definitions across files, build portability, and debugging state over time.
+Mission 001 provides guided practice with values, frame state, references and IDs. Next is repeatable debugger observation and assertions; ownership, file boundaries and build portability remain later topics. Do not label guided practice durable mastery.
 
 ## Baseline rule
 

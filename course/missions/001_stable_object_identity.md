@@ -1,5 +1,7 @@
 # Mission 001 — One Click, One Stable Object
 
+**Completed with guided assistance.** Review: `course/evidence/001_review.md`. The instructions below preserve the original assignment; do not redo it.
+
 Estimated working time: 45–90 minutes  
 Product value: object spawning becomes usable and editable text retains focus.  
 Primary file: `src/UI/AppUISetup.cpp`
@@ -106,7 +108,7 @@ Do not mark stable identity durable after this mission alone. Schedule a later m
 
 ## Foundation handoff — 2026-09-16 (no solution patch)
 
-Status: ready for prediction; not attempted. Windows build/smoke pending.
+Historical foundation status: this was not attempted at handoff. Superseded by Mission 001 completion; Windows Debug/smoke now passed according to Chris’s evidence.
 Build instructions: `docs/BUILD_WINDOWS.md`. Evidence form: `course/evidence/001.md`.
 
 Read-only during this mission: `thirdparty/`, `src/main.cpp`, animation/widget implementations, and build files unless a separately identified build blocker requires help. Only the regions listed above are the learning target. The foundation pass added `<cstdint>` at the top of the file, so line numbers shifted; use the function names below as anchors.
