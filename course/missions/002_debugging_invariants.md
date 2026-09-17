@@ -1,6 +1,6 @@
 # Mission 002 — Catch a Broken Spawn Contract
 
-**Ready. Not attempted.** Mission 001 is complete. Estimate: 45–60 minutes.
+**Completed and accepted — 2026-09-17.** Historical assignment retained for evidence; do not repeat it. See course/evidence/002_review.md. Next experience: Start-Pandata-University.cmd. Original estimate: 45–60 minutes.
 Goal: make incorrect insertion/count or duplicate IDs stop in the debugger near the mistake.
 An invariant is a condition that should always hold here, such as “all stored IDs differ.” An assertion checks such a condition; it is for programming mistakes, not a substitute for handling normal user errors.
 

@@ -96,3 +96,11 @@ At the end:
 ## First-run restriction
 
 For the initial Astra session, follow `ASTRA_START_PROMPT.md`. Do not rewrite the application, implement future product modules, replace SDL/ImGui, or solve Mission 001 for the user.
+
+## Pandata University transition — current session rules
+
+Read docs/PANDATA_UNIVERSITY_SPEC.md, UNIVERSITY_ADRS.md, PROTOTYPE_ASSESSMENT.md and MENTOR_CONTRACT.md alongside current progress. Chris authorized the early U0/U1 spike; the first-run restriction above is historical. Missions 001/002 are accepted; do not repeat them. University is a separate executable, never a PandaBank runtime dependency.
+
+Use short progressive steps, evidence-based alternative-solution review and separate learner profile/technical decisions. Preserve X-macro ObjectType unless a concrete defect requires a scoped adaptation. U1 is supplied infrastructure, not Chris's coursework. Do not claim response collection grades C++ correctness. Keep future capabilities explicitly unimplemented.
+
+Study records may be saved automatically; meaningful source/course/test/policy modifications, merge/commit and executable activation follow explicit Maintenance/Rescue approval boundaries. Do not implement a future mission for Chris. Never use API-key billing/paid fallback or inspect Codex tokens. Missing managed allowance means offline study. Record Windows-only verification limits and keep existing local Git history.

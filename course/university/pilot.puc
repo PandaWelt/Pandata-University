@@ -1,0 +1,3 @@
+pilot 1
+completed "001_stable_object_identity" "course/evidence/001_review.md" "Accepted source review and learner-reported Debug/GUI evidence; hash not supplied"
+completed "002_debugging_invariants" "course/evidence/002_review.md" "Accepted source/preprocessor review and learner-reported Debug/Release/fault tests; reported commit 21ba2af"

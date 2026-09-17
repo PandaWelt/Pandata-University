@@ -36,7 +36,7 @@
       "purpose": "Use repository-relative paths in existing native project.",
       "replacement_mission": null,
       "status": "review_scheduled",
-      "acceptance_evidence": "14 prefix-only substitutions; all 30 file/path references resolve. Native Windows compile/link/smoke still pending. Mission 001: Chris reports Debug/x64 compile/link and GUI pass; Release/moved-checkout verification still pending.",
+      "acceptance_evidence": "14 prefix-only substitutions; all 30 file/path references resolve. Native Windows compile/link/smoke still pending. Mission 001: Chris reports Debug/x64 compile/link and GUI pass; Release/moved-checkout verification still pending. Mission 002 reports Release build/launch pass; moved-checkout/native reviewer verification remains pending.",
       "release_blocking": true
     },
     {
@@ -64,28 +64,81 @@
       "classification": "TEMPORARY_SCAFFOLD",
       "location": "src/UI/AppUISetup.cpp: ObjectSpawner::spawn; object.posX = 100.0f + static_cast<float>(sceneObjects.size()) * 120.0f; and object.posY = 100.0f;",
       "purpose": "Temporarily separate spawned objects for observation; count-based positioning can run off the window.",
-      "replacement_mission": "Future object-placement mission; retain through Mission 002, then remove when real placement is verified.",
+      "replacement_mission": "First real placement/layout mission after model foundation; remove count-derived coordinates when placement behavior is verified.",
       "status": "active",
       "acceptance_evidence": "Submitted by Chris in guided Mission 001; source inspected and runtime usefulness reported. Release removal/acceptance pending.",
       "release_blocking": true,
-      "origin": "guided learner change; exact authorship of individual lines not asserted"
+      "origin": "guided learner change; exact authorship of individual lines not asserted",
+      "owner": "Chris"
     },
     {
       "id": "M001-LOGGING",
-      "classification": "TEMPORARY_SCAFFOLD",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
       "location": "src/UI/AppUISetup.cpp: ObjectSpawner::spawn; PrintVector(sceneObjects) and its diagnostic PrintVector helper.",
-      "purpose": "Observe insertion counts and IDs; current call is not Debug-only and prints the whole collection.",
-      "replacement_mission": "002_debugging_invariants: review and guard or remove release logging; retain Debug observation only if useful.",
-      "status": "active",
-      "acceptance_evidence": "Submitted by Chris in guided Mission 001; source inspected and runtime usefulness reported. Release removal/acceptance pending.",
-      "release_blocking": true,
-      "origin": "guided learner change; exact authorship of individual lines not asserted"
+      "purpose": "Debug-only collection diagnostics; Release call excluded, helper definition retained.",
+      "replacement_mission": null,
+      "status": "reviewed_and_accepted",
+      "acceptance_evidence": "002 source/preprocessor review and Chris-reported Debug/Release pass; learner retained Debug-only logging.",
+      "release_blocking": false,
+      "origin": "guided learner change; exact authorship of individual lines not asserted",
+      "owner": "Chris",
+      "review_trigger": "Before large collections or structured diagnostics; whole-vector output remains Debug overhead."
+    },
+    {
+      "id": "M002-INVARIANTS",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "src/UI/AppUISetup.cpp: ObjectSpawner::spawn, both #ifndef NDEBUG regions",
+      "purpose": "Count increment and unique stored IDs during Debug insertion",
+      "replacement_mission": null,
+      "status": "reviewed_and_accepted",
+      "acceptance_evidence": "course/evidence/002_review.md; learner fault report, source and preprocessing checks",
+      "owner": "Chris",
+      "release_blocking": false,
+      "review_trigger": "Before large scene performance work: pairwise O(n\u00b2) per insertion; review ID lookup policy then."
+    },
+    {
+      "id": "U1-ENGINE",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/Mission.h; university/src/Mission.cpp; university/include/ProgressStore.h; university/src/ProgressStore.cpp; university/src/main.cpp; university/tests/engine_tests.cpp; Start-Pandata-University.cmd",
+      "purpose": "Separate offline University definition/progress engine and presentation",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "acceptance_evidence": "docs/validation/university-tests.txt; Linux observed, MSVC/Windows pending; Chris ownership review pending",
+      "owner": "University maintainer with Chris review",
+      "release_blocking": false,
+      "origin": "Astra-supplied infrastructure, not learner coursework"
     }
   ],
   "notes": [
-    "Mission 001 is complete; two retained diagnostic scaffolds registered. No application code added or changed by this review.",
-    "Infrastructure classification does not imply full platform validation; see per-entry evidence.",
-    "Generated outputs stay ignored. This submission omits .git, recovery archive and SDL2.pdb; do not infer deletion from Chris\u2019s local repository.",
-    "Release policy is recorded, not yet enforced by an automated build gate."
+    "Mission002 accepted; application source unchanged by review. M001-SPACING remains active temporary scaffold.",
+    "University infrastructure does not link into PandaBank; its ownership/platform debt is separate from PandaBank release.",
+    "Release policy is recorded, not automatically enforced.",
+    "No .git in submission; do not infer loss of local history. No added dependencies."
+  ],
+  "university_debt": [
+    {
+      "id": "U1-CONSOLE",
+      "location": "university/src/main.cpp",
+      "owner": "University maintainer",
+      "removal_condition": "After U2 contracts and Windows verification, replace presentation with reviewed UI while retaining domain/store tests."
+    },
+    {
+      "id": "U1-WIRE",
+      "location": "university/src/Mission.cpp",
+      "owner": "University maintainer",
+      "removal_condition": "When nested authoring/editor needs justify an approved parser; implement explicit old-to-new migration before retiring wire format."
+    },
+    {
+      "id": "U1-STORE",
+      "location": "university/src/ProgressStore.cpp",
+      "owner": "University maintainer",
+      "removal_condition": "Before long-term production University use, verify Windows crash durability, migration/compaction and stale-lock recovery; replace adapter if requirements exceed snapshots."
+    },
+    {
+      "id": "U1-LAUNCH",
+      "location": "Start-Pandata-University.cmd",
+      "owner": "Chris supplies local result; University maintainer fixes tooling",
+      "removal_condition": "Run local Windows smoke now; retire direct compile launcher after verified CMake packaging/update workflow preserves rollback."
+    }
   ]
 }

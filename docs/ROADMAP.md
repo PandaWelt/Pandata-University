@@ -1,3 +1,5 @@
+Current override — 2026-09-17: Chris explicitly authorized an early Pandata University spike. Missions 001/002 are complete. U0 review/spec and U1 offline engine are delivered. Next learner topic is header/source boundaries through the app; next engineering stage is narrowly U2 repository actions. U3 read-only mentor and U4 approved Maintenance remain deferred contracts. See PANDATA_UNIVERSITY_SPEC.md for stage gates. Phase 8 below describes fuller dashboard scope, not a reason to delay this authorized spike.
+
 # Chronological Roadmap
 
 This roadmap is deliberately staged. Later phases are direction, not permission to scaffold every system now.

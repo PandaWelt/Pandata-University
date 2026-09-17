@@ -53,3 +53,14 @@ Do not reopen locked decisions. For provisional decisions, first produce a concr
 - Advance to Mission 002 debugging/assertions; do not redo Mission 001 or implement the checks for Chris. Carry the future-UI transfer example into 002; confidence stays guided, not durable.
 - Register retained diagnostic spacing/logging without changing source. Keep spacing during 002; review Release logging in 002. No broader layout work.
 - ZIP omitted Git history: preserve Chris's existing local .git and report commit hash unavailable. Do not manufacture a matching commit or restore old foundation history over his work.
+
+## University transition — 2026-09-17
+
+- **Locked identity:** Pandata University is the learning tool; PandaBank remains the productivity application. Existing PandaBank filenames remain unchanged.
+- **Authorized override of pilot sequence:** Mission 002 ends the Markdown interface pilot. U0/U1 early course-engine spike is authorized before full product phases. No new ordinary Markdown worksheet is the primary experience.
+- **Scoped implementation:** separate C++20 offline console/domain/store and prepared observation session. No second language, dependency, renderer replacement or CMake migration. U2 real repository actions next; U3/U4 contract only.
+- **Mission 002 accepted:** source/preprocessor checks plus learner-reported Windows results, commit 21ba2af reported only. Preserve valid checks and X-macro route. See evidence review and UNIVERSITY_ADRS.md for alternatives/consequences/reconsideration.
+- **Locked approval/cost:** no API keys, separately billed fallback, automatic meaningful merge/commit, silent protected-policy changes or token access. See MENTOR_CONTRACT.md.
+- **Records:** learner preferences separate from technical choices. U1 response completeness never means mastery. Supplied engine code is infrastructure with ownership/platform debt.
+
+Earlier dated decisions are historical snapshots; current state lives in CURRENT_STATE.md and course/state.json.

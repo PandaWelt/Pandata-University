@@ -1,35 +1,26 @@
-# Course Progress
+# Pandata University progress
 
-## Current position — Mission 001 reviewed, 2026-09-16
+## Current position — 2026-09-17
 
-- Phase 0: stabilize prototype.
-- Mission 001: **completed with guided assistance**, accepted against submitted source and Chris's runtime evidence. Review: `course/evidence/001_review.md`.
-- Active mission: `002_debugging_invariants`, **not attempted**, ready for the first debugger observation.
-- Windows Debug/x64 build/link and two-text-object smoke: **passed, user-reported** in `course/evidence/001.md`. Reviewer did not run Windows/GUI. Release: not reported.
-- Reviewer GCC syntax check on submitted AppUISetup.cpp: passed, existing unrelated warnings remain. See `docs/validation/mission001-review.txt`.
-- Chris reports commit message `Complete Mission 001 stable object identity`. ZIP omits .git and commit hash, so history verification is unavailable. Keep Chris's existing local Git repository; do not replace it with old foundation history.
-- Foundation refs remain historical: uploaded-baseline / foundation-ready. They are not present in this source-only ZIP. See `docs/RECOVERY.md`.
-- Temporary scaffold count: **2**, M001-SPACING and M001-LOGGING. Both already existed in the submitted repair; now tracked.
-- CMake remains a prepared migration. No dashboard, persistence, new runtime features, or Mission 002 assertion code was implemented.
+Mission 001 remains completed with guided assistance. Mission 002 is **completed**, accepted from source and Chris-reported Debug/Release/GUI evidence. See evidence/002_review.md. Chris reports no assistance in 002 and commit 21ba2af; the ZIP omits Git history. No local history was created or replaced.
 
-## Concept confidence
+The Markdown pilot is concluded. U0 review/specification is complete. U1 is a separate, working offline C++ console foundation, not the finished dashboard. Engine checks and console resume were run on Linux; Windows launcher/MSVC remain unverified. U2 repository actions are the next engineering stage; mentor and Maintenance remain contracts only.
 
-| Concept | State | Next evidence |
+Chris has **not attempted** the delivered u1-boundaries orientation. Runtime snapshots, when created, are authoritative for its current step; this summary is not automatically rewritten. Launch Start-Pandata-University.cmd, read the first step and type next. No source edit, new assertion, or Markdown worksheet is required.
+
+| Concept | Confidence | Evidence / next review |
 |---|---|---|
-| Vector values | practiced_with_help | Observe insertion before/after in the debugger. |
-| Loop references | practiced_with_help | Apply again without copying a repair in a later model mission. |
-| Frame/request lifetime | practiced_with_help | Distinguish one-call assertions from across-frame observation. |
-| Stable ImGui IDs | practiced_with_help | Another UI example in 002; later selection/deletion review before durable. |
-| Header/source/build relationships | introduced | Focused later lesson. |
-| Debugger observation / assertions | introduced / not yet practiced | Mission 002. |
+| Vector values / range references | practiced_with_help | Guided 001; independent implementation transfer later |
+| Debugger observation / Debug invariants | practiced_independently | 002 report of no assistance, source and failing-ID explanation |
+| Frame/request lifetime | practiced_independently | Correct count-per-call versus calls-per-click explanation |
+| Stable ImGui identity | practiced_with_help | Selection/deletion transfer explanation accepted; future independent implementation |
+| Header/source/build | introduced | Next in-app orientation; not yet attempted |
 
-## Exact next action
+No concept was promoted to durable. U1 infrastructure was supplied by Astra, not completed as Chris's coursework. Profile and technical decisions are stored separately. M001-LOGGING is accepted Debug infrastructure; M001-SPACING remains temporary.
 
-Open `src/UI/AppUISetup.cpp` in Visual Studio, select Debug/x64, and place a breakpoint on `sceneObjects.emplace_back(object);` inside `ObjectSpawner::spawn()`. Start with F5 and choose EditableTextBox once. Record `sceneObjects.size()` before insertion, press F10 once, then record it again in `course/evidence/002.md`. This is observation only; do not add assertions yet. The mission gives the remaining steps and saved hints.
+## Resume
 
-## Resume and checkpoint
-
-Read AGENTS.md, state.json, this progress file and Mission 002. Inspect local Git status before edits. Use existing working build instructions; no new setup is needed if Debug already runs. Keep the completed Mission 001 repair. After each attempt record observations and assistance in the evidence form. Mission 002 completion requires the learner's Debug checks, deliberate-fault demonstration and Release evidence; it is not unlocked by a syntax check alone.
+Read AGENTS.md and state.json, inspect local Git status, then launch University in the same repository. Definitions are in course/university/missions; short responses/hints/completion snapshots are in course/university/progress. Back up the latter even though it is Git-ignored. Build/test evidence and future Git collection are separate from self-reported responses. Do not silently migrate changed assessment content over completed steps.
 
 ## Session log
 
@@ -57,3 +48,12 @@ Append future entries with date, mission/time, attempted changes, evidence, assi
 - Assistance: Chris reported guided / duration unknown / fine. This session only reviewed and prepared instructions.
 - Updated course state, evidence review, current-state audit, recovery guidance and next mission. Application/third-party/build bytes preserved.
 - Next: the breakpoint-and-F10 observation above, then write the Debug-only checks yourself using Mission 002.
+
+
+### 2026-09-17 — Mission 002 review and authorized University foundation
+
+- Accepted count/uniqueness checks, deliberate-fault removal, Debug boundaries and learner explanations. Windows results are reported, GCC syntax/preprocessing observed here.
+- Supplied U1 parser/domain, append-only recoverable store, console, prepared orientation, tests and Windows launcher. Added no PandaBank code or dependencies.
+- Saved full transition requirements, spec, architecture assessment, ADRs, learner profile, future mentor/maintenance contract and implementation debt.
+- Learner time/attempt count unknown; no new learner attempt occurred in this session. Engine tests do not count as learner evidence.
+- Next action: launch Start-Pandata-University.cmd and type next after reading the first step. U2 work is not implemented for Chris.

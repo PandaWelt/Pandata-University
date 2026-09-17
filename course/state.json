@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "phase": 0,
-  "active_mission": "002_debugging_invariants",
+  "active_mission": null,
   "baseline_ref": "uploaded-baseline",
   "foundation_ref": "foundation-ready",
   "mission_status_values": [
@@ -26,34 +26,58 @@
       "submission_sha256": "d9b7fd8ed2f3428c60901548a4ad831bb6524fd5d29546fd6e3f884244244217"
     },
     "002_debugging_invariants": {
-      "status": "not_attempted",
+      "status": "completed",
       "unlocks_after": "001_stable_object_identity:completed",
-      "readiness": "ready",
+      "readiness": "accepted_source_and_reported_runtime",
       "evidence": "course/evidence/002.md",
-      "attempts": 0,
-      "assistance_level": "none"
+      "attempts": null,
+      "assistance_level": "none_reported",
+      "review": "course/evidence/002_review.md",
+      "completion_commit": "21ba2af",
+      "commit_verification": "user_reported_history_not_in_submission",
+      "submission_sha256": "6306638d8c0ff6131ebe894c2dcd19d4b81e6c3b01093613208b4aea8ed8b911"
     }
   },
   "validation": {
     "gcc_application_syntax": "passed_with_existing_warnings",
     "native_project_paths": "passed_static_checks",
-    "windows_debug_build": "passed_user_reported",
-    "windows_release_build": "not_reported",
-    "gui_smoke": "passed_user_reported",
+    "windows_debug_build": "passed_user_reported_mission002",
+    "windows_release_build": "passed_user_reported_mission002",
+    "gui_smoke": "passed_user_reported_mission002",
     "cmake": "not_implemented",
-    "gcc_mission001_syntax": "passed_with_existing_warnings"
+    "gcc_mission001_syntax": "passed_with_existing_warnings",
+    "gcc_mission002_syntax": "debug_and_ndebug_passed_existing_warnings",
+    "mission002_preprocessor": "guarded_work_absent_with_ndebug",
+    "university_engine": "see_docs/validation/university-tests.txt",
+    "university_windows": "not_run",
+    "codex_app_server": "not_installed_not_run"
   },
   "concepts": {
     "vector_value_storage": "practiced_with_help",
     "range_loop_references": "practiced_with_help",
-    "frame_state": "practiced_with_help",
+    "frame_state": "practiced_independently",
     "stable_imgui_ids": "practiced_with_help",
-    "header_source_build": "introduced"
+    "header_source_build": "introduced",
+    "debugger_observation": "practiced_independently",
+    "debug_invariants": "practiced_independently"
   },
-  "next_action": "In Visual Studio Debug/x64, put a breakpoint on sceneObjects.emplace_back(object), run and choose EditableTextBox once, then record size before and after F10 in course/evidence/002.md.",
+  "next_action": "Double-click Start-Pandata-University.cmd in the existing repository root; read the first University step and type next.",
   "review_followups": [
-    "Mission 002: give another UI example requiring stable identity.",
-    "Later selection/deletion mission: independent stable-ID transfer before durable status.",
-    "Commit hash unavailable in submission; preserve existing local Git history."
-  ]
+    "Selection/deletion transfer explanation accepted in 002; implementation transfer still due before durable confidence.",
+    "Header/source orientation is not a completed refactor or graded knowledge proof.",
+    "Preserve local Git history; 21ba2af is reported, not verified."
+  ],
+  "active_experience": "u1-boundaries",
+  "university": {
+    "U0": "review_and_spec_complete",
+    "U1": "offline_engine_implemented_linux_verified_windows_pending",
+    "U2": "next_engineering_stage_not_implemented",
+    "U3": "contract_only",
+    "U4": "contract_only",
+    "learner_orientation": "not_attempted",
+    "progress_source": "course/university/progress/u1-boundaries/*.pup",
+    "profile": "course/learner_profile.json",
+    "pilot_import": "course/university/pilot.puc",
+    "automatic_mastery": false
+  }
 }

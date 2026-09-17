@@ -1,0 +1,7 @@
+PASS: all 154 original input files retained.
+PASS: 123 src/thirdparty/visualstudio file hashes unchanged.
+PASS: byte-exact original ZIP retained; SHA-256 6306638d8c0ff6131ebe894c2dcd19d4b81e6c3b01093613208b4aea8ed8b911.
+PASS: state/profile/scaffold JSON parsed.
+PASS: no repository learner progress created by validation.
+Changes: 16 modified, 25 added; complete list in docs/UNIVERSITY_CHANGED_FILES.md.
+Git history absent from input; no history created or replaced. Commit 21ba2af user-reported only.

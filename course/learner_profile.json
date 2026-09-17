@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-17",
+  "owner": "Chris",
+  "source": "explicit transition requirements; no inferred fatigue diagnosis",
+  "explanation_style": "concrete plain English, actual source, one action at a time",
+  "default_explanation_words": [
+    80,
+    150
+  ],
+  "abstraction": "start with current behavior; offer deeper model optionally",
+  "questions": "short phrase, number, choice or one sentence; behavior preferred over essays",
+  "exercises": "real project; tiny disposable sandbox only when it reduces a specific blocker",
+  "assistance": "adaptive hints; unfamiliar syntax allowed; narrow rescue only with explicit confirmation",
+  "fatigue": "optional Good/Tired/Fried; shorten transfer or escalate after repeated uninformative failures",
+  "concepts_needing_review": [
+    "header/source and compile/link",
+    "independent range-loop reference transfer",
+    "stable-ID implementation beyond current small runtime IDs"
+  ],
+  "technical_decisions": "docs/UNIVERSITY_ADRS.md; do not encode learner implementation choices as personality",
+  "runtime_support": "U1 prepared wording only; dynamic profile adaptation not implemented"
+}

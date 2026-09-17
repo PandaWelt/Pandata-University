@@ -1,4 +1,6 @@
-# PandaBank Learning System
+Current authority: PANDATA_UNIVERSITY_SPEC.md and UNIVERSITY_ADRS.md refine this pilot design. Missions 001/002 are accepted historical evidence. The next experience is the separate offline University console; a full dashboard is not implemented.
+
+# Pandata University Learning System
 
 ## Purpose
 
@@ -16,7 +18,7 @@ The learner likes trial-by-fire experimentation but burns out when every obstacl
 6. **Feedback:** deterministic checks show evidence; the teacher explains the smallest relevant failure.
 7. **Rescue:** hints escalate only as needed based on attempts, performance, time, and reported fatigue.
 8. **Prove:** learner explains the bug/design and performs a small transfer or variation.
-9. **Checkpoint:** Git records the result, progress updates, and the next chronological prerequisite unlocks.
+9. **Checkpoint:** record progress and evidence; show Git state when implemented. Meaningful commits/merges require explicit approval. U1 saves local snapshots only.
 
 ## Mission contract
 
@@ -143,3 +145,11 @@ Product progress matters, but chronology outranks rushing to the most visible fe
 ## Reference solutions
 
 Reference solutions must not be compiled into the application or placed where they are accidentally read during normal work. Prefer Git history, protected course data, or patches revealed only by Rescue Mode. A release gate verifies they are not runtime dependencies.
+
+## Transition rules
+
+Show Why/mental model and one action with expected observation; use short answers rather than essays. Offer More, syntax and Professional Approaches optionally. Seven hint rungs and explicit Rescue approval are specified in PANDATA_UNIVERSITY_SPEC.md. U1 supports prepared hints only; adaptive mentor/Rescue is not implemented.
+
+Definitions: course/university/missions. Runtime progress: course/university/progress. Learner preferences: course/learner_profile.json. Technical decisions: docs/UNIVERSITY_ADRS.md and DECISION_LOG.md. Legacy mission/reviewer state: course/state.json and evidence/. Do not use chat memory as the database.
+
+Judge alternate routes against behavior and real tradeoffs, not an exact expected diff. Preserve accepted X-macro ObjectType. Normal learning and recoverable progress require no AI. U2 adds same-repository build/test/Git visibility; U3 read-only mentor and U4 approved Maintenance remain future. See MENTOR_CONTRACT.md for the strict subscription-only/offline boundary.

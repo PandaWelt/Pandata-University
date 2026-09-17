@@ -65,3 +65,6 @@ imgui.ini
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# University learner-local snapshots: back up explicitly; never package another user's progress.
+/course/university/progress/

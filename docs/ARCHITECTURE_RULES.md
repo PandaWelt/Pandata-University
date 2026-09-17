@@ -1,3 +1,5 @@
+Current extension: University is a separate C++20 executable in university/, with course definitions and progress separate from source. No University source, tests, references or auth may link into PandaBank. The diagrams/targets below are future architecture, not an inventory. U1 uses direct compile commands; CMake is still a planned migration. See UNIVERSITY_ADRS.md and PROTOTYPE_ASSESSMENT.md.
+
 # Architecture and Build Rules
 
 This describes the intended direction, not an order to perform an immediate rewrite.

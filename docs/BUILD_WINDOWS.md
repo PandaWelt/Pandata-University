@@ -1,3 +1,5 @@
+Current review: Chris reports Mission 002 Debug/x64 and Release build/launch pass. Commands below remain independently unexecuted here. For the separate Pandata University executable, use Start-Pandata-University.cmd; see university/README.md.
+
 # Verify the native Windows build
 
 Status: path references checked; Windows compilation, linking and launch NOT RUN here.
@@ -21,7 +23,7 @@ Open `visualstudio/Pandata.bank.vcxproj` through File > Open > Project/Solution,
 
 The checked-in paths now use `$(ProjectDir)..\`, so do not restore the old `D:\CREATIVE...` settings. If a personal `.user.props` overrides settings, inspect the effective property values before changing repository configuration. If `winres.h` is missing, inspect the C++ workload/resource include installation; report that separately rather than editing third-party code.
 
-The popup may remain open after selecting a type. Click outside it to dismiss before testing canvas input. Avoid leaving the known runaway-spawn baseline running for long: inspect a few frames, then stop debugging.
+The popup may remain open after selecting a type. Click outside it to dismiss before testing canvas input. The runaway-spawn fault was repaired in Mission 001; do not revert to it. Mission 002 diagnostics are Debug-only.
 
 ## Release (after the Debug smoke test)
 

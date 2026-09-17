@@ -1,3 +1,17 @@
+# Current recovery — Mission 002 / University transition
+
+The byte-exact submitted Mission 002 ZIP is retained in `recovery/mission002-submission.zip`, SHA-256 `6306638d8c0ff6131ebe894c2dcd19d4b81e6c3b01093613208b4aea8ed8b911`. `UNIVERSITY_BASELINE.json` records every input file hash. Chris reports commit `21ba2af`; no .git was included, so that commit and the working branch cannot be independently verified. No replacement history or commit was fabricated.
+
+The returned archive is a source/document transfer, not a new repository to replace Chris's checkout. Extract to a separate temporary folder. In the existing repository inspect `git status --short` and `git log -1 --oneline`; keep all newer work. Apply only added/modified paths listed in UNIVERSITY_CHANGED_FILES.md. Compare and merge any locally edited file instead of overwriting it. Do not copy the bundled src/, thirdparty/ or visualstudio/ over newer files; they are unchanged reference bytes. Never replace .git. Recovery archives are not source commits.
+
+The changes are docs/course/reviewer records, AGENTS.md, .gitignore, README_FIRST.md, University source/tests and its new launcher. They contain no product patch. U1 writes only local course/university/progress snapshots during study. Copy that directory with its mission definitions into normal backups; it is ignored by Git. See UNIVERSITY_FORMAT.md for corruption, locking and migration handling.
+
+Rollback of this handoff means selectively reverting its reviewed files in your own repository, preserving later edits and all learner progress. Stop University before removing its executable/source. Keep the submitted ZIP and local Git history; do not use hard reset or overwrite from the old foundation. Content changes cannot silently reuse previous completion fingerprints.
+
+## Historical Mission 001 provenance (superseded transfer instructions)
+
+The older text below records the earlier review only; its changed-path list and next action do not apply to this University delivery.
+
 # Recovery and submission provenance
 
 Chris reports Mission 001 is committed locally with message `Complete Mission 001 stable object identity`. The submitted ZIP contains no .git or hash, so the reviewer cannot independently identify that commit. Do not substitute a reviewer-made snapshot or an old foundation history for Chris's actual Git history.
