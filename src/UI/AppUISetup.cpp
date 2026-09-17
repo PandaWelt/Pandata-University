@@ -6,6 +6,7 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <cassert>
 
 #define OBJECT_TYPE_LIST \
 	X(BasicBox) \
@@ -369,8 +370,25 @@ BaseObjects object;
 		object.type = type;
 		object.posX = 100.0f + static_cast<float>(sceneObjects.size()) * 120.0f;
 		object.posY = 100.0f;
+#ifndef NDEBUG
+		const auto sizeBefore = sceneObjects.size();
+#endif
+
 		sceneObjects.emplace_back(object);
+
+#ifndef NDEBUG
+		assert(sceneObjects.size() == sizeBefore + 1);
+
+		for (std::size_t first = 0; first < sceneObjects.size(); ++first)
+		{
+			for (std::size_t second = first + 1; second < sceneObjects.size(); ++second)
+			{
+				assert(sceneObjects[first].id != sceneObjects[second].id);
+			}
+		}
 		PrintVector(sceneObjects);
+#endif
+
 	}
 	void drawAll()
 	{
@@ -385,14 +403,15 @@ BaseObjects object;
 
 	static void PrintVector(const std::vector<BaseObjects>& objects)
 	{
-		std::cout<< "size: " << objects.size() << std::endl;
+		std::cout<< "\n size: " << objects.size() << std::endl;
 		if (objects.empty())
 			return;
 		std::cout << "Elements: { ";
 		for (int i = 0; i < objects.size(); i++)
 		{
-			std::cout << "vector " << objects[i].id;
+			std::cout << "vector " << objects[i].id << ",";
 		}
+		std::cout << " }";
 	}
 
 private:
