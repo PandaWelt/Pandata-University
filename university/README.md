@@ -1,3 +1,18 @@
+# U2 current use
+
+U1 stays completed. Launch Start-Pandata-University.cmd, then type run-check. Use files/view NUMBER, failure-demo, git-status, git-diff, open-vs, help and quit. Windows launcher now builds/tests the new adapter too; native U2 validation is pending. See docs/U2_HANDOFF.md and docs/U2_WINDOWS_VALIDATION.md. The old U1 scope/build commands below are historical; use these updated Linux commands:
+
+```sh
+mkdir -p build/university
+g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/tests/repository_tests.cpp -o build/university/repository-tests
+build/university/repository-tests .
+g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/ProgressStore.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/main.cpp -o build/university/pandata-university
+build/university/pandata-university
+```
+
+Repository tests use temporary copies/checkouts only; they never edit your source/progress/history. run-check itself compiles/runs the actual 44 U1 engine tests. Each action saves separate machine evidence; it never advances a lesson automatically.
+
+
 # Pandata University — offline foundation
 
 This is a separate C++20 console program, with no new dependencies. It reads one prepared step at a time and saves short responses/hints locally. It does not edit PandaBank, invoke Git/build commands during study, grade answers, connect to AI or implement the next product refactor. The five-step session is an orientation to the existing header/source boundary.

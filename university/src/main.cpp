@@ -1,11 +1,32 @@
 #include "Mission.h"
 #include "ProgressStore.h"
+#include "RepositoryActions.h"
+#include <charconv>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 
 namespace {
+void actionsHelp() {
+    std::cout << "\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\n"
+                 "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
+                 "Actions save command/output/exit evidence. No general shell or source editor is available.\n";
+}
+void showReport(const pu::ActionReport& r) {
+    for (const auto& c:r.commands) {
+        std::cout << "\nCommand: " << pu::terminalText(c.executable.string());
+        for(const auto& a:c.arguments) std::cout << ' ' << pu::jsonString(a);
+        std::cout << "\nWorking directory: " << pu::terminalText(c.cwd.string()) << '\n' << pu::terminalText(c.output);
+        if(c.handedOff) std::cout << "Handoff recorded; IDE completion/exit not observed.\n";
+        else std::cout << "Exit: " << c.exitCode << " | timeout: " << c.timedOut << " | output limit: " << c.outputLimited << '\n';
+        if(!c.error.empty()) std::cout << pu::terminalText(c.error) << '\n';
+    }
+    if(!r.error.empty())std::cout << pu::terminalText(r.error) << '\n';
+    std::cout << (r.ok()?"Action succeeded":"Action failed") << ". Evidence: " << pu::terminalText(r.evidence.string()) << '\n';
+    if(r.action=="failure-demo")std::cout << "The deliberately invalid scratch mission should fail. This is not a normal check pass; original mission/progress are unchanged.\n";
+}
+
 std::ifstream open(const std::filesystem::path& file) {
     std::ifstream stream(file,std::ios::binary);
     if (!stream) throw pu::Error("Cannot read " + file.string() + ". Launch from the PandaBank repository root.");
@@ -16,7 +37,7 @@ void display(const pu::Mission& m,const pu::Progress& p) {
     std::cout << "\nPandata University | Offline foundation\n" << m.title << '\n';
     if (i == m.steps.size()) {
         std::cout << "Prepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.\n"
-                     "Your responses are saved; the next engineering stage is U2 repository actions.\n";
+                     "Your responses are saved. U2 repository actions are now available; type run-check to begin.\n";
         return;
     }
     const auto& s = m.steps[i];
@@ -24,16 +45,20 @@ void display(const pu::Mission& m,const pu::Progress& p) {
               << s.why << "\n\nAction: " << s.action << "\nExpected: " << s.expected << '\n';
     if (!p.steps[i].attempts.empty()) std::cout << "Saved response: " << p.steps[i].attempts.back() << '\n';
     std::cout << "\nCommands: next | answer <short response> | more | syntax | professional | hint | check | quit\n"
-                 "Mentor, Rescue and Maintenance are unavailable in U1.\n";
+                 "Mentor, Rescue and Maintenance remain unavailable.\n";
 }
 }
 int main(int argc,char** argv) {
     try {
+        if(argc==3 && std::string(argv[1])=="--action") {
+            pu::RepositoryActions actions(std::filesystem::current_path());
+            auto result=actions.execute(argv[2]);showReport(result);return result.ok()?0:1;
+        }
         bool validate = false;
         std::filesystem::path missionFile = "course/university/missions/u1-boundaries.pum";
         if (argc >= 2 && std::string(argv[1]) == "--validate") validate = true;
         else if (argc >= 2) missionFile = argv[1];
-        if (argc > 2) throw pu::Error("Usage: pandata-university [--validate | mission-file]");
+        if (argc > 2) throw pu::Error("Usage: pandata-university [--validate | mission-file | --action ACTION]");
         auto input = open(missionFile); const auto mission = pu::loadMission(input);
         auto pilotInput = open("course/university/pilot.puc");
         const auto pilot = pu::loadPilot(pilotInput); pu::checkPrerequisites(mission,pilot);
@@ -44,12 +69,29 @@ int main(int argc,char** argv) {
         const auto progressDirectory = std::filesystem::path("course/university/progress") / mission.id;
         auto loaded = pu::loadProgress(progressDirectory,mission);
         for (const auto& warning : loaded.warnings) std::cout << "Recovery: " << warning << '\n';
-        display(mission,loaded.value);
+        pu::RepositoryActions actions(std::filesystem::current_path());
+        display(mission,loaded.value);actionsHelp();
         std::string command;
-        while (pu::currentStep(loaded.value) < mission.steps.size() && std::cout << "> " && std::getline(std::cin,command)) {
+        while (std::cout << "> " && std::getline(std::cin,command)) {
             if (command == "quit") break;
-            const auto i = pu::currentStep(loaded.value); const auto& step = mission.steps[i];
             try {
+                if(command=="help") {actionsHelp();continue;}
+                if(command=="files") {
+                    for(std::size_t n=0;n<actions.files().size();++n)std::cout << n+1 << " | " << actions.files()[n] << '\n';
+                    continue;
+                }
+                if(command.starts_with("view ")) {
+                    const auto value=command.substr(5);std::size_t n=0;
+                    const auto [end,error]=std::from_chars(value.data(),value.data()+value.size(),n);
+                    if(error!=std::errc{} || end!=value.data()+value.size())throw pu::Error("Use view followed by a file number from files, not a path or command.");
+                    std::cout << actions.view(n);continue;
+                }
+                if(command=="run-check"||command=="failure-demo"||command=="git-status"||command=="git-diff"||command=="open-vs") {
+                    showReport(actions.execute(command));continue;
+                }
+                const auto i = pu::currentStep(loaded.value);
+                if(i==mission.steps.size()) {std::cout << "Orientation is already complete. Use a U2 action or quit.\n";continue;}
+                const auto& step=mission.steps[i];
                 auto candidate = loaded; std::string feedback; bool changed = false;
                 if (command == "next") { pu::advance(mission,candidate.value); changed = true; }
                 else if (command.starts_with("answer ")) {
@@ -74,7 +116,7 @@ int main(int argc,char** argv) {
                 }
                 if (!feedback.empty()) std::cout << feedback << '\n';
                 if (command == "next" && changed) display(mission,loaded.value);
-            } catch (const std::exception& error) { std::cout << "Not advanced: " << error.what() << '\n'; }
+            } catch (const std::exception& error) { std::cout << "Action/step not completed: " << error.what() << '\n'; }
         }
         return 0;
     } catch (const std::exception& error) {

@@ -1,3 +1,6 @@
+Current update — 2026-09-18: U1 Windows completion is reported and saved snapshots verified. Submission includes Git history (HEAD 74aef5e, Mission002 21ba2af), unlike the older ZIP described below. U2 repository actions now exist in the separate University executable; see U2_HANDOFF.md. Linux actions/tests passed; Windows U2 is pending. PandaBank source/build/dependencies and U1 definition/progress remain unchanged. Remaining “U2 not implemented” statements below describe the historical U1 handoff, superseded by this update.
+
+
 # Current Prototype State
 
 Latest basis: submitted `PandataBank_Mission002.zip`, reviewed 2026-09-17. Missions 001/002 are complete by source review plus Chris-reported Windows evidence. Debug and Release builds/launch and text/focus smoke are reported passed. Reviewer GCC syntax/preprocessing passed; Windows/GUI was not re-run here. `reference/current-ui.png` remains historical, not a new screenshot.

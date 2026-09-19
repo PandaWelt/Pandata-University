@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "origin": "machine_observed",
+  "action": "run-check",
+  "repository": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank",
+  "recorded_unix_ms": 1789708278179,
+  "passed": true,
+  "intentional_failure_probe": false,
+  "error": "",
+  "output_encoding": "byte values escaped as U+0000..U+00FF; raw output-N.txt is authoritative",
+  "commands": [
+    {
+      "executable": "/usr/bin/x86_64-linux-gnu-g++-13",
+      "argv": [
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/include",
+        "-o",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708274321084287-0/engine-tests",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/Mission.cpp",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/ProgressStore.cpp",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/tests/engine_tests.cpp"
+      ],
+      "cwd": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708274321084287-0",
+      "started": true,
+      "exit_status": 0,
+      "handed_off": false,
+      "timed_out": false,
+      "output_limited": false,
+      "elapsed_ms": 3726,
+      "error": "",
+      "output": ""
+    },
+    {
+      "executable": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708274321084287-0/engine-tests",
+      "argv": [
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/missions/u1-boundaries.pum",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/pilot.puc"
+      ],
+      "cwd": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708274321084287-0",
+      "started": true,
+      "exit_status": 0,
+      "handed_off": false,
+      "timed_out": false,
+      "output_limited": false,
+      "elapsed_ms": 131,
+      "error": "",
+      "output": "PASS: 44 checks\n"
+    }
+  ]
+}

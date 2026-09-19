@@ -64,3 +64,10 @@ Do not reopen locked decisions. For provisional decisions, first produce a concr
 - **Records:** learner preferences separate from technical choices. U1 response completeness never means mastery. Supplied engine code is infrastructure with ownership/platform debt.
 
 Earlier dated decisions are historical snapshots; current state lives in CURRENT_STATE.md and course/state.json.
+
+## U2 delivery — 2026-09-18
+
+- Chris authorized bounded U2 implementation. U1 saved completion/history verified; no replay or definition migration.
+- Fixed file/action allowlists, direct process creation, separate machine evidence, Git read visibility, explicit VS handoff; no full editor/AI/Rescue/Maintenance. See U-12 and U2_ACTION_CONTRACT.md.
+- Linux observed tests are separate from pending Windows U2 validation. U1 Windows success does not certify U2 native code.
+- Update delivered as a patch/payload, not a replacement source/history/progress tree. No commit/merge performed. Next local gate: run-check from the updated launcher.

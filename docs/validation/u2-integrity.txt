@@ -1,0 +1,8 @@
+PASS: all 617 original files retained.
+PASS: 521 source/dependency/VS/Git/progress files byte-identical to input.
+PASS: all 9 U1 snapshots and mission definition/pilot index preserved.
+PASS: unrelated original untracked files unchanged.
+PASS: final actual U2 git-status/git-diff preserved original index bytes (diff.autoRefreshIndex=false).
+Review finding: earlier diff refreshed only index stat data, not staged object IDs/paths; exact submitted index restored before final verification.
+Changes: 16 modified and 12 added; no deletions.
+HEAD 74aef5e; no user-tree commit/merge/reset/checkout performed.

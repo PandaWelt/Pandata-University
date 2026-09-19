@@ -1,0 +1,598 @@
+$ g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/tests/repository_tests.cpp -o build/u2-review/repository-tests
+
+exit=0
+
+$ g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/ProgressStore.cpp university/src/main.cpp -o build/u2-review/pandata-university
+
+exit=0
+
+$ build/u2-review/repository-tests .
+PASS: 46 U2 checks
+
+exit=0
+
+$ build/u2-review/pandata-university
+
+Pandata University | Offline foundation
+One responsibility, two C++ files
+Prepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.
+Your responses are saved. U2 repository actions are now available; type run-check to begin.
+
+U2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit
+run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.
+Actions save command/output/exit evidence. No general shell or source editor is available.
+> 1 | src/main.cpp
+2 | src/UI/AppUISetup.h
+3 | src/UI/AppUISetup.cpp
+4 | university/include/Mission.h
+5 | university/src/Mission.cpp
+6 | university/include/ProgressStore.h
+7 | university/src/ProgressStore.cpp
+8 | university/tests/engine_tests.cpp
+9 | visualstudio/Pandata.bank.vcxproj
+> src/UI/AppUISetup.h (read-only)
+1 | #pragma once
+2 | #include "imgui.h"
+3 | 
+4 | 
+5 | void AppUISetup(ImVec4& clear_color);
+> Action/step not completed: Use view followed by a file number from files, not a path or command.
+> Orientation is already complete. Use a U2 action or quit.
+> 
+exit=0
+
+$ build/u2-review/pandata-university --action run-check
+
+Command: /usr/bin/x86_64-linux-gnu-g++-13 "-std=c++20" "-Wall" "-Wextra" "-Werror" "-pedantic" "-I/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/include" "-o" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708313724306788-0/engine-tests" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/Mission.cpp" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/ProgressStore.cpp" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/tests/engine_tests.cpp"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708313724306788-0
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708313724306788-0/engine-tests "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/missions/u1-boundaries.pum" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/pilot.puc"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708313724306788-0
+PASS: 44 checks
+Exit: 0 | timeout: 0 | output limit: 0
+Action succeeded. Evidence: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/evidence/u2/1789708316957122216-0/evidence.json
+
+exit=0
+
+$ build/u2-review/pandata-university --action failure-demo
+
+Command: /usr/bin/x86_64-linux-gnu-g++-13 "-std=c++20" "-Wall" "-Wextra" "-Werror" "-pedantic" "-I/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/include" "-o" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708316959901187-0/engine-tests" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/Mission.cpp" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/ProgressStore.cpp" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/tests/engine_tests.cpp"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708316959901187-0
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708316959901187-0/engine-tests "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708316959901187-0/deliberately-invalid.pum" "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/pilot.puc"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708316959901187-0
+mission line 1: expected mission version 1
+Test scratch preserved: /tmp/pandata-university-tests-1434003133210
+Exit: 1 | timeout: 0 | output limit: 0
+Action failed. Evidence: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/evidence/u2/1789708320264518681-0/evidence.json
+The deliberately invalid scratch mission should fail. This is not a normal check pass; original mission/progress are unchanged.
+
+exit=1
+
+$ build/u2-review/pandata-university --action git-status
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "rev-parse" "--show-toplevel"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "config" "--name-only" "--list" "--includes"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+core.repositoryformatversion
+core.filemode
+core.bare
+core.logallrefupdates
+core.autocrlf
+user.name
+user.email
+core.fsmonitor
+core.untrackedcache
+diff.autorefreshindex
+color.ui
+core.quotepath
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "status" "--short" "--branch" "--untracked-files=normal"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+## main
+ M .gitignore
+ M README_FIRST.md
+ M Start-Pandata-University.cmd
+ M course/PROGRESS.md
+ M course/scaffold_manifest.json
+ M course/state.json
+ M docs/CURRENT_STATE.md
+ M docs/DECISION_LOG.md
+ M docs/PANDATA_UNIVERSITY_SPEC.md
+ M docs/RECOVERY.md
+ M docs/ROADMAP.md
+ M docs/UNIVERSITY_ADRS.md
+ M docs/UNIVERSITY_FORMAT.md
+ M docs/UNIVERSITY_HANDOFF.md
+ M university/README.md
+ M university/src/main.cpp
+?? docs/U2_ACTION_CONTRACT.md
+?? docs/U2_HANDOFF.md
+?? docs/U2_WINDOWS_VALIDATION.md
+?? docs/validation/u2-expected-failure.json
+?? docs/validation/u2-success.json
+?? "sion 001 stable object identity\357\200\242"
+?? university/include/RepositoryActions.h
+?? university/src/Process.cpp
+?? university/src/RepositoryActions.cpp
+?? university/tests/repository_tests.cpp
+?? visualstudio/.github/
+Exit: 0 | timeout: 0 | output limit: 0
+Action succeeded. Evidence: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/evidence/u2/1789708320318112627-0/evidence.json
+
+exit=0
+
+$ build/u2-review/pandata-university --action git-diff
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "rev-parse" "--show-toplevel"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "config" "--name-only" "--list" "--includes"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+core.repositoryformatversion
+core.filemode
+core.bare
+core.logallrefupdates
+core.autocrlf
+user.name
+user.email
+core.fsmonitor
+core.untrackedcache
+diff.autorefreshindex
+color.ui
+core.quotepath
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "diff" "--no-ext-diff" "--no-textconv" "--"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+diff --git a/.gitignore b/.gitignore
+index 6371dd0..9cd0daa 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -68,3 +68,6 @@ desktop.ini
+ 
+ # University learner-local snapshots: back up explicitly; never package another user's progress.
+ /course/university/progress/
++
++# U2 machine evidence is learner-local; back up with progress.
++/course/university/evidence/
+diff --git a/README_FIRST.md b/README_FIRST.md
+index b06efb1..8462560 100644
+--- a/README_FIRST.md
++++ b/README_FIRST.md
+@@ -1,9 +1,9 @@
+-# PandaBank + Pandata University
++# PandaBank + Pandata University U2
+ 
+-Missions 001 and 002 are accepted. **Your next action is to double-click Start-Pandata-University.cmd in your existing repository root, read the first step, and type next.** The launcher builds the separate offline University foundation with your installed Visual Studio C++ compiler. The Windows launch is the remaining local check; Linux engine/console validation passed here.
++Your U1 orientation remains complete. After applying the delivered U2 patch to this existing checkout, **double-click Start-Pandata-University.cmd and type run-check.**
+ 
+-Before launching, extract this archive to a temporary location and apply only the added/modified files in docs/UNIVERSITY_CHANGED_FILES.md to the matching paths in your current repository. Compare/merge newer local edits. Preserve your .git, src/, thirdparty/ and visualstudio/. This delivery changes none of their bytes. It includes a byte-exact Mission 002 recovery ZIP and inventory; it does not replace your Git history.
++U2 provides a numbered read-only file viewer, one real University build/check with a harmless failure demonstration, saved command/output/exit evidence, Git status/diff and Open in Visual Studio. Use help for commands. No PandaBank refactor, editor, mentor, Rescue or Maintenance is implemented.
+ 
+-University shows one short step at a time and saves responses/hints locally. The orientation examines the existing header/source boundary without editing it. It does not redo the pilot missions, grade answers as correct or implement your next refactor. If the launcher fails, keep the first error; see university/README.md. Back up course/university/progress with the corresponding mission definitions.
++See docs/U2_HANDOFF.md for the exact scope, preservation evidence and complete changed-file list. Follow docs/U2_WINDOWS_VALIDATION.md for the remaining native check. Linux validation passed; your previous Windows U1 success is recorded separately.
+ 
+-Read docs/UNIVERSITY_HANDOFF.md for the review result, complete change list, validation and remaining scope. Product decisions/assessment, University spec, future mentor/Maintenance contract and ownership debt are persisted in docs/ and course/. No AI login, API key, subscription purchase, SDL upgrade, renderer replacement or product rebuild is needed for this slice.
++Keep your local Git history, completed course/university/progress, unrelated work and newer edits. The delivery's APPLY_U2.md explains patch application and conflicts; never replace the whole repository. Back up course/university/evidence with progress. No extra dependency or subscription is needed.
+diff --git a/Start-Pandata-University.cmd b/Start-Pandata-University.cmd
+index 1a99131..723bdfe 100644
+--- a/Start-Pandata-University.cmd
++++ b/Start-Pandata-University.cmd
+@@ -15,8 +15,13 @@ cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PURO
+ if errorlevel 1 goto buildfailed
+ engine-tests.exe "%PUROOT%course\university\missions\u1-boundaries.pum" "%PUROOT%course\university\pilot.puc"
+ if errorlevel 1 goto buildfailed
++echo Building U2 repository-action checks...
++cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\Process.cpp" "%PUROOT%university\src\RepositoryActions.cpp" "%PUROOT%university\tests\repository_tests.cpp" /Fe:repository-tests.exe
++if errorlevel 1 goto buildfailed
++repository-tests.exe "%PUROOT%."
++if errorlevel 1 goto buildfailed
+ echo Building Pandata University...
+-cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\ProgressStore.cpp" "%PUROOT%university\src\main.cpp" /Fe:pandata-university.exe
++cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\ProgressStore.cpp" "%PUROOT%university\src\Process.cpp" "%PUROOT%university\src\RepositoryActions.cpp" "%PUROOT%university\src\main.cpp" /Fe:pandata-university.exe
+ if errorlevel 1 goto buildfailed
+ popd
+ "%PUSTAGE%\pandata-university.exe" --validate
+diff --git a/course/PROGRESS.md b/course/PROGRESS.md
+index 141bb6f..7124cf9 100644
+--- a/course/PROGRESS.md
++++ b/course/PROGRESS.md
+@@ -1,3 +1,10 @@
++# Current update \xe2\x80\x94 2026-09-18, U2
++
++U1 is completed on Windows by Chris's report, corroborated by all nine saved snapshots and the final completed state. Git HEAD 74aef5e and Mission 002 commit 21ba2af are present. Prediction \xe2\x80\x9clinker problem\xe2\x80\x9d and inspection \xe2\x80\x9cAppUISetup.cpp\xe2\x80\x9d are correct; \xe2\x80\x9cobject presets/tools\xe2\x80\x9d is a responsibility proposal, not a completed extraction. One transfer hint was recorded. No durable confidence promotion.
++
++U2 adds bounded repository actions: files/view, run-check, harmless failure-demo, git-status/git-diff and open-vs. Linux validation passed; Windows U2 remains pending. User source/history/progress and unrelated work were preserved. Runtime action evidence is independent of lesson progress. Next: launch Start-Pandata-University.cmd and type run-check. See docs/U2_HANDOFF.md and U2_WINDOWS_VALIDATION.md. Earlier entries below are historical snapshots.
++
++
+ # Pandata University progress
+ 
+ ## Current position \xe2\x80\x94 2026-09-17
+@@ -57,3 +64,10 @@ Append future entries with date, mission/time, attempted changes, evidence, assi
+ - Saved full transition requirements, spec, architecture assessment, ADRs, learner profile, future mentor/maintenance contract and implementation debt.
+ - Learner time/attempt count unknown; no new learner attempt occurred in this session. Engine tests do not count as learner evidence.
+ - Next action: launch Start-Pandata-University.cmd and type next after reading the first step. U2 work is not implemented for Chris.
++
++### 2026-09-18 \xe2\x80\x94 U2 foundation
++
++- Supplied C++ platform process adapter and fixed repository actions, not a learner refactor.
++- Reviewed saved U1 responses/hint count and verified submission Git history without writing it.
++- Actual success/failure compiler/test actions and Git visibility tested; missing tools/path/command restrictions and progress preservation verified. Windows U2 not executed here.
++- Registered U2 infrastructure/Windows debt. No AI/editor/Rescue/Maintenance implemented. Next action: run-check locally.
+diff --git a/course/scaffold_manifest.json b/course/scaffold_manifest.json
+index 80abfee..e7f22c4 100644
+--- a/course/scaffold_manifest.json
++++ b/course/scaffold_manifest.json
+@@ -103,10 +103,23 @@
+       "purpose": "Separate offline University definition/progress engine and presentation",
+       "replacement_mission": null,
+       "status": "review_scheduled",
+-      "acceptance_evidence": "docs/validation/university-tests.txt; Linux observed, MSVC/Windows pending; Chris ownership review pending",
++      "acceptance_evidence": "docs/validation/university-tests.txt; Linux observed, MSVC/Windows pending; Chris ownership review pending Chris reports Windows U1 launcher/checks pass; saved orientation completion reviewed 2026-09-18. U2 platform work remains separate.",
+       "owner": "University maintainer with Chris review",
+       "release_blocking": false,
+       "origin": "Astra-supplied infrastructure, not learner coursework"
++    },
++    {
++      "id": "U2-REPOSITORY-ACTIONS",
++      "classification": "PRODUCTION_INFRASTRUCTURE",
++      "location": "university/include/RepositoryActions.h; university/src/Process.cpp; university/src/RepositoryActions.cpp; university/src/main.cpp; university/tests/repository_tests.cpp; Start-Pandata-University.cmd",
++      "purpose": "Fixed read-only file/Git views, bounded build/check evidence and explicit VS launch",
++      "replacement_mission": null,
++      "status": "review_scheduled",
++      "owner": "University maintainer; Chris provides Windows result",
++      "release_blocking": false,
++      "acceptance_evidence": "docs/validation/u2-validation.txt; real Linux success/failure and preservation tests; Windows new adapter unverified",
++      "origin": "Astra-supplied infrastructure, not Chris coursework",
++      "review_trigger": "Windows U2 validation before provider/editor work; reconsider process/evidence adapter before untrusted tasks or long-running actions"
+     }
+   ],
+   "notes": [
+@@ -139,6 +152,12 @@
+       "location": "Start-Pandata-University.cmd",
+       "owner": "Chris supplies local result; University maintainer fixes tooling",
+       "removal_condition": "Run local Windows smoke now; retire direct compile launcher after verified CMake packaging/update workflow preserves rollback."
++    },
++    {
++      "id": "U2-WINDOWS-EVIDENCE",
++      "location": "university/src/Process.cpp; university/src/RepositoryActions.cpp; docs/U2_WINDOWS_VALIDATION.md",
++      "owner": "Chris runs native check; University maintainer fixes platform issues",
++      "removal_condition": "Record Windows compile, pass/fail checks, argument paths, junction refusal, Git and actual IDE opening. Before long-term use, add evidence compaction/crash recovery; no automatic deletion now."
+     }
+   ]
+ }
+diff --git a/course/state.json b/course/state.json
+index 4978e42..d6a7f38 100644
+--- a/course/state.json
++++ b/course/state.json
+@@ -1,6 +1,6 @@
+ {
+   "schema_version": 1,
+-  "updated": "2026-09-17",
++  "updated": "2026-09-18",
+   "phase": 0,
+   "active_mission": null,
+   "baseline_ref": "uploaded-baseline",
+@@ -34,7 +34,7 @@
+       "assistance_level": "none_reported",
+       "review": "course/evidence/002_review.md",
+       "completion_commit": "21ba2af",
+-      "commit_verification": "user_reported_history_not_in_submission",
++      "commit_verification": "verified_commit_present_in_U1_submission",
+       "submission_sha256": "6306638d8c0ff6131ebe894c2dcd19d4b81e6c3b01093613208b4aea8ed8b911"
+     }
+   },
+@@ -49,8 +49,10 @@
+     "gcc_mission002_syntax": "debug_and_ndebug_passed_existing_warnings",
+     "mission002_preprocessor": "guarded_work_absent_with_ndebug",
+     "university_engine": "see_docs/validation/university-tests.txt",
+-    "university_windows": "not_run",
+-    "codex_app_server": "not_installed_not_run"
++    "university_windows": "U1_passed_user_reported_U2_not_yet_run",
++    "codex_app_server": "not_installed_not_run",
++    "university_u2": "see_docs/validation/u2-validation.txt",
++    "git_submission": "HEAD_74aef5e_and_Mission002_21ba2af_verified"
+   },
+   "concepts": {
+     "vector_value_storage": "practiced_with_help",
+@@ -61,23 +63,26 @@
+     "debugger_observation": "practiced_independently",
+     "debug_invariants": "practiced_independently"
+   },
+-  "next_action": "Double-click Start-Pandata-University.cmd in the existing repository root; read the first University step and type next.",
++  "next_action": "After applying the U2 patch, launch Start-Pandata-University.cmd and type run-check.",
+   "review_followups": [
+     "Selection/deletion transfer explanation accepted in 002; implementation transfer still due before durable confidence.",
+     "Header/source orientation is not a completed refactor or graded knowledge proof.",
+-    "Preserve local Git history; 21ba2af is reported, not verified."
++    "Run U2 Windows validation before claiming native action/VS success.",
++    "U1 answers reviewed; orientation completion is not a product refactor or durable mastery."
+   ],
+-  "active_experience": "u1-boundaries",
++  "active_experience": "u2_repository_actions",
+   "university": {
+     "U0": "review_and_spec_complete",
+-    "U1": "offline_engine_implemented_linux_verified_windows_pending",
+-    "U2": "next_engineering_stage_not_implemented",
++    "U1": "completed_windows_user_reported_progress_verified",
++    "U2": "implemented_linux_verified_windows_validation_pending",
+     "U3": "contract_only",
+     "U4": "contract_only",
+-    "learner_orientation": "not_attempted",
++    "learner_orientation": "completed",
+     "progress_source": "course/university/progress/u1-boundaries/*.pup",
+     "profile": "course/learner_profile.json",
+     "pilot_import": "course/university/pilot.puc",
+-    "automatic_mastery": false
++    "automatic_mastery": false,
++    "orientation_evidence": "course/university/progress/u1-boundaries/9.pup",
++    "u2_evidence": "course/university/evidence/u2/*/evidence.json"
+   }
+ }
+diff --git a/docs/CURRENT_STATE.md b/docs/CURRENT_STATE.md
+index 8d61ad1..40d71e1 100644
+--- a/docs/CURRENT_STATE.md
++++ b/docs/CURRENT_STATE.md
+@@ -1,3 +1,6 @@
++Current update \xe2\x80\x94 2026-09-18: U1 Windows completion is reported and saved snapshots verified. Submission includes Git history (HEAD 74aef5e, Mission002 21ba2af), unlike the older ZIP described below. U2 repository actions now exist in the separate University executable; see U2_HANDOFF.md. Linux actions/tests passed; Windows U2 is pending. PandaBank source/build/dependencies and U1 definition/progress remain unchanged. Remaining \xe2\x80\x9cU2 not implemented\xe2\x80\x9d statements below describe the historical U1 handoff, superseded by this update.
++
++
+ # Current Prototype State
+ 
+ Latest basis: submitted `PandataBank_Mission002.zip`, reviewed 2026-09-17. Missions 001/002 are complete by source review plus Chris-reported Windows evidence. Debug and Release builds/launch and text/focus smoke are reported passed. Reviewer GCC syntax/preprocessing passed; Windows/GUI was not re-run here. `reference/current-ui.png` remains historical, not a new screenshot.
+diff --git a/docs/DECISION_LOG.md b/docs/DECISION_LOG.md
+index 8570c06..afd40d6 100644
+--- a/docs/DECISION_LOG.md
++++ b/docs/DECISION_LOG.md
+@@ -64,3 +64,10 @@ Do not reopen locked decisions. For provisional decisions, first produce a concr
+ - **Records:** learner preferences separate from technical choices. U1 response completeness never means mastery. Supplied engine code is infrastructure with ownership/platform debt.
+ 
+ Earlier dated decisions are historical snapshots; current state lives in CURRENT_STATE.md and course/state.json.
++
++## U2 delivery \xe2\x80\x94 2026-09-18
++
++- Chris authorized bounded U2 implementation. U1 saved completion/history verified; no replay or definition migration.
++- Fixed file/action allowlists, direct process creation, separate machine evidence, Git read visibility, explicit VS handoff; no full editor/AI/Rescue/Maintenance. See U-12 and U2_ACTION_CONTRACT.md.
++- Linux observed tests are separate from pending Windows U2 validation. U1 Windows success does not certify U2 native code.
++- Update delivered as a patch/payload, not a replacement source/history/progress tree. No commit/merge performed. Next local gate: run-check from the updated launcher.
+diff --git a/docs/PANDATA_UNIVERSITY_SPEC.md b/docs/PANDATA_UNIVERSITY_SPEC.md
+index 884b631..4665db7 100644
+--- a/docs/PANDATA_UNIVERSITY_SPEC.md
++++ b/docs/PANDATA_UNIVERSITY_SPEC.md
+@@ -44,8 +44,10 @@ University Maintenance Mode is distinct and explicit. Classes: content-only; cou
+ |---|---|---|
+ | U0 | Accept pilots, name/spec, architecture and learner policy | Implemented documentation/review. |
+ | U1 | Mission loader, validation, separate recoverable progress, one-step presentation, tests | Implemented offline C++ console slice; validation reported in UNIVERSITY_HANDOFF.md. |
+-| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Next engineering foundation; not implemented. No full editor/IDE. |
++| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented minimal console actions; Linux verified, Windows U2 pending. No full editor/IDE. |
+ | U3 | Read-only mission-aware mentor, account/limits, offline fallback | Contract only; no child process/auth/model run. |
+ | U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | Contract only; no autonomous editing. |
+ 
+ The console is a real minimal presentation for testing the engine, not the promised finished GUI. Windows compilation/interaction requires a local check; the implementation is compiled/tested on the available Linux host. Build/test commands for University are separate from the unchanged PandaBank project. CMake migration of PandaBank is not claimed.
++
++U2 status/evidence and limitations: U2_HANDOFF.md and U2_ACTION_CONTRACT.md. U1 definition/progress contract remains unchanged. New repository evidence never auto-promotes lesson completion or mastery.
+diff --git a/docs/RECOVERY.md b/docs/RECOVERY.md
+index d69529e..1ab54c4 100644
+--- a/docs/RECOVERY.md
++++ b/docs/RECOVERY.md
+@@ -28,3 +28,7 @@ Historical foundation references (not included in this ZIP):
+ - Original foundation recovery ZIP SHA-256: 2899048eeb00fd44b202ffdf7ed590710559cdc01837796eccea42aeaac08def.
+ 
+ The earlier foundation package contained .git and recovery/original-upload.zip; this later transfer does not. Do not infer loss of local history from their omission. Work in the existing repository and use git status / git log there. If desired, record `git rev-parse HEAD` before committing the review-document changes; no need to resend or redo Mission 001 merely to supply a hash. Never use hard reset as a normal course step.
++
++## U2 checkpoint and merge safety \xe2\x80\x94 2026-09-18
++
++Authoritative U1 submission SHA-256: 9ba26175c2a021f1da0f9f1890e0accd539ff995c1646fa3f83e02690eab3f24; Git HEAD 74aef5e present. Original uploaded ZIP is unchanged. All U1 snapshots and Git files are retained byte-for-byte. The U2 delivery contains only changed/new files and a Git patch; never overwrite the whole checkout. Follow its APPLY_U2.md, which checks before applying and stops on conflicts. Do not reset, clean, replace .git or delete progress. Back up new action evidence with progress. The old source-only submission limitation above no longer applies to this U1-complete upload.
+diff --git a/docs/ROADMAP.md b/docs/ROADMAP.md
+index f1646a6..bc051f1 100644
+--- a/docs/ROADMAP.md
++++ b/docs/ROADMAP.md
+@@ -193,3 +193,5 @@ Order:
+ - offline phone edits/conflict resolution;
+ - iPhone client;
+ - advanced shape morphing/path animation.
++
++Current U2 update (2026-09-18): minimal repository actions implemented and Linux-verified. Complete local Windows action/VS checks before U3. No additional product refactor or mentor implementation is part of this delivery.
+diff --git a/docs/UNIVERSITY_ADRS.md b/docs/UNIVERSITY_ADRS.md
+index 49e155a..c41bc29 100644
+--- a/docs/UNIVERSITY_ADRS.md
++++ b/docs/UNIVERSITY_ADRS.md
+@@ -17,3 +17,11 @@ These scoped decisions implement the authorized early spike. Each preserves a re
+ | U-11: records/profile | Preferences in course/learner_profile.json; technical choices here/DECISION_LOG; confidence and evidence in course records. | No reliance on chat memory. U1 displays mission-provided wording, does not implement adaptive profile logic yet. Profile changes may not rewrite assessment gates. |
+ 
+ U1 source is supplied infrastructure, not learner-completed C++ coursework. Tests can accept the engine's behavior without claiming Chris understands its internals. No license for Chris's entire project is chosen by this spike.
++
++## U-12 \xe2\x80\x94 U2 repository actions, 2026-09-18
++
++Context: completed U1 needs actual local checks and visibility without becoming an IDE. Selected: fixed C++ action IDs and numbered relevant-file list, direct native process adapter, separate machine evidence; preserve U1 schema/fingerprint/state bytes. Alternatives rejected: general shell/command strings, editable arbitrary tool paths, changing old lesson to force replay, automated product refactor.
++
++Consequences: useful bounded actions now; installed tools and repository C++ remain trusted. Git helpers/config filters are refused, not guessed safe. Windows paths use native process quoting; POSIX uses argv. Neither is a hostile-code sandbox. Open VS is an explicit handoff with ordinary IDE side effects. Real check compiles current U1 engine tests; failure probe uses disposable data. No autonomous command choice.
++
++Reconsideration: add new actions only with reviewed scope/tests; native Windows verification before U3, progress/evidence migration and compaction before scale, stronger OS sandbox only if untrusted workloads become a real requirement. This session explicitly authorizes implementation, so no additional Maintenance confirmation is required for these reviewable local changes. No Git commit/merge was authorized or performed in Chris's tree.
+diff --git a/docs/UNIVERSITY_FORMAT.md b/docs/UNIVERSITY_FORMAT.md
+index 55b2e53..7c80737 100644
+--- a/docs/UNIVERSITY_FORMAT.md
++++ b/docs/UNIVERSITY_FORMAT.md
+@@ -59,3 +59,5 @@ Writes acquire a directory lock, reject a stale generation, write/flush/close a
+ On load, an invalid newest snapshot is preserved and reported; the latest valid older one resumes. This may lose only the latest unvalidated progress, and the warning must remain visible. No valid existing snapshot means stop, not reset. Definition mismatch stops even if older snapshots exist. An interrupted .tmp is preserved, ignored and its sequence reserved. The loader rejects symlink traversal in the snapshot location and nonregular snapshot entries. A crash can leave a stale .save-lock; close all University instances, copy the progress directory to a backup, then remove only that empty lock directory. Do not delete snapshots as a repair shortcut.
+ 
+ For corrupted state, preserve the complete directory and restore a known-good snapshot in a separate copy for inspection; request a narrow recovery/migration if all copies are invalid. Do not change assessment content merely to make progress load. The directory has a 10,000-entry bound; archival/compaction needs an explicit future workflow before long sessions reach it. Back up course/university/progress and its matching mission definitions together; it is Git-ignored personal state and not automatically synced by this console.
++
++U2 extension: no .pum/.pup schema or fingerprint change. Repository actions are a separate fixed capability set and write machine evidence under course/university/evidence/u2. See U2_ACTION_CONTRACT.md. Completed U1 progress is read without rewriting it.
+diff --git a/docs/UNIVERSITY_HANDOFF.md b/docs/UNIVERSITY_HANDOFF.md
+index aeb033f..47fb031 100644
+--- a/docs/UNIVERSITY_HANDOFF.md
++++ b/docs/UNIVERSITY_HANDOFF.md
+@@ -1,3 +1,5 @@
++Current handoff: U2_HANDOFF.md (2026-09-18). U1 completed on Windows; saved progress verified. The U1 handoff below is historical. Next action is launch the updated University and type run-check, not repeat the orientation.
++
+ # University foundation handoff \xe2\x80\x94 2026-09-17
+ 
+ **Next action: double-click Start-Pandata-University.cmd in the existing repository root, read the first step, then type next.** Apply this delivery's listed changes to that repository first, following README_FIRST.md; preserve newer edits and local Git history.
+diff --git a/university/README.md b/university/README.md
+index 0dd31f2..abad152 100644
+--- a/university/README.md
++++ b/university/README.md
+@@ -1,3 +1,18 @@
++# U2 current use
++
++U1 stays completed. Launch Start-Pandata-University.cmd, then type run-check. Use files/view NUMBER, failure-demo, git-status, git-diff, open-vs, help and quit. Windows launcher now builds/tests the new adapter too; native U2 validation is pending. See docs/U2_HANDOFF.md and docs/U2_WINDOWS_VALIDATION.md. The old U1 scope/build commands below are historical; use these updated Linux commands:
++
++```sh
++mkdir -p build/university
++g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/tests/repository_tests.cpp -o build/university/repository-tests
++build/university/repository-tests .
++g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/ProgressStore.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/main.cpp -o build/university/pandata-university
++build/university/pandata-university
++```
++
++Repository tests use temporary copies/checkouts only; they never edit your source/progress/history. run-check itself compiles/runs the actual 44 U1 engine tests. Each action saves separate machine evidence; it never advances a lesson automatically.
++
++
+ # Pandata University \xe2\x80\x94 offline foundation
+ 
+ This is a separate C++20 console program, with no new dependencies. It reads one prepared step at a time and saves short responses/hints locally. It does not edit PandaBank, invoke Git/build commands during study, grade answers, connect to AI or implement the next product refactor. The five-step session is an orientation to the existing header/source boundary.
+diff --git a/university/src/main.cpp b/university/src/main.cpp
+index bdb158d..8de5871 100644
+--- a/university/src/main.cpp
++++ b/university/src/main.cpp
+@@ -1,11 +1,32 @@
+ #include "Mission.h"
+ #include "ProgressStore.h"
++#include "RepositoryActions.h"
++#include <charconv>
+ #include <filesystem>
+ #include <fstream>
+ #include <iostream>
+ #include <sstream>
+ 
+ namespace {
++void actionsHelp() {
++    std::cout << "\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\n"
++                 "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
++                 "Actions save command/output/exit evidence. No general shell or source editor is available.\n";
++}
++void showReport(const pu::ActionReport& r) {
++    for (const auto& c:r.commands) {
++        std::cout << "\nCommand: " << pu::terminalText(c.executable.string());
++        for(const auto& a:c.arguments) std::cout << ' ' << pu::jsonString(a);
++        std::cout << "\nWorking directory: " << pu::terminalText(c.cwd.string()) << '\n' << pu::terminalText(c.output);
++        if(c.handedOff) std::cout << "Handoff recorded; IDE completion/exit not observed.\n";
++        else std::cout << "Exit: " << c.exitCode << " | timeout: " << c.timedOut << " | output limit: " << c.outputLimited << '\n';
++        if(!c.error.empty()) std::cout << pu::terminalText(c.error) << '\n';
++    }
++    if(!r.error.empty())std::cout << pu::terminalText(r.error) << '\n';
++    std::cout << (r.ok()?"Action succeeded":"Action failed") << ". Evidence: " << pu::terminalText(r.evidence.string()) << '\n';
++    if(r.action=="failure-demo")std::cout << "The deliberately invalid scratch mission should fail. This is not a normal check pass; original mission/progress are unchanged.\n";
++}
++
+ std::ifstream open(const std::filesystem::path& file) {
+     std::ifstream stream(file,std::ios::binary);
+     if (!stream) throw pu::Error("Cannot read " + file.string() + ". Launch from the PandaBank repository root.");
+@@ -16,7 +37,7 @@ void display(const pu::Mission& m,const pu::Progress& p) {
+     std::cout << "\nPandata University | Offline foundation\n" << m.title << '\n';
+     if (i == m.steps.size()) {
+         std::cout << "Prepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.\n"
+-                     "Your responses are saved; the next engineering stage is U2 repository actions.\n";
++                     "Your responses are saved. U2 repository actions are now available; type run-check to begin.\n";
+         return;
+     }
+     const auto& s = m.steps[i];
+@@ -24,16 +45,20 @@ void display(const pu::Mission& m,const pu::Progress& p) {
+               << s.why << "\n\nAction: " << s.action << "\nExpected: " << s.expected << '\n';
+     if (!p.steps[i].attempts.empty()) std::cout << "Saved response: " << p.steps[i].attempts.back() << '\n';
+     std::cout << "\nCommands: next | answer <short response> | more | syntax | professional | hint | check | quit\n"
+-                 "Mentor, Rescue and Maintenance are unavailable in U1.\n";
++                 "Mentor, Rescue and Maintenance remain unavailable.\n";
+ }
+ }
+ int main(int argc,char** argv) {
+     try {
++        if(argc==3 && std::string(argv[1])=="--action") {
++            pu::RepositoryActions actions(std::filesystem::current_path());
++            auto result=actions.execute(argv[2]);showReport(result);return result.ok()?0:1;
++        }
+         bool validate = false;
+         std::filesystem::path missionFile = "course/university/missions/u1-boundaries.pum";
+         if (argc >= 2 && std::string(argv[1]) == "--validate") validate = true;
+         else if (argc >= 2) missionFile = argv[1];
+-        if (argc > 2) throw pu::Error("Usage: pandata-university [--validate | mission-file]");
++        if (argc > 2) throw pu::Error("Usage: pandata-university [--validate | mission-file | --action ACTION]");
+         auto input = open(missionFile); const auto mission = pu::loadMission(input);
+         auto pilotInput = open("course/university/pilot.puc");
+         const auto pilot = pu::loadPilot(pilotInput); pu::checkPrerequisites(mission,pilot);
+@@ -44,12 +69,29 @@ int main(int argc,char** argv) {
+         const auto progressDirectory = std::filesystem::path("course/university/progress") / mission.id;
+         auto loaded = pu::loadProgress(progressDirectory,mission);
+         for (const auto& warning : loaded.warnings) std::cout << "Recovery: " << warning << '\n';
+-        display(mission,loaded.value);
++        pu::RepositoryActions actions(std::filesystem::current_path());
++        display(mission,loaded.value);actionsHelp();
+         std::string command;
+-        while (pu::currentStep(loaded.value) < mission.steps.size() && std::cout << "> " && std::getline(std::cin,command)) {
++        while (std::cout << "> " && std::getline(std::cin,command)) {
+             if (command == "quit") break;
+-            const auto i = pu::currentStep(loaded.value); const auto& step = mission.steps[i];
+             try {
++                if(command=="help") {actionsHelp();continue;}
++                if(command=="files") {
++                    for(std::size_t n=0;n<actions.files().size();++n)std::cout << n+1 << " | " << actions.files()[n] << '\n';
++                    continue;
++                }
++                if(command.starts_with("view ")) {
++                    const auto value=command.substr(5);std::size_t n=0;
++                    const auto [end,error]=std::from_chars(value.data(),value.data()+value.size(),n);
++                    if(error!=std::errc{} || end!=value.data()+value.size())throw pu::Error("Use view followed by a file number from files, not a path or command.");
++                    std::cout << actions.view(n);continue;
++                }
++                if(command=="run-check"||command=="failure-demo"||command=="git-status"||command=="git-diff"||command=="open-vs") {
++                    showReport(actions.execute(command));continue;
++                }
++                const auto i = pu::currentStep(loaded.value);
++                if(i==mission.steps.size()) {std::cout << "Orientation is already complete. Use a U2 action or quit.\n";continue;}
++                const auto& step=mission.steps[i];
+                 auto candidate = loaded; std::string feedback; bool changed = false;
+                 if (command == "next") { pu::advance(mission,candidate.value); changed = true; }
+                 else if (command.starts_with("answer ")) {
+@@ -74,7 +116,7 @@ int main(int argc,char** argv) {
+                 }
+                 if (!feedback.empty()) std::cout << feedback << '\n';
+                 if (command == "next" && changed) display(mission,loaded.value);
+-            } catch (const std::exception& error) { std::cout << "Not advanced: " << error.what() << '\n'; }
++            } catch (const std::exception& error) { std::cout << "Action/step not completed: " << error.what() << '\n'; }
+         }
+         return 0;
+     } catch (const std::exception& error) {
+Exit: 0 | timeout: 0 | output limit: 0
+
+Command: /usr/local/bin/git "--no-optional-locks" "--no-pager" "-c" "core.fsmonitor=false" "-c" "core.untrackedCache=false" "-c" "diff.autoRefreshIndex=false" "-c" "color.ui=false" "-c" "core.quotePath=true" "diff" "--cached" "--no-ext-diff" "--no-textconv" "--"
+Working directory: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank
+Exit: 0 | timeout: 0 | output limit: 0
+Action succeeded. Evidence: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/evidence/u2/1789708320452536023-0/evidence.json
+
+exit=0
+
+$ build/u2-review/pandata-university --action open-vs
+Open in Visual Studio is Windows-only. Open visualstudio/Pandata.bank.vcxproj on Windows; no alternative program was launched.
+Action failed. Evidence: /workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/evidence/u2/1789708320457283737-0/evidence.json
+
+exit=1
+
+$ build/u2-review/pandata-university --action git commit
+Pandata University stopped safely: Unknown action. Only run-check, failure-demo, git-status, git-diff and open-vs are allowed.
+Existing mission and progress files were not reset.
+
+exit=1
+
+PASS: machine JSON parsed; raw output matches captured bytes; successful real compile/check and deliberately invalid fixture check verified.
+PASS: all protected source/dependency/VS/Git/progress bytes unchanged.

@@ -1,9 +1,9 @@
-# PandaBank + Pandata University
+# PandaBank + Pandata University U2
 
-Missions 001 and 002 are accepted. **Your next action is to double-click Start-Pandata-University.cmd in your existing repository root, read the first step, and type next.** The launcher builds the separate offline University foundation with your installed Visual Studio C++ compiler. The Windows launch is the remaining local check; Linux engine/console validation passed here.
+Your U1 orientation remains complete. After applying the delivered U2 patch to this existing checkout, **double-click Start-Pandata-University.cmd and type run-check.**
 
-Before launching, extract this archive to a temporary location and apply only the added/modified files in docs/UNIVERSITY_CHANGED_FILES.md to the matching paths in your current repository. Compare/merge newer local edits. Preserve your .git, src/, thirdparty/ and visualstudio/. This delivery changes none of their bytes. It includes a byte-exact Mission 002 recovery ZIP and inventory; it does not replace your Git history.
+U2 provides a numbered read-only file viewer, one real University build/check with a harmless failure demonstration, saved command/output/exit evidence, Git status/diff and Open in Visual Studio. Use help for commands. No PandaBank refactor, editor, mentor, Rescue or Maintenance is implemented.
 
-University shows one short step at a time and saves responses/hints locally. The orientation examines the existing header/source boundary without editing it. It does not redo the pilot missions, grade answers as correct or implement your next refactor. If the launcher fails, keep the first error; see university/README.md. Back up course/university/progress with the corresponding mission definitions.
+See docs/U2_HANDOFF.md for the exact scope, preservation evidence and complete changed-file list. Follow docs/U2_WINDOWS_VALIDATION.md for the remaining native check. Linux validation passed; your previous Windows U1 success is recorded separately.
 
-Read docs/UNIVERSITY_HANDOFF.md for the review result, complete change list, validation and remaining scope. Product decisions/assessment, University spec, future mentor/Maintenance contract and ownership debt are persisted in docs/ and course/. No AI login, API key, subscription purchase, SDL upgrade, renderer replacement or product rebuild is needed for this slice.
+Keep your local Git history, completed course/university/progress, unrelated work and newer edits. The delivery's APPLY_U2.md explains patch application and conflicts; never replace the whole repository. Back up course/university/evidence with progress. No extra dependency or subscription is needed.

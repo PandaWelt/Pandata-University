@@ -15,8 +15,13 @@ cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PURO
 if errorlevel 1 goto buildfailed
 engine-tests.exe "%PUROOT%course\university\missions\u1-boundaries.pum" "%PUROOT%course\university\pilot.puc"
 if errorlevel 1 goto buildfailed
+echo Building U2 repository-action checks...
+cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\Process.cpp" "%PUROOT%university\src\RepositoryActions.cpp" "%PUROOT%university\tests\repository_tests.cpp" /Fe:repository-tests.exe
+if errorlevel 1 goto buildfailed
+repository-tests.exe "%PUROOT%."
+if errorlevel 1 goto buildfailed
 echo Building Pandata University...
-cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\ProgressStore.cpp" "%PUROOT%university\src\main.cpp" /Fe:pandata-university.exe
+cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 /I"%PUROOT%university\include" "%PUROOT%university\src\Mission.cpp" "%PUROOT%university\src\ProgressStore.cpp" "%PUROOT%university\src\Process.cpp" "%PUROOT%university\src\RepositoryActions.cpp" "%PUROOT%university\src\main.cpp" /Fe:pandata-university.exe
 if errorlevel 1 goto buildfailed
 popd
 "%PUSTAGE%\pandata-university.exe" --validate

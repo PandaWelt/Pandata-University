@@ -1,3 +1,5 @@
+Current handoff: U2_HANDOFF.md (2026-09-18). U1 completed on Windows; saved progress verified. The U1 handoff below is historical. Next action is launch the updated University and type run-check, not repeat the orientation.
+
 # University foundation handoff — 2026-09-17
 
 **Next action: double-click Start-Pandata-University.cmd in the existing repository root, read the first step, then type next.** Apply this delivery's listed changes to that repository first, following README_FIRST.md; preserve newer edits and local Git history.

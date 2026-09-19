@@ -17,3 +17,11 @@ These scoped decisions implement the authorized early spike. Each preserves a re
 | U-11: records/profile | Preferences in course/learner_profile.json; technical choices here/DECISION_LOG; confidence and evidence in course records. | No reliance on chat memory. U1 displays mission-provided wording, does not implement adaptive profile logic yet. Profile changes may not rewrite assessment gates. |
 
 U1 source is supplied infrastructure, not learner-completed C++ coursework. Tests can accept the engine's behavior without claiming Chris understands its internals. No license for Chris's entire project is chosen by this spike.
+
+## U-12 — U2 repository actions, 2026-09-18
+
+Context: completed U1 needs actual local checks and visibility without becoming an IDE. Selected: fixed C++ action IDs and numbered relevant-file list, direct native process adapter, separate machine evidence; preserve U1 schema/fingerprint/state bytes. Alternatives rejected: general shell/command strings, editable arbitrary tool paths, changing old lesson to force replay, automated product refactor.
+
+Consequences: useful bounded actions now; installed tools and repository C++ remain trusted. Git helpers/config filters are refused, not guessed safe. Windows paths use native process quoting; POSIX uses argv. Neither is a hostile-code sandbox. Open VS is an explicit handoff with ordinary IDE side effects. Real check compiles current U1 engine tests; failure probe uses disposable data. No autonomous command choice.
+
+Reconsideration: add new actions only with reviewed scope/tests; native Windows verification before U3, progress/evidence migration and compaction before scale, stronger OS sandbox only if untrusted workloads become a real requirement. This session explicitly authorizes implementation, so no additional Maintenance confirmation is required for these reviewable local changes. No Git commit/merge was authorized or performed in Chris's tree.

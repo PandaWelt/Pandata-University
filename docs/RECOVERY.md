@@ -28,3 +28,7 @@ Historical foundation references (not included in this ZIP):
 - Original foundation recovery ZIP SHA-256: 2899048eeb00fd44b202ffdf7ed590710559cdc01837796eccea42aeaac08def.
 
 The earlier foundation package contained .git and recovery/original-upload.zip; this later transfer does not. Do not infer loss of local history from their omission. Work in the existing repository and use git status / git log there. If desired, record `git rev-parse HEAD` before committing the review-document changes; no need to resend or redo Mission 001 merely to supply a hash. Never use hard reset as a normal course step.
+
+## U2 checkpoint and merge safety — 2026-09-18
+
+Authoritative U1 submission SHA-256: 9ba26175c2a021f1da0f9f1890e0accd539ff995c1646fa3f83e02690eab3f24; Git HEAD 74aef5e present. Original uploaded ZIP is unchanged. All U1 snapshots and Git files are retained byte-for-byte. The U2 delivery contains only changed/new files and a Git patch; never overwrite the whole checkout. Follow its APPLY_U2.md, which checks before applying and stops on conflicts. Do not reset, clean, replace .git or delete progress. Back up new action evidence with progress. The old source-only submission limitation above no longer applies to this U1-complete upload.

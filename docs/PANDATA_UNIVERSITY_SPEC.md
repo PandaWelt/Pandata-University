@@ -44,8 +44,10 @@ University Maintenance Mode is distinct and explicit. Classes: content-only; cou
 |---|---|---|
 | U0 | Accept pilots, name/spec, architecture and learner policy | Implemented documentation/review. |
 | U1 | Mission loader, validation, separate recoverable progress, one-step presentation, tests | Implemented offline C++ console slice; validation reported in UNIVERSITY_HANDOFF.md. |
-| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Next engineering foundation; not implemented. No full editor/IDE. |
+| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented minimal console actions; Linux verified, Windows U2 pending. No full editor/IDE. |
 | U3 | Read-only mission-aware mentor, account/limits, offline fallback | Contract only; no child process/auth/model run. |
 | U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | Contract only; no autonomous editing. |
 
 The console is a real minimal presentation for testing the engine, not the promised finished GUI. Windows compilation/interaction requires a local check; the implementation is compiled/tested on the available Linux host. Build/test commands for University are separate from the unchanged PandaBank project. CMake migration of PandaBank is not claimed.
+
+U2 status/evidence and limitations: U2_HANDOFF.md and U2_ACTION_CONTRACT.md. U1 definition/progress contract remains unchanged. New repository evidence never auto-promotes lesson completion or mastery.

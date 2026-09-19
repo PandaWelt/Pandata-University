@@ -68,3 +68,6 @@ desktop.ini
 
 # University learner-local snapshots: back up explicitly; never package another user's progress.
 /course/university/progress/
+
+# U2 machine evidence is learner-local; back up with progress.
+/course/university/evidence/

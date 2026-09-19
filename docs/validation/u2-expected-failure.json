@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "origin": "machine_observed",
+  "action": "failure-demo",
+  "repository": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank",
+  "recorded_unix_ms": 1789708281630,
+  "passed": false,
+  "intentional_failure_probe": true,
+  "error": "",
+  "output_encoding": "byte values escaped as U+0000..U+00FF; raw output-N.txt is authoritative",
+  "commands": [
+    {
+      "executable": "/usr/bin/x86_64-linux-gnu-g++-13",
+      "argv": [
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/include",
+        "-o",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708278182629865-0/engine-tests",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/Mission.cpp",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/src/ProgressStore.cpp",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/university/tests/engine_tests.cpp"
+      ],
+      "cwd": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708278182629865-0",
+      "started": true,
+      "exit_status": 0,
+      "handed_off": false,
+      "timed_out": false,
+      "output_limited": false,
+      "elapsed_ms": 3325,
+      "error": "",
+      "output": ""
+    },
+    {
+      "executable": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708278182629865-0/engine-tests",
+      "argv": [
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708278182629865-0/deliberately-invalid.pum",
+        "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/course/university/pilot.puc"
+      ],
+      "cwd": "/workspace/scratch/bd9a868b34f8/u2-work/Pandata.Bank/build/university/u2-checks/1789708278182629865-0",
+      "started": true,
+      "exit_status": 1,
+      "handed_off": false,
+      "timed_out": false,
+      "output_limited": false,
+      "elapsed_ms": 121,
+      "error": "",
+      "output": "mission line 1: expected mission version 1\nTest scratch preserved: /tmp/pandata-university-tests-1395371718653\n"
+    }
+  ]
+}

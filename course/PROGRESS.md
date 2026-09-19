@@ -1,3 +1,10 @@
+# Current update — 2026-09-18, U2
+
+U1 is completed on Windows by Chris's report, corroborated by all nine saved snapshots and the final completed state. Git HEAD 74aef5e and Mission 002 commit 21ba2af are present. Prediction “linker problem” and inspection “AppUISetup.cpp” are correct; “object presets/tools” is a responsibility proposal, not a completed extraction. One transfer hint was recorded. No durable confidence promotion.
+
+U2 adds bounded repository actions: files/view, run-check, harmless failure-demo, git-status/git-diff and open-vs. Linux validation passed; Windows U2 remains pending. User source/history/progress and unrelated work were preserved. Runtime action evidence is independent of lesson progress. Next: launch Start-Pandata-University.cmd and type run-check. See docs/U2_HANDOFF.md and U2_WINDOWS_VALIDATION.md. Earlier entries below are historical snapshots.
+
+
 # Pandata University progress
 
 ## Current position — 2026-09-17
@@ -57,3 +64,17 @@ Append future entries with date, mission/time, attempted changes, evidence, assi
 - Saved full transition requirements, spec, architecture assessment, ADRs, learner profile, future mentor/maintenance contract and implementation debt.
 - Learner time/attempt count unknown; no new learner attempt occurred in this session. Engine tests do not count as learner evidence.
 - Next action: launch Start-Pandata-University.cmd and type next after reading the first step. U2 work is not implemented for Chris.
+
+### 2026-09-18 — U2 foundation
+
+- Supplied C++ platform process adapter and fixed repository actions, not a learner refactor.
+- Reviewed saved U1 responses/hint count and verified submission Git history without writing it.
+- Actual success/failure compiler/test actions and Git visibility tested; missing tools/path/command restrictions and progress preservation verified. Windows U2 not executed here.
+- Registered U2 infrastructure/Windows debt. No AI/editor/Rescue/Maintenance implemented. Next action: run-check locally.
+
+### U2 Windows argv-probe correction — 2026-09-18
+
+- Chris reports original U2 patch applied cleanly, 44 engine checks passed on Windows, then the repository test stopped at the exact argv-output assertion. University did not open. U2 remains applied/uncommitted; no U3 work authorized.
+- Review found a deterministic fixture defect: Windows CRT text stdout converts LF to CRLF while the test requires exact LF bytes. Process quote/backslash handling matches the documented CRT rules for these arguments; the screenshot alone cannot prove the child launched successfully or exclude another Windows failure.
+- Correct only test-child stdout mode before writing; retain exact output equality, success predicate and all other safety checks. Add raw captured-output file and escaped process/byte diagnostics on failure. No Process.cpp, command policy, launcher, course definition, saved progress or history changes.
+- Linux regression passed; native Windows rerun remains required. See docs/U2_WINDOWS_ARGV_FIX.md. Rerun Start-Pandata-University.cmd after applying the separate corrective patch; run-check belongs inside University after it opens, not in PowerShell.

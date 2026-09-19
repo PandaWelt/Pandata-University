@@ -193,3 +193,5 @@ Order:
 - offline phone edits/conflict resolution;
 - iPhone client;
 - advanced shape morphing/path animation.
+
+Current U2 update (2026-09-18): minimal repository actions implemented and Linux-verified. Complete local Windows action/VS checks before U3. No additional product refactor or mentor implementation is part of this delivery.

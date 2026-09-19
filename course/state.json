@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "phase": 0,
   "active_mission": null,
   "baseline_ref": "uploaded-baseline",
@@ -34,7 +34,7 @@
       "assistance_level": "none_reported",
       "review": "course/evidence/002_review.md",
       "completion_commit": "21ba2af",
-      "commit_verification": "user_reported_history_not_in_submission",
+      "commit_verification": "verified_commit_present_in_U1_submission",
       "submission_sha256": "6306638d8c0ff6131ebe894c2dcd19d4b81e6c3b01093613208b4aea8ed8b911"
     }
   },
@@ -49,8 +49,10 @@
     "gcc_mission002_syntax": "debug_and_ndebug_passed_existing_warnings",
     "mission002_preprocessor": "guarded_work_absent_with_ndebug",
     "university_engine": "see_docs/validation/university-tests.txt",
-    "university_windows": "not_run",
-    "codex_app_server": "not_installed_not_run"
+    "university_windows": "U1_passed_user_reported_U2_not_yet_run",
+    "codex_app_server": "not_installed_not_run",
+    "university_u2": "see_docs/validation/u2-validation.txt",
+    "git_submission": "HEAD_74aef5e_and_Mission002_21ba2af_verified"
   },
   "concepts": {
     "vector_value_storage": "practiced_with_help",
@@ -61,23 +63,26 @@
     "debugger_observation": "practiced_independently",
     "debug_invariants": "practiced_independently"
   },
-  "next_action": "Double-click Start-Pandata-University.cmd in the existing repository root; read the first University step and type next.",
+  "next_action": "After applying the U2 patch, launch Start-Pandata-University.cmd and type run-check.",
   "review_followups": [
     "Selection/deletion transfer explanation accepted in 002; implementation transfer still due before durable confidence.",
     "Header/source orientation is not a completed refactor or graded knowledge proof.",
-    "Preserve local Git history; 21ba2af is reported, not verified."
+    "Run U2 Windows validation before claiming native action/VS success.",
+    "U1 answers reviewed; orientation completion is not a product refactor or durable mastery."
   ],
-  "active_experience": "u1-boundaries",
+  "active_experience": "u2_repository_actions",
   "university": {
     "U0": "review_and_spec_complete",
-    "U1": "offline_engine_implemented_linux_verified_windows_pending",
-    "U2": "next_engineering_stage_not_implemented",
+    "U1": "completed_windows_user_reported_progress_verified",
+    "U2": "implemented_linux_verified_windows_validation_pending",
     "U3": "contract_only",
     "U4": "contract_only",
-    "learner_orientation": "not_attempted",
+    "learner_orientation": "completed",
     "progress_source": "course/university/progress/u1-boundaries/*.pup",
     "profile": "course/learner_profile.json",
     "pilot_import": "course/university/pilot.puc",
-    "automatic_mastery": false
+    "automatic_mastery": false,
+    "orientation_evidence": "course/university/progress/u1-boundaries/9.pup",
+    "u2_evidence": "course/university/evidence/u2/*/evidence.json"
   }
 }

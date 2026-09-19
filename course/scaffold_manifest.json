@@ -103,10 +103,23 @@
       "purpose": "Separate offline University definition/progress engine and presentation",
       "replacement_mission": null,
       "status": "review_scheduled",
-      "acceptance_evidence": "docs/validation/university-tests.txt; Linux observed, MSVC/Windows pending; Chris ownership review pending",
+      "acceptance_evidence": "docs/validation/university-tests.txt; Linux observed, MSVC/Windows pending; Chris ownership review pending Chris reports Windows U1 launcher/checks pass; saved orientation completion reviewed 2026-09-18. U2 platform work remains separate.",
       "owner": "University maintainer with Chris review",
       "release_blocking": false,
       "origin": "Astra-supplied infrastructure, not learner coursework"
+    },
+    {
+      "id": "U2-REPOSITORY-ACTIONS",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/RepositoryActions.h; university/src/Process.cpp; university/src/RepositoryActions.cpp; university/src/main.cpp; university/tests/repository_tests.cpp; Start-Pandata-University.cmd",
+      "purpose": "Fixed read-only file/Git views, bounded build/check evidence and explicit VS launch",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "owner": "University maintainer; Chris provides Windows result",
+      "release_blocking": false,
+      "acceptance_evidence": "docs/validation/u2-validation.txt; real Linux success/failure and preservation tests; Windows new adapter unverified",
+      "origin": "Astra-supplied infrastructure, not Chris coursework",
+      "review_trigger": "Windows U2 validation before provider/editor work; reconsider process/evidence adapter before untrusted tasks or long-running actions"
     }
   ],
   "notes": [
@@ -139,6 +152,12 @@
       "location": "Start-Pandata-University.cmd",
       "owner": "Chris supplies local result; University maintainer fixes tooling",
       "removal_condition": "Run local Windows smoke now; retire direct compile launcher after verified CMake packaging/update workflow preserves rollback."
+    },
+    {
+      "id": "U2-WINDOWS-EVIDENCE",
+      "location": "university/src/Process.cpp; university/src/RepositoryActions.cpp; docs/U2_WINDOWS_VALIDATION.md",
+      "owner": "Chris runs native check; University maintainer fixes platform issues",
+      "removal_condition": "Record Windows compile, pass/fail checks, argument paths, junction refusal, Git and actual IDE opening. Before long-term use, add evidence compaction/crash recovery; no automatic deletion now."
     }
   ]
 }
