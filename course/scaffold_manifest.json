@@ -131,7 +131,7 @@
       "replacement_mission": null,
       "release_blocking": false,
       "origin": "Assistant-supplied infrastructure, not learner coursework",
-      "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending",
+      "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending Compatibility review 2026-09-20: 74 client checks; same-version official 0.155.1 schema reproduction; live blocked by absent restricted roots. See docs/U3_CODEX_01551_COMPATIBILITY.md.",
       "review_trigger": "Installed Codex schema/config/feature changes, native OS sandbox acceptance, or scope beyond one bounded interaction"
     }
   ],

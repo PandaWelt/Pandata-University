@@ -49,6 +49,10 @@ struct Fake:m::Channel {
     bool called(const std::string& method){for(auto& j:sent)if(j.has("method")&&j.at("method").str()==method)return true;return false;}
 };
 int main(int argc,char** argv){try{
+    if(argc==4&&std::string(argv[1])=="--schema-check"){
+        const auto mode=m::checkSchema(fs::path(argv[2]),argv[3]);
+        std::cout<<"PASS: installed schema policy = "<<mode<<'\n';return 0;
+    }
     if(argc>1&&std::string(argv[1])=="--pipe-child"){
 #ifdef _WIN32
         _setmode(_fileno(stdout),_O_BINARY);
@@ -104,6 +108,43 @@ int main(int argc,char** argv){try{
     for(auto mode:{"read-only","readOnly"}){std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread(mode).dump();check(m::checkSchema(scratch/"schema")==mode,"thread permission spelling taken from installed schema reference");}
     std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread("workspace-write").dump();
     rejects([&]{m::checkSchema(scratch/"schema");},"write-only schema cannot pass read-only gate");
+    // 0.155.1 omits v1 JSON exports. Runtime auth checks remain unchanged.
+    std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread("read-only").dump();
+    const auto paramsPath=scratch/"schema/GetAuthStatusParams.json";
+    const auto responsePath=scratch/"schema/GetAuthStatusResponse.json";
+    fs::remove(paramsPath);fs::remove(responsePath);
+    const auto notificationPath=scratch/"schema/v2/AccountUpdatedNotification.json";
+    const auto notification=m::obj({{"definitions",m::obj({
+        {"AuthMode",m::obj({{"oneOf",m::arr({m::obj({{"enum",m::arr({"chatgpt"})}}),m::obj({{"enum",m::arr({"chatgptAuthTokens"})}})})}})},
+        {"Plan",m::obj({{"enum",m::arr({"plus"})}})}})},
+        {"properties",m::obj({{"authMode",m::obj({{"$ref","#/definitions/AuthMode"}})},{"planType",m::obj({{"$ref","#/definitions/Plan"}})}})}}).dump();
+    std::ofstream(notificationPath)<<notification;
+    check(m::checkSchema(scratch/"schema","codex-cli 0.155.1")=="read-only","reviewed 0.155.1 omitted-v1 export accepted");
+    for(auto version:{"","codex-cli 0.155.0","codex-cli 0.155.10","codex-cli 0.155.1 extra"})
+        rejects([&]{m::checkSchema(scratch/"schema",version);},"unknown version cannot bypass missing auth schemas");
+    auto refusesWith=[&](const std::string& fragment,const char* label){
+        std::string error;try{m::checkSchema(scratch/"schema","codex-cli 0.155.1");}catch(const std::exception& e){error=e.what();}
+        check(error.find(fragment)!=std::string::npos,label);
+    };
+    std::ofstream(paramsPath)<<"{}";
+    refusesWith("Missing App Server schema:","partial legacy schema pair cannot fall back");fs::remove(paramsPath);
+    fs::remove(notificationPath);
+    refusesWith("AccountUpdatedNotification.json","missing diagnostic names exact required schema");
+    std::ofstream(notificationPath)<<"{";
+    refusesWith("Invalid App Server JSON schema:","malformed JSON remains rejected with specific diagnostic");
+    std::ofstream(notificationPath)<<m::obj({{"properties",m::obj({{"authMode",m::obj({{"enum",m::arr({"chatgpt"})}})},{"planType",m::obj({{"enum",m::arr({"plus"})}})}})}}).dump();
+    refusesWith("cannot distinguish","generic ChatGPT-only label cannot satisfy external-mode distinction");
+    std::ofstream(notificationPath)<<notification<<std::string(1048576-notification.size(),' ');
+    check(m::checkSchema(scratch/"schema","codex-cli 0.155.1")=="read-only","exact 1 MiB schema boundary accepted");
+    std::ofstream(notificationPath,std::ios::app)<<' ';
+    refusesWith("1048577 bytes","oversize diagnostic reports actual size without raising limit");
+    std::ofstream(notificationPath)<<notification;
+    std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread("workspace-write").dump();
+    refusesWith("cannot represent read-only","version compatibility cannot bypass read-only policy");
+    std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread("read-only").dump();
+    auto missingRoots=turnSchema;std::get<m::Json::Object>(std::get<m::Json::Object>(missingRoots.value).at("properties").value).erase("readableRoots");
+    std::ofstream(scratch/"schema/v2/TurnStartParams.json")<<missingRoots.dump();
+    refusesWith("lacks readableRoots","missing restricted roots remains a specific capability blocker");
     auto saved=m::record(scratch,bundle,answer);std::ifstream evidence(saved);auto record=m::Json::parse(std::string(std::istreambuf_iterator<char>(evidence),{}));
     check(record.at("context").str()==bundle&&!record.at("progressAuthority").boolean(),"append-only advisory evidence has no grading authority");
     check(m::record(scratch,bundle,answer)!=saved&&fs::exists(saved),"new record preserves previous evidence");

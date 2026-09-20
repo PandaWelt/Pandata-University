@@ -1,3 +1,7 @@
+# U3 compatibility review — 2026-09-20
+
+Submitted U3 commit 947bc85 and prior U2 7e4789a are verified. Chris reached the installed Windows Codex 0.155.1 schema preflight; saved evidence reports a safe block. Reviewer reproduced omitted v1 auth schema exports using the official same-version Linux binary; no required file exceeds 1 MiB. A narrow exact-version metadata compatibility path and specific bounded-reader diagnostics are supplied. The generated readOnly schema still lacks restricted read roots, so U3 remains blocked for live mentoring. 74 U3 client tests pass on Linux; native update validation remains pending. No learner confidence, mission definitions, progress snapshots or previous evidence changed. Next: apply the compatibility patch, relaunch and type mentor-status. See docs/U3_CODEX_01551_COMPATIBILITY.md; U4 remains unauthorized.
+
 # Current update — 2026-09-19, U3
 
 U2 is accepted: commit 7e4789a is verified in the submitted history; saved action evidence corroborates Chris's native report. Windows: 44 engine/42 U2 checks, pass/fail/pass, safe views, Git, Visual Studio and persistence passed by report. Junction creation was denied; automation skipped. U1 remains completed, without a new mastery claim.

@@ -1,3 +1,5 @@
+Compatibility correction — 2026-09-20: see U3_CODEX_01551_COMPATIBILITY.md. The old legacy-schema requirement described below now has a narrowly reviewed exception for exact Codex 0.155.1, whose exporter omits those files. Its missing restricted-root fields still prevent online mentoring. New suite: 74 checks; no Windows/live acceptance claimed.
+
 # U3 handoff — 2026-09-19
 
 U2 is accepted from the submitted code/history, saved action evidence, and Chris's native Windows report. Commit **7e4789a** is present and remains HEAD. Windows passed 44 engine and 42 repository-action checks, real success/failure/success checks, views, rejection cases, Git visibility, Visual Studio handoff, and persistence. **Windows symlink/junction automation was skipped because creation was denied**, not passed. Earlier U2-pending notes are historical.

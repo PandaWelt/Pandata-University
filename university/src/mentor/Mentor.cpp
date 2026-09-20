@@ -89,7 +89,24 @@ bool permits(const Json& node,const Json& schema,const char* value,int depth=0){
     }
     return false;
 }
-Json readSchema(const fs::path& path){rejectLinks(path);require(fs::is_regular_file(path)&&fs::file_size(path)<=1024*1024,"Installed App Server schema missing or oversized; mentor unavailable.");std::ifstream in(path,std::ios::binary);return Json::parse(std::string(std::istreambuf_iterator<char>(in),{}));}
+Json readSchema(const fs::path& path){
+    constexpr std::size_t limit=1024*1024;
+    rejectLinks(path);
+    const auto label=path.generic_string();
+    if(!fs::exists(path))throw Error("Missing App Server schema: "+label);
+    if(!fs::is_regular_file(path))throw Error("App Server schema is not a regular file: "+label);
+    const auto bytes=fs::file_size(path);
+    if(bytes>limit)throw Error("App Server schema exceeds 1048576-byte limit: "+label+" ("+std::to_string(bytes)+" bytes)");
+    std::ifstream in(path,std::ios::binary);
+    if(!in)throw Error("Cannot open App Server schema: "+label);
+    // Bound the read too: a file growing after file_size must not cause an unbounded allocation.
+    std::string text(limit+1,'\0');in.read(text.data(),static_cast<std::streamsize>(text.size()));
+    const auto count=static_cast<std::size_t>(in.gcount());
+    if(in.bad())throw Error("Cannot read App Server schema: "+label);
+    if(count>limit)throw Error("App Server schema grew beyond 1048576-byte limit: "+label);
+    text.resize(count);
+    try{return Json::parse(text);}catch(const std::exception&){throw Error("Invalid App Server JSON schema: "+label);}
+}
 }
 std::string context(const Mission& m,const Progress& p){
     validateProgress(m,p);require(m.id=="u1-boundaries","Only the reviewed U1 orientation context is allowlisted for U3.");
@@ -110,13 +127,28 @@ std::vector<std::string> serverArguments(){
     for(auto& key:disabled){args.push_back("-c");args.push_back("features."+key+"=false");}
     return args;
 }
-std::string checkSchema(const fs::path& directory){
-    // This older metadata endpoint distinguishes managed ChatGPT from external tokens.
-    // Do not guess its availability: require its generated request/response schema.
-    auto authParams=readSchema(directory/"GetAuthStatusParams.json");
-    auto authResponse=readSchema(directory/"GetAuthStatusResponse.json");
-    require(authParams.at("properties").has("includeToken")&&authParams.at("properties").has("refreshToken"),"Installed schema cannot safely query auth mode without tokens");
-    require(authResponse.at("properties").has("authMethod")&&schemaEnum(authResponse,"chatgpt"),"Installed schema cannot distinguish managed ChatGPT authentication");
+std::string checkSchema(const fs::path& directory,const std::string& codexVersion){
+    const auto authParamsPath=directory/"GetAuthStatusParams.json";
+    const auto authResponsePath=directory/"GetAuthStatusResponse.json";
+    rejectLinks(authParamsPath);rejectLinks(authResponsePath);
+    if(fs::exists(authParamsPath)||fs::exists(authResponsePath)) {
+        // Existing layout remains strict: a partial/broken pair never takes the compatibility path.
+        auto authParams=readSchema(authParamsPath);auto authResponse=readSchema(authResponsePath);
+        require(authParams.at("properties").has("includeToken")&&authParams.at("properties").has("refreshToken"),"Installed schema cannot safely query auth mode without tokens");
+        require(authResponse.at("properties").has("authMethod")&&schemaEnum(authResponse,"chatgpt"),"Installed schema cannot distinguish managed ChatGPT authentication");
+    } else {
+        // rust-v0.155.1 deliberately omits deprecated v1 JSON schemas, but still dispatches
+        // getAuthStatus with includeToken/refreshToken and an AuthMode response (reviewed source).
+        // This is an exact-version compatibility contract, NOT an account-label fallback.
+        require(codexVersion=="codex-cli 0.155.1",
+                "Missing GetAuthStatusParams.json and GetAuthStatusResponse.json. Only codex-cli 0.155.1 has a reviewed omitted-v1-schema compatibility contract; mentor unavailable.");
+        auto notification=readSchema(directory/"v2/AccountUpdatedNotification.json");
+        const auto& mode=notification.at("properties").at("authMode");
+        require(permits(mode,notification,"chatgpt")&&permits(mode,notification,"chatgptAuthTokens"),
+                "Installed AuthMode schema cannot distinguish managed ChatGPT from external tokens");
+        require(permits(notification.at("properties").at("planType"),notification,"plus"),
+                "Installed account notification schema cannot represent the required Plus plan");
+    }
     auto thread=readSchema(directory/"v2/ThreadStartParams.json");auto turn=readSchema(directory/"v2/TurnStartParams.json");
     for(auto field:{"sandbox","approvalPolicy","ephemeral","baseInstructions","developerInstructions","config"})require(schemaHas(thread,field),"Installed thread schema lacks a required U3 control");
     for(auto field:{"sandboxPolicy","approvalPolicy","input","threadId"})require(schemaHas(turn,field),"Installed turn schema lacks a required U3 control");
@@ -125,7 +157,10 @@ std::string checkSchema(const fs::path& directory){
     std::string mode=permits(sandbox,thread,"read-only")?"read-only":permits(sandbox,thread,"readOnly")?"readOnly":"";
     require(!mode.empty(),"Installed thread schema cannot represent read-only mode");
     for(auto value:{"readOnly","restricted","untrusted"})require(schemaEnum(turn,value),"Installed turn schema cannot enforce restricted read-only access");
-    for(auto field:{"readableRoots","includePlatformDefaults"})require(schemaHas(turn,field),"Installed schema lacks restricted read roots");
+    for(auto field:{"readableRoots","includePlatformDefaults"}) {
+        if(!schemaHas(turn,field))throw Error(std::string("Unsupported App Server schema: v2/TurnStartParams.json lacks ")+field+
+            "; U3 requires restricted read roots. Mentor remains offline; read-only policy was not relaxed.");
+    }
     return mode;
 }
 Result interact(Channel& pipe,const std::string& preview,const std::string& cwd,bool ask,const std::string& threadSandbox){
@@ -207,7 +242,11 @@ Result run(const fs::path& repository,const std::string& preview,bool ask){
         struct Cleanup{fs::path path;~Cleanup(){std::error_code ec;fs::remove_all(path,ec);}}cleanup{scratch};
         // Schema generation is a local, non-model operation. It receives no mission data.
         auto schema=runProcess(exe,{"app-server","generate-json-schema","--out",(scratch/"schema").string()},scratch,15000);
-        require(schema.ok(),"Installed Codex cannot generate its protocol schema. Mentor unavailable; offline University is unaffected.");auto sandboxMode=checkSchema(scratch/"schema");
+        require(schema.ok(),"Installed Codex cannot generate its protocol schema. Mentor unavailable; offline University is unaffected.");
+        auto version=runProcess(exe,{"--version"},scratch,5000);
+        require(version.ok(),"Cannot identify installed Codex version; no schema compatibility fallback attempted.");
+        while(!version.output.empty()&&(version.output.back()=='\r'||version.output.back()=='\n'))version.output.pop_back();
+        auto sandboxMode=checkSchema(scratch/"schema",version.output);
         auto arguments=serverArguments();
         // Metadata-only discovery. No thread, model request, or mission context is sent.
         // A second clean process disables every discovered feature and skill, then verifies them again.
