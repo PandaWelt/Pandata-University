@@ -1,6 +1,7 @@
 #include "Mission.h"
 #include "ProgressStore.h"
 #include "RepositoryActions.h"
+#include "mentor/Mentor.h"
 #include <charconv>
 #include <filesystem>
 #include <fstream>
@@ -11,7 +12,9 @@ namespace {
 void actionsHelp() {
     std::cout << "\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\n"
                  "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
-                 "Actions save command/output/exit evidence. No general shell or source editor is available.\n";
+                 "Actions save command/output/exit evidence. No general shell or source editor is available.\n"
+                 "U3: mentor-status | mentor-preview | mentor-send (after preview)\n"
+                 "Mentor is optional, advisory and read-only. No progress is changed by these commands.\n";
 }
 void showReport(const pu::ActionReport& r) {
     for (const auto& c:r.commands) {
@@ -45,7 +48,7 @@ void display(const pu::Mission& m,const pu::Progress& p) {
               << s.why << "\n\nAction: " << s.action << "\nExpected: " << s.expected << '\n';
     if (!p.steps[i].attempts.empty()) std::cout << "Saved response: " << p.steps[i].attempts.back() << '\n';
     std::cout << "\nCommands: next | answer <short response> | more | syntax | professional | hint | check | quit\n"
-                 "Mentor, Rescue and Maintenance remain unavailable.\n";
+                 "Use mentor-preview for an optional explanation. Rescue and Maintenance remain unavailable.\n";
 }
 }
 int main(int argc,char** argv) {
@@ -71,10 +74,30 @@ int main(int argc,char** argv) {
         for (const auto& warning : loaded.warnings) std::cout << "Recovery: " << warning << '\n';
         pu::RepositoryActions actions(std::filesystem::current_path());
         display(mission,loaded.value);actionsHelp();
-        std::string command;
+        std::string command, mentorPreview;
         while (std::cout << "> " && std::getline(std::cin,command)) {
             if (command == "quit") break;
             try {
+                if(command=="mentor-preview") {
+                    mentorPreview=pu::mentor::context(mission,loaded.value);
+                    std::cout << "Exact context for the fixed mentor question (no files/diffs attached):\n"
+                              << pu::terminalText(mentorPreview) << "\nType mentor-send to send this bundle using your included ChatGPT allowance, or continue offline.\n";
+                    continue;
+                }
+                if(command=="mentor-status"||command=="mentor-send") {
+                    const auto bundle=pu::mentor::context(mission,loaded.value);
+                    const bool send=command=="mentor-send";
+                    if(send&&(mentorPreview.empty()||mentorPreview!=bundle))throw pu::Error("Use mentor-preview first. If the step/response changed, review the new context before sending.");
+                    if(send)mentorPreview.clear();
+                    std::cout << "Checking installed Codex and the included-only read-only boundary (bounded wait)...\n" << std::flush;
+                    const auto result=pu::mentor::run(std::filesystem::current_path(),bundle,send);
+                    std::cout << "Mentor: " << pu::terminalText(result.state) << " | plan: " << pu::terminalText(result.plan)
+                              << " | model: " << pu::terminalText(result.model) << '\n' << pu::terminalText(result.detail) << '\n';
+                    if(!result.answer.empty())std::cout << "ADVISORY ONLY - compiler/tests remain authoritative:\n" << pu::terminalText(result.answer);
+                    const auto evidence=pu::mentor::record(std::filesystem::current_path(),send?bundle:"",result);
+                    std::cout << "U3 evidence: " << pu::terminalText(evidence.string()) << "\nUniversity remains offline-capable. No source, Git, or progress was changed by this interaction.\n";
+                    continue;
+                }
                 if(command=="help") {actionsHelp();continue;}
                 if(command=="files") {
                     for(std::size_t n=0;n<actions.files().size();++n)std::cout << n+1 << " | " << actions.files()[n] << '\n';

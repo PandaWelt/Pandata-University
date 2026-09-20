@@ -1,0 +1,120 @@
+#include "mentor/Mentor.h"
+#include "RepositoryActions.h"
+#include <iostream>
+#include <fstream>
+#include <deque>
+#include <thread>
+#ifdef _WIN32
+#include <io.h>
+#include <fcntl.h>
+#endif
+namespace m=pu::mentor;namespace fs=std::filesystem;
+int checks=0;
+void check(bool ok,const char* label){if(!ok)throw pu::Error(std::string("FAIL: ")+label);++checks;}
+template<class F>void rejects(F f,const char* label){bool threw=false;try{f();}catch(const std::exception&){threw=true;}check(threw,label);}
+m::Json goodConfig(){auto features=m::Json::Object{};for(auto key:{"apps","shell_tool","unified_exec","hooks","multi_agent","memories","remote_plugin","skill_mcp_dependency_install","goals","fast_mode"})features[key]=false;
+    return m::obj({{"forced_login_method","chatgpt"},{"model_provider","openai"},{"sandbox_mode","read-only"},{"approval_policy","untrusted"},{"web_search","disabled"},{"features",features}});
+}
+m::Json goodQuota(){return m::obj({{"rateLimits",m::obj({{"limitId","codex"},{"credits",m::obj({{"hasCredits",false},{"unlimited",false}})},
+    {"primary",m::obj({{"usedPercent",10},{"resetsAt",4102444800.0}})},{"secondary",m::obj({{"usedPercent",20},{"resetsAt",4102444800.0}})}})}});}
+struct Fake:m::Channel {
+    m::Json cfg=goodConfig(),quota=goodQuota(),acct=m::obj({{"account",m::obj({{"type","chatgpt"},{"planType","plus"}})}});
+    m::Json features=m::arr({}),skills=m::arr({});
+    std::string fault;std::deque<std::string> pending;std::vector<m::Json> sent;
+    void send(const std::string& line)override{auto j=m::Json::parse(line);sent.push_back(j);if(!j.has("method")||j.at("method").str()=="initialized")return;
+        auto method=j.at("method").str();m::Json r=m::obj({});
+        if(method=="getAuthStatus")r=m::obj({{"authMethod",fault=="external"?"chatgptAuthTokens":"chatgpt"},{"authToken",nullptr}});
+        else if(method=="config/read")r=m::obj({{"config",cfg}});
+        else if(method=="experimentalFeature/list")r=m::obj({{"data",features},{"nextCursor",nullptr}});
+        else if(method=="skills/list")r=m::obj({{"data",skills}});
+        else if(method=="account/read")r=acct;
+        else if(method=="account/rateLimits/read")r=quota;
+        else if(method=="model/list")r=m::obj({{"data",m::arr({m::obj({{"model",fault=="model"?"other":"gpt-5.6-terra"},{"hidden",false}})})}});
+        else if(method=="thread/start")r=m::obj({{"sandbox",m::obj({{"type",fault=="sandbox"?"workspaceWrite":"readOnly"}})},{"approvalPolicy","untrusted"},{"model","gpt-5.6-terra"},{"modelProvider","openai"},{"instructionSources",m::arr({})},{"thread",m::obj({{"id","thread-1"},{"ephemeral",true}})}});
+        else if(method=="turn/start")r=m::obj({{"turn",m::obj({{"id","turn-1"}})}});
+        pending.push_back(m::obj({{"id",j.at("id")},{"result",r}}).dump());
+        if(method=="turn/start"){
+            if(fault=="write"||fault=="command"||fault=="tokens")pending.push_back(m::obj({{"id",71},{"method",fault=="write"?"item/fileChange/requestApproval":fault=="command"?"item/commandExecution/requestApproval":"account/chatgptAuthTokens/refresh"},{"params",m::obj({})}}).dump());
+            if(fault=="tool")pending.push_back(m::obj({{"method","item/started"},{"params",m::obj({{"item",m::obj({{"type","mcpToolCall"}})}})}}).dump());
+            if(fault=="authchange")pending.push_back(m::obj({{"method","account/updated"},{"params",m::obj({{"authMode","apikey"},{"planType","plus"}})}}).dump());
+            if(fault=="ratelimit")pending.push_back(m::obj({{"method","account/rateLimits/updated"},{"params",m::obj({{"rateLimits",m::obj({{"rateLimitReachedType","limit"}})}})}}).dump());
+            if(fault=="truncated")pending.push_back("{\"method\":");
+            if(fault=="death")return;
+            pending.push_back(m::obj({{"method","item/completed"},{"params",m::obj({{"threadId",fault=="wrongid"?"other":"thread-1"},{"turnId","turn-1"},{"item",m::obj({{"type","agentMessage"},{"text","A saved response is not proof of mastery. What would you check independently?"}})}})}}).dump());
+            pending.push_back(m::obj({{"method","turn/completed"},{"params",m::obj({{"threadId","thread-1"},{"turn",m::obj({{"id","turn-1"},{"status",fault=="cancel"?"interrupted":fault=="failure"?"failed":"completed"}})}})}}).dump());
+            if(fault=="early"){auto response=pending.front();pending.pop_front();pending.push_back(response);}
+        }
+    }
+    std::string receive()override{if(pending.empty())throw pu::Error("simulated child death/deadline");auto s=pending.front();pending.pop_front();return s;}
+    bool called(const std::string& method){for(auto& j:sent)if(j.has("method")&&j.at("method").str()==method)return true;return false;}
+};
+int main(int argc,char** argv){try{
+    if(argc>1&&std::string(argv[1])=="--pipe-child"){
+#ifdef _WIN32
+        _setmode(_fileno(stdout),_O_BINARY);
+#endif
+        std::cerr<<"not JSON; must never enter the protocol\n";std::string line;std::getline(std::cin,line);
+        std::cout<<m::obj({{"echo",line},{"literal",argc>2?argv[2]:""},{"secretInherited",std::getenv("OPENAI_API_KEY")!=nullptr}}).dump()<<'\n'<<std::flush;return 0;
+    }
+    if(argc>1&&std::string(argv[1])=="--hang"){std::this_thread::sleep_for(std::chrono::seconds(5));return 0;}
+    if(argc!=2)throw pu::Error("Usage: mentor-tests repository-root");
+    auto root=fs::canonical(argv[1]);
+    for(auto invalid:{"{","[]x","{\"a\":1,\"a\":2}","\"\\ud800\"","01","1e","[NaN]","\"\n\"","1e9999"})rejects([&]{m::Json::parse(invalid);},"strict JSON refuses malformed/ambiguous input");
+    auto unicode=m::Json::parse("\"caf\\u00e9 \\ud83d\\udc3c\"");check(m::Json::parse(unicode.dump()).str()==unicode.str(),"UTF-8 roundtrip");
+    rejects([&]{m::Json::parse(std::string(60,'[')+std::string(60,']'));},"JSON depth bounded");
+    rejects([&]{m::Json::parse(std::string(1048577,' '));},"JSON bytes bounded");
+    std::ifstream in(root/"course/university/missions/u1-boundaries.pum");auto mission=pu::loadMission(in);auto p=pu::freshProgress(mission);auto before=pu::serializeProgress(mission,p);auto bundle=m::context(mission,p);
+    check(bundle.size()<10000&&bundle.find("u1-boundaries")!=std::string::npos,"bounded mission context");
+    check(bundle.find("readOnly")==std::string::npos&&bundle.find(root.string())==std::string::npos,"context omits path lists and absolute repository");
+    check(before==pu::serializeProgress(mission,p),"context cannot change progress");
+    Fake success;auto answer=m::interact(success,bundle,"isolated",true);check(answer.available&&!answer.answer.empty(),"one advisory interaction succeeds with protocol fixture");
+    check(before==pu::serializeProgress(mission,p),"mentor answer cannot grade or change progress");
+    check(success.called("initialize")&&success.called("turn/start"),"real protocol request sequence");
+    Fake early;early.fault="early";check(m::interact(early,bundle,"isolated",true).available,"events before turn acknowledgement are retained");
+    Fake status;check(m::interact(status,bundle,"isolated",false).available&&!status.called("thread/start"),"status sends no model request");
+    for(auto fault:{"write","command","tokens","tool","authchange","ratelimit","truncated","death","wrongid","cancel","failure","sandbox","model","external"}){
+        Fake f;f.fault=fault;auto r=m::interact(f,bundle,"isolated",true);check(!r.available&&r.answer.empty(),fault);
+        if(f.fault=="write"||f.fault=="command"||f.fault=="tokens")check(f.sent.back().has("error"),"server capability explicitly denied");
+        if(f.fault=="sandbox"||f.fault=="model")check(!f.called("turn/start"),"unsupported capability never receives context");
+    }
+    for(auto type:{"apiKey","chatgptAuthTokens","amazonBedrock","unknown"}){Fake f;f.acct=m::obj({{"account",m::obj({{"type",type},{"planType","plus"}})}});check(!m::interact(f,bundle,"isolated",true).available&&!f.called("turn/start"),"wrong auth mode fails offline");}
+    {Fake f;f.acct=m::obj({{"account",nullptr}});check(!m::interact(f,bundle,"isolated",true).available,"signed-out/failed-login stays offline");}
+    {Fake f;f.acct=m::obj({{"account",m::obj({{"type","chatgpt"},{"planType","unknown"}})}});check(!m::interact(f,bundle,"isolated",true).available,"unknown plan refused");}
+    {Fake f;f.quota=m::obj({});check(!m::interact(f,bundle,"isolated",true).available,"unknown quota refuses inference");}
+    {Fake f;auto& q=std::get<m::Json::Object>(f.quota.value).at("rateLimits");std::get<m::Json::Object>(q.value)["credits"]=m::obj({{"hasCredits",true},{"unlimited",false}});check(!m::interact(f,bundle,"isolated",true).available,"purchased credits never used");}
+    {Fake f;auto& q=std::get<m::Json::Object>(f.quota.value).at("rateLimits");std::get<m::Json::Object>(q.value)["primary"]=m::obj({{"usedPercent",100},{"resetsAt",4102444800.0}});check(!m::interact(f,bundle,"isolated",true).available,"exhausted quota refused");}
+    {Fake f;std::get<m::Json::Object>(f.cfg.value)["mcp_servers"]=m::obj({{"unsafe",m::obj({})}});check(!m::interact(f,bundle,"isolated",true).available&&!f.called("thread/start"),"configured connectors refuse thread startup");}
+    {Fake f;f.features=m::arr({m::obj({{"name","future_tool"},{"enabled",true}})});check(!m::interact(f,bundle,"isolated",true).available&&!f.called("thread/start"),"unknown enabled feature refuses model request");}
+    {Fake f;f.skills=m::arr({m::obj({{"errors",m::arr({})},{"skills",m::arr({m::obj({{"enabled",true}})})}})});check(!m::interact(f,bundle,"isolated",true).available&&!f.called("thread/start"),"skills cannot add hidden context");}
+    rejects([&]{m::checkSchema(root/"no-such-schema");},"missing schema closes gate");
+    // Actual native process transport, not a fake protocol test.
+    auto exe=fs::canonical(argv[0]);auto scratch=fs::temp_directory_path()/("pu-u3 space & test-"+std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()));fs::create_directory(scratch);
+    struct Cleanup{fs::path p;~Cleanup(){std::error_code e;fs::remove_all(p,e);}}cleanup{scratch};
+    fs::create_directories(scratch/"schema/v2");
+    std::ofstream(scratch/"schema/GetAuthStatusParams.json")<<m::obj({{"properties",m::obj({{"includeToken",m::obj({})},{"refreshToken",m::obj({})}})}}).dump();
+    std::ofstream(scratch/"schema/GetAuthStatusResponse.json")<<m::obj({{"properties",m::obj({{"authMethod",m::obj({{"enum",m::arr({"chatgpt"})}})}})}}).dump();
+    auto makeThread=[&](const char* mode){return m::obj({{"properties",m::obj({
+        {"sandbox",m::obj({{"$ref","#/definitions/Mode"}})},
+        {"approvalPolicy",m::obj({{"enum",m::arr({"untrusted"})}})},
+        {"ephemeral",m::obj({})},{"baseInstructions",m::obj({})},{"developerInstructions",m::obj({})},{"config",m::obj({})}})},
+        {"definitions",m::obj({{"Mode",m::obj({{"enum",m::arr({mode})}})}})}});};
+    auto turnSchema=m::obj({{"properties",m::obj({{"sandboxPolicy",m::obj({})},{"approvalPolicy",m::obj({})},{"input",m::obj({})},{"threadId",m::obj({})},{"readableRoots",m::obj({})},{"includePlatformDefaults",m::obj({})}})},
+        {"enum",m::arr({"readOnly","restricted","untrusted"})}});
+    std::ofstream(scratch/"schema/v2/TurnStartParams.json")<<turnSchema.dump();
+    for(auto mode:{"read-only","readOnly"}){std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread(mode).dump();check(m::checkSchema(scratch/"schema")==mode,"thread permission spelling taken from installed schema reference");}
+    std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<makeThread("workspace-write").dump();
+    rejects([&]{m::checkSchema(scratch/"schema");},"write-only schema cannot pass read-only gate");
+    auto saved=m::record(scratch,bundle,answer);std::ifstream evidence(saved);auto record=m::Json::parse(std::string(std::istreambuf_iterator<char>(evidence),{}));
+    check(record.at("context").str()==bundle&&!record.at("progressAuthority").boolean(),"append-only advisory evidence has no grading authority");
+    check(m::record(scratch,bundle,answer)!=saved&&fs::exists(saved),"new record preserves previous evidence");
+#ifdef _WIN32
+    _putenv_s("OPENAI_API_KEY","not-a-secret-test-value");
+#else
+    setenv("OPENAI_API_KEY","not-a-secret-test-value",1);
+#endif
+    const std::string literal="space & | < > % ^ \"quote\" trailing\\";
+    {auto ch=m::spawn(exe,{"--pipe-child",literal},scratch,3000);ch->send("literal & input");auto response=m::Json::parse(ch->receive());check(response.at("echo").str()=="literal & input"&&response.at("literal").str()==literal,"native argv and stdin remain literal; stderr isolated");check(!response.at("secretInherited").boolean(),"provider secret not inherited");}
+    {auto ch=m::spawn(exe,{"--hang"},scratch,100);rejects([&]{ch->receive();},"native child timeout");}
+    rejects([&]{auto ch=m::spawn(scratch/"missing.exe",{},scratch,1000);ch->receive();},"missing executable safe failure");
+    std::cout<<"PASS: "<<checks<<" U3 checks (fake provider + real process transport; no live account/model request)\n";return 0;
+}catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

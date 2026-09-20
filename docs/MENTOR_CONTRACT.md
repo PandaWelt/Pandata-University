@@ -1,3 +1,5 @@
+U3 implementation update — 2026-09-19: the minimal read-only adapter is implemented; see U3_HANDOFF.md. Native/live provider acceptance remains pending. The following U1-era text supplies the contract; Maintenance is still unimplemented. U-13 records the scoped single-interaction/ephemeral-thread choice.
+
 # Mentor and Maintenance contracts — U3/U4, not implemented
 
 U1 has no provider process, credentials, network client or patch execution. All online/maintenance operations are unavailable; progress survives independently.

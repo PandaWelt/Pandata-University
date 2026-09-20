@@ -1,0 +1,6 @@
+PASS: 44 original engine checks
+PASS: 46 unchanged Linux U2 checks
+PASS: 61 U3 checks (fake provider + real process transport; no live account/model request)
+PASS: final CLI integration harness exit 0; offline success/failure/success, preview gate, completed U1 restart and input hash preservation.
+Earlier temporary integration harness attempts used the wrong U2 JSON field name (success/ok); corrected to the existing passed field. Product checks returned expected exits throughout.
+Windows U3, live provider and native sandbox validation NOT RUN. Windows U2 junction automation reported SKIPPED.

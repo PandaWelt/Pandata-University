@@ -117,16 +117,29 @@
       "status": "review_scheduled",
       "owner": "University maintainer; Chris provides Windows result",
       "release_blocking": false,
-      "acceptance_evidence": "docs/validation/u2-validation.txt; real Linux success/failure and preservation tests; Windows new adapter unverified",
+      "acceptance_evidence": "U2 commit 7e4789a verified; Chris reports native Windows 42 checks and action/IDE/persistence success; junction automation skipped. Linux 46 checks rerun unchanged in U3.",
       "origin": "Astra-supplied infrastructure, not Chris coursework",
       "review_trigger": "Windows U2 validation before provider/editor work; reconsider process/evidence adapter before untrusted tasks or long-running actions"
+    },
+    {
+      "id": "U3-MENTOR",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/mentor; university/src/mentor; university/tests/mentor_tests.cpp; launcher and console",
+      "purpose": "Optional bounded advisory Codex App Server adapter, separate from mission/progress authority",
+      "status": "review_scheduled",
+      "owner": "University maintainer; Chris supplies Windows/live evidence",
+      "replacement_mission": null,
+      "release_blocking": false,
+      "origin": "Assistant-supplied infrastructure, not learner coursework",
+      "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending",
+      "review_trigger": "Installed Codex schema/config/feature changes, native OS sandbox acceptance, or scope beyond one bounded interaction"
     }
   ],
   "notes": [
     "Mission002 accepted; application source unchanged by review. M001-SPACING remains active temporary scaffold.",
     "University infrastructure does not link into PandaBank; its ownership/platform debt is separate from PandaBank release.",
     "Release policy is recorded, not automatically enforced.",
-    "No .git in submission; do not infer loss of local history. No added dependencies."
+    "Current U3 submission contains Git history; 7e4789a and all supplied history/progress/evidence bytes preserved. No new dependency."
   ],
   "university_debt": [
     {
@@ -158,6 +171,12 @@
       "location": "university/src/Process.cpp; university/src/RepositoryActions.cpp; docs/U2_WINDOWS_VALIDATION.md",
       "owner": "Chris runs native check; University maintainer fixes platform issues",
       "removal_condition": "Record Windows compile, pass/fail checks, argument paths, junction refusal, Git and actual IDE opening. Before long-term use, add evidence compaction/crash recovery; no automatic deletion now."
+    },
+    {
+      "id": "U3-PROTOCOL",
+      "location": "university/src/mentor",
+      "owner": "University maintainer",
+      "removal_condition": "Verify native Windows and installed Codex schema/sandbox/auth; review conservative plan/quota/config gates before broadening compatibility. Reconsider hand-written bounded JSON codec before protocol scope expands."
     }
   ]
 }

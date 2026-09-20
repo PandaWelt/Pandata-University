@@ -1,3 +1,5 @@
+Current update — 2026-09-19: submitted PandataBank_U2_Complete.zip contains HEAD 7e4789a, completed U1 snapshots and U2 evidence. U2 native results are accepted as reported; Windows junction automation was skipped. The separate University executable now includes the U3 advisory App Server adapter; Linux/client failure tests pass, native/live Codex validation is pending. PandaBank implementation and build/dependency state are unchanged. See U3_HANDOFF.md. Older inventory statements below are historical.
+
 Current update — 2026-09-18: U1 Windows completion is reported and saved snapshots verified. Submission includes Git history (HEAD 74aef5e, Mission002 21ba2af), unlike the older ZIP described below. U2 repository actions now exist in the separate University executable; see U2_HANDOFF.md. Linux actions/tests passed; Windows U2 is pending. PandaBank source/build/dependencies and U1 definition/progress remain unchanged. Remaining “U2 not implemented” statements below describe the historical U1 handoff, superseded by this update.
 
 

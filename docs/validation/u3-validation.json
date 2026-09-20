@@ -1,0 +1,48 @@
+{
+  "stage": "U3",
+  "base_commit": "7e4789a",
+  "date": "2026-09-19",
+  "compiler": "GCC C++20 -Wall -Wextra -Wpedantic -Werror",
+  "original_engine_checks": {
+    "passed": 44,
+    "exit_code": 0
+  },
+  "unchanged_linux_u2_checks": {
+    "passed": 46,
+    "exit_code": 0
+  },
+  "u3_checks": {
+    "passed": 61,
+    "exit_code": 0,
+    "scope": "protocol fixtures and real Linux child-process transport; no live Codex"
+  },
+  "cli_in_disposable_copy": {
+    "missing_codex": "offline useful error",
+    "preview_before_send": "enforced",
+    "run_check_exit_codes": [
+      0,
+      0
+    ],
+    "failure_demo_exit_code": 1,
+    "quit_relaunch": "completed U1 retained",
+    "original_files": "all hashes unchanged"
+  },
+  "windows_u2_user_report": {
+    "base_commit": "7e4789a",
+    "engine_checks": 44,
+    "repository_checks": 42,
+    "junction_automation": "SKIPPED - creation denied, not passed"
+  },
+  "not_run": [
+    "Windows/MSVC U3",
+    "Live Codex App Server/schema",
+    "ChatGPT authentication/entitlement/model request",
+    "Native Codex sandbox enforcement",
+    "Windows junction automation"
+  ],
+  "input_archive_sha256": "beb1aa191ddd4748970a1ed30cd3c8f46f4f0a715d0004e76e80a2f070b6e835",
+  "build_commands": [
+    "g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/mentor/*.cpp university/tests/mentor_tests.cpp -o mentor-tests",
+    "g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -Iuniversity/include university/src/Mission.cpp university/src/ProgressStore.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/mentor/*.cpp university/src/main.cpp -o pandata-university"
+  ]
+}

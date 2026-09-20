@@ -1,3 +1,5 @@
+Current handoff: **U3_HANDOFF.md (2026-09-19)**. U2 commit 7e4789a and saved evidence are verified; native checks passed by Chris's report, except junction automation was skipped. U3 mentor code is delivered; native/live validation is pending. Start the updated launcher and type `mentor-status` inside University. Older handoffs below are historical.
+
 Current handoff: U2_HANDOFF.md (2026-09-18). U1 completed on Windows; saved progress verified. The U1 handoff below is historical. Next action is launch the updated University and type run-check, not repeat the orientation.
 
 # University foundation handoff — 2026-09-17

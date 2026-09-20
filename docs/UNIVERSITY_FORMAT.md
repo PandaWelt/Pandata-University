@@ -61,3 +61,14 @@ On load, an invalid newest snapshot is preserved and reported; the latest valid 
 For corrupted state, preserve the complete directory and restore a known-good snapshot in a separate copy for inspection; request a narrow recovery/migration if all copies are invalid. Do not change assessment content merely to make progress load. The directory has a 10,000-entry bound; archival/compaction needs an explicit future workflow before long sessions reach it. Back up course/university/progress and its matching mission definitions together; it is Git-ignored personal state and not automatically synced by this console.
 
 U2 extension: no .pum/.pup schema or fingerprint change. Repository actions are a separate fixed capability set and write machine evidence under course/university/evidence/u2. See U2_ACTION_CONTRACT.md. Completed U1 progress is read without rewriting it.
+
+## U3 advisory evidence — schema 1
+
+New ignored append-only directory: course/university/evidence/u3/<unique>/evidence.json.
+Fields: schema, kind=advisory_mentor, state (offline/eligible_preflight/advisory_answer), detail,
+model, plan, threadId, turnId, context (JSON text of the exact preview for an explicit ask;
+empty for status), answer, progressAuthority=false, liveValidationClaim=false.
+The last flag prevents runtime advisory text being confused with a maintainer's acceptance
+of the native provider/sandbox. It is not a claim that a successful answer came from a fixture.
+Thread references are ephemeral audit references, never resume instructions. These records
+cannot be imported into progress or reviewed pilot completions. No U1 schema or fingerprint changed.

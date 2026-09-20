@@ -1,3 +1,9 @@
+# Current update — 2026-09-19, U3
+
+U2 is accepted: commit 7e4789a is verified in the submitted history; saved action evidence corroborates Chris's native report. Windows: 44 engine/42 U2 checks, pass/fail/pass, safe views, Git, Visual Studio and persistence passed by report. Junction creation was denied; automation skipped. U1 remains completed, without a new mastery claim.
+
+U3 infrastructure is implemented with an optional bounded read-only mentor interaction and separate advisory evidence. Linux tests passed; Windows U3 and live Codex/authentication/sandbox validation are pending. No learner mission, answer, confidence or progress snapshot was changed. Next: launch the updated University and type mentor-status. U4 remains contract-only and unauthorized. See docs/U3_HANDOFF.md.
+
 # Current update — 2026-09-18, U2
 
 U1 is completed on Windows by Chris's report, corroborated by all nine saved snapshots and the final completed state. Git HEAD 74aef5e and Mission 002 commit 21ba2af are present. Prediction “linker problem” and inspection “AppUISetup.cpp” are correct; “object presets/tools” is a responsibility proposal, not a completed extraction. One transfer hint was recorded. No durable confidence promotion.

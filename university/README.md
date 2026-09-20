@@ -1,17 +1,22 @@
-# U2 current use
+# U3 current use
 
-U1 stays completed. Launch Start-Pandata-University.cmd, then type run-check. Use files/view NUMBER, failure-demo, git-status, git-diff, open-vs, help and quit. Windows launcher now builds/tests the new adapter too; native U2 validation is pending. See docs/U2_HANDOFF.md and docs/U2_WINDOWS_VALIDATION.md. The old U1 scope/build commands below are historical; use these updated Linux commands:
+Launch Start-Pandata-University.cmd. U1 progress and all U2 commands remain available. New commands inside University: `mentor-status`, `mentor-preview`, `mentor-send`. Preview precedes each explicit ask; AI text is advisory and cannot run actions or award progress. Missing/unsupported Codex means offline, not a startup failure. No key, billing fallback or provider install is required for the University checks.
+
+See docs/U3_HANDOFF.md and docs/U3_WINDOWS_VALIDATION.md. Windows U3/live provider validation is pending. U2 was verified locally by Chris; junction automation was skipped.
+
+Current Linux build (from repository root):
 
 ```sh
 mkdir -p build/university
-g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/tests/repository_tests.cpp -o build/university/repository-tests
-build/university/repository-tests .
-g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/ProgressStore.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/main.cpp -o build/university/pandata-university
+g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/Process.cpp university/src/mentor/*.cpp university/tests/mentor_tests.cpp -o build/university/mentor-tests
+build/university/mentor-tests .
+g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iuniversity/include university/src/Mission.cpp university/src/ProgressStore.cpp university/src/Process.cpp university/src/RepositoryActions.cpp university/src/mentor/*.cpp university/src/main.cpp -o build/university/pandata-university
 build/university/pandata-university
 ```
 
-Repository tests use temporary copies/checkouts only; they never edit your source/progress/history. run-check itself compiles/runs the actual 44 U1 engine tests. Each action saves separate machine evidence; it never advances a lesson automatically.
+U2 run-check still runs the original 44 engine checks. The launcher additionally runs unchanged repository tests and the U3 suite before opening the console. Mentor metadata/answer records append under the existing ignored evidence root; they never update course progress.
 
+The following U1 narrative and old build commands are historical, not current build instructions.
 
 # Pandata University — offline foundation
 
