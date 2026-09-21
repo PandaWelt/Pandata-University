@@ -49,6 +49,9 @@ struct Fake:m::Channel {
     bool called(const std::string& method){for(auto& j:sent)if(j.has("method")&&j.at("method").str()==method)return true;return false;}
 };
 int main(int argc,char** argv){try{
+    if(argc==4&&std::string(argv[1])=="--schema-report"){
+        std::cout<<m::inspectCompatibility(fs::path(argv[2]),argv[3]).dump()<<'\n';return 0;
+    }
     if(argc==4&&std::string(argv[1])=="--schema-check"){
         const auto mode=m::checkSchema(fs::path(argv[2]),argv[3]);
         std::cout<<"PASS: installed schema policy = "<<mode<<'\n';return 0;
@@ -145,8 +148,46 @@ int main(int argc,char** argv){try{
     auto missingRoots=turnSchema;std::get<m::Json::Object>(std::get<m::Json::Object>(missingRoots.value).at("properties").value).erase("readableRoots");
     std::ofstream(scratch/"schema/v2/TurnStartParams.json")<<missingRoots.dump();
     refusesWith("lacks readableRoots","missing restricted roots remains a specific capability blocker");
+    // Named profiles replace the old wire fields, but schema recognition is NOT isolation proof.
+    auto profileThread=makeThread("read-only"),profileTurn=missingRoots;
+    auto property=[](m::Json& schema,const char* name,m::Json value){
+        std::get<m::Json::Object>(std::get<m::Json::Object>(schema.value).at("properties").value)[name]=value;
+    };
+    const auto stringOrNull=m::obj({{"type",m::arr({"string","null"})}});
+    property(profileThread,"permissions",stringOrNull);property(profileTurn,"permissions",stringOrNull);
+    const auto responseSchema=m::obj({{"properties",m::obj({{"activePermissionProfile",m::obj({{"anyOf",m::arr({
+        m::obj({{"$ref","#/definitions/ActivePermissionProfile"}}),m::obj({{"type","null"}})})}})}})},
+        {"definitions",m::obj({{"ActivePermissionProfile",m::obj({{"properties",m::obj({{"id",m::obj({{"type","string"}})}})}})}})}});
+    auto writeProfiles=[&]{
+        std::ofstream(scratch/"schema/v2/ThreadStartParams.json")<<profileThread.dump();
+        std::ofstream(scratch/"schema/v2/TurnStartParams.json")<<profileTurn.dump();
+        std::ofstream(scratch/"schema/v2/ThreadStartResponse.json")<<responseSchema.dump();
+    };
+    writeProfiles();
+    auto diagnostic=m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1");
+    check(diagnostic.at("mechanism").str()=="experimental_named_permission_profiles","actual named-profile property contract recognized");
+    check(!diagnostic.at("contextOnlyIsolationAccepted").boolean()&&!diagnostic.at("modelRequestSent").boolean(),"profile recognition cannot authorize inference");
+    check(diagnostic.at("files").array().size()==3&&diagnostic.at("perFileLimitBytes").number()==1048576,"bounded per-schema measurements retained");
+    refusesWith("no verified context-only native backend","recognized profile still fails closed at isolation gate");
+    rejects([&]{m::inspectCompatibility(scratch/"schema","codex-cli 0.155.10");},"profile diagnostic is exact-version scoped");
+    property(profileTurn,"permissions",m::obj({{"type","object"}}));writeProfiles();
+    check(!m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1").at("namedProfileRequests").boolean(),"wrong permissions type cannot masquerade as profile selection");
+    std::get<m::Json::Object>(std::get<m::Json::Object>(profileTurn.value).at("properties").value).erase("permissions");
+    std::get<m::Json::Object>(profileTurn.value)["definitions"]=m::obj({{"decoy",m::obj({{"properties",m::obj({{"permissions",stringOrNull}})}})}});
+    writeProfiles();check(!m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1").at("namedProfileRequests").boolean(),"nested decoy property cannot satisfy the request contract");
+    property(profileTurn,"permissions",stringOrNull);writeProfiles();
+    std::ofstream(scratch/"schema/v2/ThreadStartResponse.json")<<"{}";
+    check(!m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1").at("activeProfileProvenance").boolean(),"missing profile provenance is not reported as supported");
+    std::ofstream(scratch/"schema/v2/ThreadStartResponse.json")<<std::string(1048577,' ');
+    rejects([&]{m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1");},"profile diagnostics retain one MiB limit");
+    std::ofstream(scratch/"schema/v2/ThreadStartResponse.json")<<"{";
+    rejects([&]{m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1");},"malformed profile response schema rejected");
+    writeProfiles();fs::remove(scratch/"schema/v2/ThreadStartResponse.json");
+    rejects([&]{m::inspectCompatibility(scratch/"schema","codex-cli 0.155.1");},"missing profile response schema rejected");
+    writeProfiles();answer.compatibility=diagnostic;
     auto saved=m::record(scratch,bundle,answer);std::ifstream evidence(saved);auto record=m::Json::parse(std::string(std::istreambuf_iterator<char>(evidence),{}));
     check(record.at("context").str()==bundle&&!record.at("progressAuthority").boolean(),"append-only advisory evidence has no grading authority");
+    check(record.at("compatibility").dump()==diagnostic.dump(),"schema diagnosis preserved in machine-readable evidence");
     check(m::record(scratch,bundle,answer)!=saved&&fs::exists(saved),"new record preserves previous evidence");
 #ifdef _WIN32
     _putenv_s("OPENAI_API_KEY","not-a-secret-test-value");

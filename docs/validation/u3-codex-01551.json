@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-20",
+  "base_commit": "947bc85",
+  "codex_version": "codex-cli 0.155.1",
+  "platform": "Linux official release; Windows user report separate",
+  "schema_generation_exit": 0,
+  "schema_files": {
+    "GetAuthStatusParams.json": {
+      "present": false,
+      "bytes": null,
+      "sha256": null
+    },
+    "GetAuthStatusResponse.json": {
+      "present": false,
+      "bytes": null,
+      "sha256": null
+    },
+    "v2/AccountUpdatedNotification.json": {
+      "present": true,
+      "bytes": 2745,
+      "sha256": "9bf450d9d9ea23a2bac9c9cb0a68c2de8f89a97bdeb4485c91762bb4d43295b8"
+    },
+    "v2/ThreadStartParams.json": {
+      "present": true,
+      "bytes": 10180,
+      "sha256": "792e2f32e37cece971bd616664ea2053741acbed4e9c92e9d1766427718f2ecd"
+    },
+    "v2/TurnStartParams.json": {
+      "present": true,
+      "bytes": 20847,
+      "sha256": "a3835e8c1e942e4b358e1a670939b89918b16c4d13105a579899892b7ade6dea"
+    }
+  },
+  "largest_generated_json_bytes": 697192,
+  "per_file_limit_unchanged": 1048576,
+  "u3_checks_passed": 74,
+  "actual_schema_check_exit": 1,
+  "actual_schema_result": "expected safety block: lacks readableRoots",
+  "experimental_export_also_lacks_restricted_roots": true,
+  "live_auth_or_inference_attempted": false,
+  "native_windows_update_tested": false,
+  "cli_preservation": "passed in disposable copy",
+  "original_u1_u2_tests": "unchanged; not rerun for this schema-only correction"
+}

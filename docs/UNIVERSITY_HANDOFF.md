@@ -1,3 +1,5 @@
+Current U3 compatibility update — 2026-09-21: see U3_READ_ISOLATION.md. Actual 0.155.1 experimental profiles are recognized; exclusive native Windows read isolation is not established. The cumulative diagnostic update remains offline before App Server startup. U1/U2 and completed progress are preserved; no U4.
+
 Current correction — 2026-09-20: see **U3_CODEX_01551_COMPATIBILITY.md**. Submitted U3 is committed as 947bc85. Codex 0.155.1 omits legacy auth JSON exports and lacks restricted-read-root fields. The compatibility patch preserves the latter safety block; live mentor acceptance remains pending. Older handoffs below are historical.
 
 Current handoff: **U3_HANDOFF.md (2026-09-19)**. U2 commit 7e4789a and saved evidence are verified; native checks passed by Chris's report, except junction automation was skipped. U3 mentor code is delivered; native/live validation is pending. Start the updated launcher and type `mentor-status` inside University. Older handoffs below are historical.

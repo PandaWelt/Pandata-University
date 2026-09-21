@@ -107,6 +107,40 @@ Json readSchema(const fs::path& path){
     text.resize(count);
     try{return Json::parse(text);}catch(const std::exception&){throw Error("Invalid App Server JSON schema: "+label);}
 }
+bool nullableStringProperty(const Json& schema,const char* name){
+    const auto& type=schema.at("properties").at(name).at("type");
+    auto values=std::get_if<Json::Array>(&type.value);
+    return values&&values->size()==2&&
+        ((equals((*values)[0],"string")&&equals((*values)[1],"null"))||
+         (equals((*values)[1],"string")&&equals((*values)[0],"null")));
+}
+bool namedProfileRequests(const Json& thread,const Json& turn){
+    // Exact top-level property/type bindings, not a recursive word search.
+    return nullableStringProperty(thread,"permissions")&&nullableStringProperty(turn,"permissions");
+}
+}
+Json inspectCompatibility(const fs::path& directory,const std::string& codexVersion){
+    require(codexVersion=="codex-cli 0.155.1","No reviewed profile diagnostic for this Codex version");
+    auto thread=readSchema(directory/"v2/ThreadStartParams.json");
+    auto turn=readSchema(directory/"v2/TurnStartParams.json");
+    auto response=readSchema(directory/"v2/ThreadStartResponse.json");
+    const bool requests=namedProfileRequests(thread,turn);
+    const auto& active=response.at("properties").at("activePermissionProfile").at("anyOf");
+    bool provenance=false;
+    if(auto choices=std::get_if<Json::Array>(&active.value))for(const auto& choice:*choices)
+        if(equals(choice.at("$ref"),"#/definitions/ActivePermissionProfile"))
+            provenance=equals(response.at("definitions").at("ActivePermissionProfile").at("properties").at("id").at("type"),"string");
+    Json::Array files;
+    for(auto name:{"v2/ThreadStartParams.json","v2/TurnStartParams.json","v2/ThreadStartResponse.json"}){
+        // readSchema already rejected links, non-files, malformed JSON and >1 MiB reads.
+        files.push_back(obj({{"path",name},{"bytes",double(fs::file_size(directory/name))}}));
+    }
+    return obj({{"schema",1},{"codexVersion",codexVersion},{"export","experimental"},
+        {"namedProfileRequests",requests},{"activeProfileProvenance",provenance},
+        {"mechanism",requests&&provenance?"experimental_named_permission_profiles":"unrecognized_profile_contract"},
+        {"contextOnlyIsolationAccepted",false},{"modelRequestSent",false},
+        {"reason","No reviewed context-only native backend. Windows unelevated rejects restricted reads; elevated read grants do not establish exclusive read access."},
+        {"perFileLimitBytes",1048576},{"files",files}});
 }
 std::string context(const Mission& m,const Progress& p){
     validateProgress(m,p);require(m.id=="u1-boundaries","Only the reviewed U1 orientation context is allowlisted for U3.");
@@ -150,6 +184,11 @@ std::string checkSchema(const fs::path& directory,const std::string& codexVersio
                 "Installed account notification schema cannot represent the required Plus plan");
     }
     auto thread=readSchema(directory/"v2/ThreadStartParams.json");auto turn=readSchema(directory/"v2/TurnStartParams.json");
+    if(codexVersion=="codex-cli 0.155.1"&&namedProfileRequests(thread,turn)&&!schemaHas(turn,"readableRoots"))
+        throw Error("Codex 0.155.1 uses experimental named permission profiles (permissions), not turn readableRoots. "
+            "U3 has no verified context-only native backend: Windows unelevated rejects restricted reads; "
+            "elevated read grants do not prove exclusive read access. Mentor remains offline before App Server startup; "
+            "no context sent. See docs/U3_READ_ISOLATION.md.");
     for(auto field:{"sandbox","approvalPolicy","ephemeral","baseInstructions","developerInstructions","config"})require(schemaHas(thread,field),"Installed thread schema lacks a required U3 control");
     for(auto field:{"sandboxPolicy","approvalPolicy","input","threadId"})require(schemaHas(turn,field),"Installed turn schema lacks a required U3 control");
     require(permits(thread.at("properties").at("approvalPolicy"),thread,"untrusted"),"Installed thread approval schema is incompatible");
@@ -225,7 +264,7 @@ fs::path record(const fs::path& repository,const std::string& preview,const Resu
     require(!directory.empty(),"Cannot reserve new U3 evidence directory; existing evidence untouched");
     auto path=directory/"evidence.json";std::ofstream out(path,std::ios::binary|std::ios::out);
     auto data=obj({{"schema",1},{"kind","advisory_mentor"},{"state",result.state},{"detail",result.detail},{"model",result.model},{"plan",result.plan},
-        {"threadId",result.threadId},{"turnId",result.turnId},{"context",preview},{"answer",result.answer},{"progressAuthority",false},{"liveValidationClaim",false}}).dump();
+        {"threadId",result.threadId},{"turnId",result.turnId},{"context",preview},{"answer",result.answer},{"compatibility",result.compatibility},{"progressAuthority",false},{"liveValidationClaim",false}}).dump();
     out<<data<<'\n';out.close();require(bool(out),"U3 evidence write failed; no progress was changed");return path;
 }
 Result run(const fs::path& repository,const std::string& preview,bool ask){
@@ -240,12 +279,17 @@ Result run(const fs::path& repository,const std::string& preview,bool ask){
         for(int i=0;i<100;++i){scratch=base/("pu-u3-"+std::to_string(std::chrono::steady_clock::now().time_since_epoch().count())+"-"+std::to_string(i));if(fs::create_directory(scratch))break;scratch.clear();}
         require(!scratch.empty(),"Cannot reserve private mentor scratch directory");
         struct Cleanup{fs::path path;~Cleanup(){std::error_code ec;fs::remove_all(path,ec);}}cleanup{scratch};
-        // Schema generation is a local, non-model operation. It receives no mission data.
-        auto schema=runProcess(exe,{"app-server","generate-json-schema","--out",(scratch/"schema").string()},scratch,15000);
-        require(schema.ok(),"Installed Codex cannot generate its protocol schema. Mentor unavailable; offline University is unaffected.");
         auto version=runProcess(exe,{"--version"},scratch,5000);
         require(version.ok(),"Cannot identify installed Codex version; no schema compatibility fallback attempted.");
         while(!version.output.empty()&&(version.output.back()=='\r'||version.output.back()=='\n'))version.output.pop_back();
+        require(version.output.size()<=128,"Unexpected Codex version output; mentor offline");
+        // Experimental EXPORT is local metadata, not an experimental live session.
+        // Only the reviewed exact version takes this route. No account/model data is sent.
+        std::vector<std::string> schemaArgs={"app-server","generate-json-schema","--out",(scratch/"schema").string()};
+        if(version.output=="codex-cli 0.155.1")schemaArgs.push_back("--experimental");
+        auto schema=runProcess(exe,schemaArgs,scratch,15000);
+        require(schema.ok(),"Installed Codex cannot generate its protocol schema. Mentor unavailable; offline University is unaffected.");
+        if(version.output=="codex-cli 0.155.1")r.compatibility=inspectCompatibility(scratch/"schema",version.output);
         auto sandboxMode=checkSchema(scratch/"schema",version.output);
         auto arguments=serverArguments();
         // Metadata-only discovery. No thread, model request, or mission context is sent.

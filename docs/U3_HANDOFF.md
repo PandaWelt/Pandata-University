@@ -1,3 +1,5 @@
+Current U3 review — 2026-09-21: see U3_READ_ISOLATION.md. Named profiles are recognized through the actual experimental export; native exclusive-read enforcement is not established. 86 U3 checks pass locally. Mentor stays offline before App Server startup. Earlier entries below are historical, not live acceptance.
+
 Compatibility correction — 2026-09-20: see U3_CODEX_01551_COMPATIBILITY.md. The old legacy-schema requirement described below now has a narrowly reviewed exception for exact Codex 0.155.1, whose exporter omits those files. Its missing restricted-root fields still prevent online mentoring. New suite: 74 checks; no Windows/live acceptance claimed.
 
 # U3 handoff — 2026-09-19

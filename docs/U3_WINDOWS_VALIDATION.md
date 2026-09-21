@@ -1,3 +1,5 @@
+Current cumulative U3 validation — 2026-09-21: follow U3_READ_ISOLATION.md first. Expected U3 suite is now 86 checks; actual 0.155.1 experimental profiles are recognized, but live mentoring remains blocked for unverified context-only native isolation. No Windows pass is claimed here.
+
 # U3 Windows validation
 
 Apply the patch to the existing repository using the archive's APPLY_U3.md. Do not replace the repository or reset/checkout files. The patch does not include Git history, runtime progress/evidence, dependencies, or executables. Keep your existing U1/U2 backups and commit 7e4789a.

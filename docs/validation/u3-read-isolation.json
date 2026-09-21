@@ -1,0 +1,156 @@
+{
+  "date": "2026-09-21",
+  "submitted_head": "1cbff0c",
+  "preserved_ancestors": [
+    "947bc85",
+    "7e4789a"
+  ],
+  "codex_version": "codex-cli 0.155.1",
+  "host": "Linux",
+  "schema_commands": [
+    {
+      "argv": [
+        "codex",
+        "app-server",
+        "generate-json-schema",
+        "--out",
+        "<temporary stable>"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "codex",
+        "app-server",
+        "generate-json-schema",
+        "--experimental",
+        "--out",
+        "<temporary experimental>"
+      ],
+      "exit": 0
+    }
+  ],
+  "schemas": {
+    "stable": {
+      "v2/ThreadStartParams.json": {
+        "bytes": 10180,
+        "sha256": "792e2f32e37cece971bd616664ea2053741acbed4e9c92e9d1766427718f2ecd"
+      },
+      "v2/TurnStartParams.json": {
+        "bytes": 20847,
+        "sha256": "a3835e8c1e942e4b358e1a670939b89918b16c4d13105a579899892b7ade6dea"
+      },
+      "v2/ThreadStartResponse.json": {
+        "bytes": 75707,
+        "sha256": "5686cd0fecf44b09c533018de90e34f74fcc92b8aaf941430941fd6d633e6621"
+      },
+      "v2/FsReadFileParams.json": {
+        "bytes": 844,
+        "sha256": "74b325108195fe955e6ffcb6032e9380d3bfdee8aed7d115f5f1e4b127c5d706"
+      },
+      "largest_json_bytes": 697192
+    },
+    "experimental": {
+      "v2/ThreadStartParams.json": {
+        "bytes": 12971,
+        "sha256": "25f490368ec6df52a2a3b82a5469d2413307eb93439121b309f415b5648eee7a"
+      },
+      "v2/TurnStartParams.json": {
+        "bytes": 23746,
+        "sha256": "b36fb37326b1cf69f75c8b306f1f886d53a57c4b1b985e08e298e2407ea2ad02"
+      },
+      "v2/ThreadStartResponse.json": {
+        "bytes": 77846,
+        "sha256": "b43f4e53d2262e0501d21bcf2a5a45b0316b8fab757a7ff19a6f1e042d4b09da"
+      },
+      "v2/FsReadFileParams.json": {
+        "bytes": 844,
+        "sha256": "74b325108195fe955e6ffcb6032e9380d3bfdee8aed7d115f5f1e4b127c5d706"
+      },
+      "largest_json_bytes": 845144
+    }
+  },
+  "u3_checks": 86,
+  "original_u3_checks_retained": 74,
+  "native_windows_tested": false,
+  "windows_junction_automation": "previously skipped, creation denied; not passed",
+  "live_auth_or_model_request_attempted": false,
+  "native_sandbox_setup_or_probe_attempted": false,
+  "isolation_conclusion": "profile read grants do not establish exclusive native Windows read access; no live authorization",
+  "source_review_hashes": {
+    "codex-rs-core-src-config-permissions.rs": "24b1b9a571ac09c6026f1e102d1db9001e0bf0aeb64a8fa6f02eb2bb38aa6ca4",
+    "codex-rs-windows-sandbox-rs-src-bin-setup_main-win-sandbox_users.rs": "0d656c5abea359839e6286ec4c36cf69e26af4fd3aeb7b5f3f399492ad1cca12",
+    "codex-rs-windows-sandbox-rs-src-bin-setup_main-win.rs": "f728d35772ef38641be4c194bfc393aef339d3e45be4c31b1ecac23230dc1f09",
+    "codex-rs-windows-sandbox-rs-src-identity.rs": "bbc06af6f86e90cd23447b5051f0f5ceb95aaa8b2c5d60f16ed0283270e1c2f0",
+    "codex-rs-windows-sandbox-rs-src-lib.rs": "9418f47dd45d1d24a90a462b103748bb0d2997324b38a2ad955517eedd3ce764",
+    "codex-rs-windows-sandbox-rs-src-token.rs": "9b5e35335cf90c3e057bdca3d35013ebbeb1315eb6a45ce6ac2b74d34544a44c"
+  },
+  "integration": {
+    "exit": 0,
+    "relaunchExit": 0,
+    "allOriginalFilesUnchanged": true,
+    "newEvidenceRecords": 2,
+    "compatibility": {
+      "activeProfileProvenance": true,
+      "codexVersion": "codex-cli 0.155.1",
+      "contextOnlyIsolationAccepted": false,
+      "export": "experimental",
+      "files": [
+        {
+          "bytes": 12971,
+          "path": "v2/ThreadStartParams.json"
+        },
+        {
+          "bytes": 23746,
+          "path": "v2/TurnStartParams.json"
+        },
+        {
+          "bytes": 77846,
+          "path": "v2/ThreadStartResponse.json"
+        }
+      ],
+      "mechanism": "experimental_named_permission_profiles",
+      "modelRequestSent": false,
+      "namedProfileRequests": true,
+      "perFileLimitBytes": 1048576,
+      "reason": "No reviewed context-only native backend. Windows unelevated rejects restricted reads; elevated read grants do not establish exclusive read access.",
+      "schema": 1
+    }
+  },
+  "schema_report": {
+    "exit": 0,
+    "report": {
+      "activeProfileProvenance": true,
+      "codexVersion": "codex-cli 0.155.1",
+      "contextOnlyIsolationAccepted": false,
+      "export": "experimental",
+      "files": [
+        {
+          "bytes": 12971,
+          "path": "v2/ThreadStartParams.json"
+        },
+        {
+          "bytes": 23746,
+          "path": "v2/TurnStartParams.json"
+        },
+        {
+          "bytes": 77846,
+          "path": "v2/ThreadStartResponse.json"
+        }
+      ],
+      "mechanism": "experimental_named_permission_profiles",
+      "modelRequestSent": false,
+      "namedProfileRequests": true,
+      "perFileLimitBytes": 1048576,
+      "reason": "No reviewed context-only native backend. Windows unelevated rejects restricted reads; elevated read grants do not establish exclusive read access.",
+      "schema": 1
+    }
+  },
+  "expected_isolation_failure": {
+    "exit": 1,
+    "message": "Codex 0.155.1 uses experimental named permission profiles (permissions), not turn readableRoots. U3 has no verified context-only native backend: Windows unelevated rejects restricted reads; elevated read grants do not prove exclusive read access. Mentor remains offline before App Server startup; no context sent. See docs/U3_READ_ISOLATION.md."
+  },
+  "unchanged_engine_checks": 44,
+  "unchanged_linux_u2_checks": 46,
+  "compiler": "GCC C++20 -Wall -Wextra -Werror; mentor tests, engine tests, repository tests and full University compiled successfully"
+}
