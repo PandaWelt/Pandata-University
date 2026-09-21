@@ -1,3 +1,5 @@
+Accepted validation — 2026-09-21: Chris completed this Windows procedure on commit 330420d and reports 86 U3 checks passed. Submitted evidence 17900172827024590-0 confirms the expected named-profile/native-isolation blocker with no model request. Do not repeat this procedure for the unchanged build. It remains a future regression checklist, not an outstanding assignment. Live mentoring remains unavailable. See ../course/evidence/U3_330420d_review.md.
+
 Current cumulative U3 validation — 2026-09-21: follow U3_READ_ISOLATION.md first. Expected U3 suite is now 86 checks; actual 0.155.1 experimental profiles are recognized, but live mentoring remains blocked for unverified context-only native isolation. No Windows pass is claimed here.
 
 # U3 Windows validation

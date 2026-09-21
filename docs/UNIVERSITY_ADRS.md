@@ -43,3 +43,9 @@ Codex 0.155.1 excludes deprecated v1 auth schemas from JSON export while retaini
 ### U-13b — named profiles are not native isolation proof, 2026-09-21
 
 Recognize exact Codex 0.155.1 experimental thread/turn permissions fields and profile provenance through bounded schema generation. Record diagnostics independently of authorization. The native Windows unelevated backend refuses restricted reads; the elevated backend's ordinary Users membership and read-grant ACL handling do not establish an exclusive readable set. Keep mentoring offline before App Server startup; do not silently enable elevated setup, apply broad deny ACLs, assume read-only equals read-isolated, or turn standalone host fs/readFile into a fake sandbox probe. A separately verified context-only backend remains a U3 prerequisite. No policy/cost/auth scope expansion. See U3_READ_ISOLATION.md and validation/u3-read-isolation.json.
+
+### U-13c — accept validation without claiming live capability, 2026-09-21
+
+Source archive HEAD and independently verified complete Git bundle both identify 330420d36035c71777ff2c1cfeb8f2dbbf714be9. Accept the cumulative Windows safety validation from Chris's 86-check report and the submitted machine evidence of the expected block. Record live mentor, managed-auth/allowance and native isolation as unaccepted. No code or safety-policy change is needed to close this validation task. A GitHub remote and matching origin/main are present; backup success is user-reported, not independently queried.
+
+The next chronological stage is U4, but U-09 explicitly requires tested isolation before implementation. Prepare only its offline proposal-review contract now. Preparation is not a waiver, implementation, approval token or completion claim. Do not keep asking Chris to repeat the unchanged U3 diagnostic. Resolving native isolation remains an open engineering prerequisite, not a repeated learner assignment. See U4_PREPARATION.md.

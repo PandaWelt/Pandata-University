@@ -1,3 +1,9 @@
+# U3 Windows safety validation accepted — 2026-09-21
+
+Verified submitted HEAD 330420d36035c71777ff2c1cfeb8f2dbbf714be9 against the source archive and complete Git bundle. Chris reports all 86 U3 checks passed on Windows. The submitted final U3 evidence confirms experimental named profiles, contextOnlyIsolationAccepted=false, modelRequestSent=false, empty context/answer/thread/turn and an offline result before App Server startup. **The cumulative compatibility/safety validation is complete; live mentoring is still blocked, not passed.** Do not repeat the completed U3 validation loop.
+
+Next chronological stage is U4. Only its narrow offline proposal-review design is prepared in docs/U4_PREPARATION.md; no implementation is authorized by this review. U-09's tested-isolation prerequisite remains unsatisfied. No Rescue, apply, execution, hot reload or staged-update capability is enabled. U1 completion, U2, learner confidence and PandaBank remain unchanged. See course/evidence/U3_330420d_review.md for evidence provenance and limits.
+
 # U3 read isolation compatibility review — 2026-09-21
 
 Submitted HEAD 1cbff0c (Patch 1), original U3 947bc85 and U2 7e4789a are preserved. The third submitted U3 record confirms the legacy readableRoots block. Actual 0.155.1 experimental schemas expose named permission profiles; the Windows backend source does not establish an exclusive readable set from context-only read grants. The cumulative adapter now records this distinction and fails before App Server startup. 86 U3 client/transport checks and a full University build passed on Linux; real local schema generation and offline status/send/relaunch passed. Windows/live/native isolation remains unverified. No learner completion, concepts, mission definitions, saved snapshots or existing evidence changed. Apply the cumulative patch and validate mentor-status using docs/U3_READ_ISOLATION.md. This does not enable mentoring or authorize U4.

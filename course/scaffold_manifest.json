@@ -131,8 +131,9 @@
       "replacement_mission": null,
       "release_blocking": false,
       "origin": "Assistant-supplied infrastructure, not learner coursework",
-      "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending Compatibility review 2026-09-20: 74 client checks; same-version official 0.155.1 schema reproduction; live blocked by absent restricted roots. See docs/U3_CODEX_01551_COMPATIBILITY.md. Follow-up 2026-09-21: 86 checks; named profiles recognized; Windows exclusive-read enforcement not established; remains offline. See docs/U3_READ_ISOLATION.md.",
-      "review_trigger": "Installed Codex schema/config/feature changes, native OS sandbox acceptance, or scope beyond one bounded interaction"
+      "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending Compatibility review 2026-09-20: 74 client checks; same-version official 0.155.1 schema reproduction; live blocked by absent restricted roots. See docs/U3_CODEX_01551_COMPATIBILITY.md. Follow-up 2026-09-21: 86 checks; named profiles recognized; Windows exclusive-read enforcement not established; remains offline. See docs/U3_READ_ISOLATION.md. Windows review at 330420d: 86 checks passed by user report; saved named-profile/no-context/offline evidence verified. Safety validation accepted; live/native isolation and ownership review remain open. See course/evidence/U3_330420d_review.md.",
+      "review_trigger": "Installed Codex schema/config/feature changes, native OS sandbox acceptance, or scope beyond one bounded interaction",
+      "validation_status": "windows_safety_accepted_live_blocked"
     }
   ],
   "notes": [
@@ -176,7 +177,7 @@
       "id": "U3-PROTOCOL",
       "location": "university/src/mentor",
       "owner": "University maintainer",
-      "removal_condition": "Verify native Windows and installed Codex schema/sandbox/auth; review conservative plan/quota/config gates before broadening compatibility. Reconsider hand-written bounded JSON codec before protocol scope expands."
+      "removal_condition": "Windows cumulative safety validation is accepted at 330420d; do not repeat it. Native exclusive read isolation and live managed-auth/Plus allowance/model acceptance remain unresolved. Preserve offline fallback; reconsider protocol only when a concrete compatible backend is reviewed."
     }
   ]
 }

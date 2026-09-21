@@ -40,13 +40,13 @@ University Maintenance Mode is distinct and explicit. Classes: content-only; cou
 
 ## Foundation staging and honest status
 
-| Stage | Deliverable / acceptance | This run |
+| Stage | Deliverable / acceptance | Status reviewed 2026-09-21 |
 |---|---|---|
 | U0 | Accept pilots, name/spec, architecture and learner policy | Implemented documentation/review. |
 | U1 | Mission loader, validation, separate recoverable progress, one-step presentation, tests | Implemented offline C++ console slice; validation reported in UNIVERSITY_HANDOFF.md. |
-| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented minimal console actions; Linux verified, Windows U2 pending. No full editor/IDE. |
-| U3 | Read-only mission-aware mentor, account/limits, offline fallback | Contract only; no child process/auth/model run. |
-| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | Contract only; no autonomous editing. |
+| U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented and accepted from code/evidence and Chris's Windows report; junction automation skipped. No full editor/IDE. |
+| U3 | Read-only mission-aware mentor, account/limits, offline fallback | Adapter implemented; cumulative Windows safety validation accepted at 330420d. Live mentoring remains blocked; no successful auth/allowance/model run claimed. |
+| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | Design-only offline proposal-review brief prepared; implementation still gated by U-09 tested isolation and separate authorization. No autonomous editing. |
 
 The console is a real minimal presentation for testing the engine, not the promised finished GUI. Windows compilation/interaction requires a local check; the implementation is compiled/tested on the available Linux host. Build/test commands for University are separate from the unchanged PandaBank project. CMake migration of PandaBank is not claimed.
 

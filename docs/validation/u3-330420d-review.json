@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-21",
+  "review_scope": "records_and_next_stage_preparation_only",
+  "commit": "330420d36035c71777ff2c1cfeb8f2dbbf714be9",
+  "tree": "ee2f445d46ddca4bf80a41bd16da047092beeeff",
+  "verified_ancestors": [
+    "1cbff0c",
+    "947bc85",
+    "7e4789a"
+  ],
+  "source_tracked_files_match_commit": true,
+  "bundle_verify": "passed_complete_history",
+  "bundle_clone_and_fsck": "passed",
+  "bundle_main_tree_matches_source": true,
+  "windows_u3_86_checks": {
+    "status": "passed",
+    "origin": "user_reported",
+    "raw_console_log_in_submission": false
+  },
+  "latest_u3_evidence": {
+    "path": "course/university/evidence/u3/17900172827024590-0/evidence.json",
+    "sha256": "107c3b0e09e90821000960410b5dc683188e5dcd44a5a36f4cff693ecbf78fbd",
+    "record": {
+      "answer": "",
+      "compatibility": {
+        "activeProfileProvenance": true,
+        "codexVersion": "codex-cli 0.155.1",
+        "contextOnlyIsolationAccepted": false,
+        "export": "experimental",
+        "files": [
+          {
+            "bytes": 12971,
+            "path": "v2/ThreadStartParams.json"
+          },
+          {
+            "bytes": 23746,
+            "path": "v2/TurnStartParams.json"
+          },
+          {
+            "bytes": 77846,
+            "path": "v2/ThreadStartResponse.json"
+          }
+        ],
+        "mechanism": "experimental_named_permission_profiles",
+        "modelRequestSent": false,
+        "namedProfileRequests": true,
+        "perFileLimitBytes": 1048576,
+        "reason": "No reviewed context-only native backend. Windows unelevated rejects restricted reads; elevated read grants do not establish exclusive read access.",
+        "schema": 1
+      },
+      "context": "",
+      "detail": "Codex 0.155.1 uses experimental named permission profiles (permissions), not turn readableRoots. U3 has no verified context-only native backend: Windows unelevated rejects restricted reads; elevated read grants do not prove exclusive read access. Mentor remains offline before App Server startup; no context sent. See docs/U3_READ_ISOLATION.md.",
+      "kind": "advisory_mentor",
+      "liveValidationClaim": false,
+      "model": "",
+      "plan": "",
+      "progressAuthority": false,
+      "schema": 1,
+      "state": "offline",
+      "threadId": "",
+      "turnId": ""
+    }
+  },
+  "all_u3_evidence_hashes": [
+    {
+      "path": "course/university/evidence/u3/17898531713343450-0/evidence.json",
+      "sha256": "ad690381efebe601ea2465f94bfc576d3a2880aabf9a928b079d0f690148b1c8"
+    },
+    {
+      "path": "course/university/evidence/u3/17898799853990835-0/evidence.json",
+      "sha256": "f686f2b1b76aca0929a3eaa4d5ab03a4e02ab20f915087aa54380e963c2dce78"
+    },
+    {
+      "path": "course/university/evidence/u3/17898817207658436-0/evidence.json",
+      "sha256": "aec52b24f83e741393d1a3b610c1006a7885b18e77126821c57d082d84a8336c"
+    },
+    {
+      "path": "course/university/evidence/u3/17900157457072343-0/evidence.json",
+      "sha256": "ad690381efebe601ea2465f94bfc576d3a2880aabf9a928b079d0f690148b1c8"
+    },
+    {
+      "path": "course/university/evidence/u3/17900165196731736-0/evidence.json",
+      "sha256": "aec52b24f83e741393d1a3b610c1006a7885b18e77126821c57d082d84a8336c"
+    },
+    {
+      "path": "course/university/evidence/u3/17900172827024590-0/evidence.json",
+      "sha256": "107c3b0e09e90821000960410b5dc683188e5dcd44a5a36f4cff693ecbf78fbd"
+    }
+  ],
+  "u3_safety_validation": "accepted",
+  "live_mentor": "blocked_not_passed",
+  "native_read_isolation": "not_established",
+  "live_auth_allowance_model": "not_validated",
+  "u1_latest_progress_sha256": "4ffaccba7287570290c85923bbdfc713d623ed6e5f8839ac25cc00be7116cded",
+  "progress_snapshot_count": 9,
+  "github_backup": {
+    "status": "user_reported",
+    "remote": "https://github.com/PandaWelt/Pandata-University.git",
+    "origin_main_matches_commit": true,
+    "remote_contacted": false
+  },
+  "next_step": "U4 design-only offline proposal-review preparation",
+  "U09_isolation_gate_waived": false,
+  "implementation_performed": false,
+  "learner_confidence_promoted": false
+}
