@@ -134,6 +134,19 @@
       "acceptance_evidence": "docs/validation/u3-validation.json; 61 client/transport checks; native and live provider gates pending Compatibility review 2026-09-20: 74 client checks; same-version official 0.155.1 schema reproduction; live blocked by absent restricted roots. See docs/U3_CODEX_01551_COMPATIBILITY.md. Follow-up 2026-09-21: 86 checks; named profiles recognized; Windows exclusive-read enforcement not established; remains offline. See docs/U3_READ_ISOLATION.md. Windows review at 330420d: 86 checks passed by user report; saved named-profile/no-context/offline evidence verified. Safety validation accepted; live/native isolation and ownership review remain open. See course/evidence/U3_330420d_review.md.",
       "review_trigger": "Installed Codex schema/config/feature changes, native OS sandbox acceptance, or scope beyond one bounded interaction",
       "validation_status": "windows_safety_accepted_live_blocked"
+    },
+    {
+      "id": "U4-F1-PREVIEW",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/ProposalPreview.h; university/src/ProposalPreview.cpp; university/tests/proposal_tests.cpp; university/src/main.cpp; launcher integration; Validate-Proposal-Preview.cmd",
+      "purpose": "Bounded in-memory proposal preview and stale rejection without external or mutation capability",
+      "replacement_mission": null,
+      "status": "review_scheduled",
+      "owner": "University maintainer with Chris Windows validation",
+      "origin": "assistant-supplied infrastructure, not learner coursework",
+      "release_blocking": false,
+      "acceptance_evidence": "33 focused checks and full University GCC build; preservation/empty-PATH checks. Windows pending. See docs/validation/u4-fixture.json.",
+      "review_trigger": "Any file import, Git binding, provider, process, approval, persistence or application capability requires separate review; U-09a exemption is fixture-only."
     }
   ],
   "notes": [

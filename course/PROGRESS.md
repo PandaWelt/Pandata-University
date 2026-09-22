@@ -1,3 +1,7 @@
+# U4-F1 implementation — 2026-09-21
+
+Verified 6c6286d is the expected records-only descendant of 330420d; tracked code did not change in that commit. U-09a now distinguishes native external-execution isolation from a trusted no-I/O in-memory preview. Chris authorized this resolution and smallest fixture implementation. Supplied U4-F1 preview/stale checks, console entry points and focused Windows validation; 33 new checks and full University build pass on Linux. U1–U3 were not rerun; their code/tests and learner progress remain preserved. Live mentor and all apply/write/automation capabilities remain blocked. No learner confidence was promoted. Next: apply the narrow patch and run Validate-Proposal-Preview.cmd in Developer PowerShell for VS 2022. See docs/U4_FIXTURE.md.
+
 # U3 Windows safety validation accepted — 2026-09-21
 
 Verified submitted HEAD 330420d36035c71777ff2c1cfeb8f2dbbf714be9 against the source archive and complete Git bundle. Chris reports all 86 U3 checks passed on Windows. The submitted final U3 evidence confirms experimental named profiles, contextOnlyIsolationAccepted=false, modelRequestSent=false, empty context/answer/thread/turn and an offline result before App Server startup. **The cumulative compatibility/safety validation is complete; live mentoring is still blocked, not passed.** Do not repeat the completed U3 validation loop.

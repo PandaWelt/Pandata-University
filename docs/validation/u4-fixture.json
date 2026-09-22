@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-21",
+  "base_commit": "6c6286d158337bc62c4bd2f10bffd212020fcffe",
+  "base_records_commit_verified": true,
+  "previous_accepted_U3": "330420d",
+  "scope": "U4-F1 only",
+  "decision_documented_before_implementation": "U-09a",
+  "cpp20_warnings_as_errors_builds": [
+    "proposal_tests",
+    "full University"
+  ],
+  "focused_checks_passed": 33,
+  "U1_U2_U3_suites_rerun": false,
+  "U3_code_tests_changed": false,
+  "live_mentor_passed": false,
+  "full_U4_unlocked": false,
+  "Windows_MSVC_tested": false,
+  "runtime": {
+    "focused_runs": [
+      {
+        "flag": "--proposal-fixture",
+        "exit": 0,
+        "stdout": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+      },
+      {
+        "flag": "--proposal-stale-fixture",
+        "exit": 1,
+        "stdout": "STALE: supplied revision or before-bytes changed. Preview refused; nothing applied.\n"
+      },
+      {
+        "flag": "--proposal-fixture",
+        "exit": 0,
+        "stdout": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+      }
+    ],
+    "empty_path_no_git_codex": true,
+    "empty_working_directory_unchanged": true,
+    "console_sequence_exit": 0,
+    "all_console_original_bytes_unchanged": true,
+    "completed_U1_preserved_after_relaunch": true,
+    "syscall_trace": "not_available_ptrace_denied_no_claim_of_observed_syscall_absence",
+    "U1_U2_U3_suites_rerun": false
+  },
+  "preview_object_dependencies": [
+    "                 U _Unwind_Resume",
+    "                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace_cold(char*, unsigned long, char const*, unsigned long, unsigned long)",
+    "                 U std::__throw_bad_alloc()",
+    "                 U std::__throw_logic_error(char const*)",
+    "                 U std::__throw_length_error(char const*)",
+    "                 U std::__throw_out_of_range_fmt(char const*, ...)",
+    "                 U std::__throw_bad_array_new_length()",
+    "                 U operator delete(void*)",
+    "                 U operator delete(void*, unsigned long)",
+    "                 U operator new(unsigned long)",
+    "                 U __gxx_personality_v0",
+    "                 U __stack_chk_fail",
+    "                 U memchr",
+    "                 U memcmp",
+    "                 U memcpy",
+    "                 U memmove",
+    "                 U strlen"
+  ],
+  "dependency_review": "standard string/memory/exception symbols only; no file/process/network/provider calls"
+}

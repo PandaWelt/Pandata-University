@@ -1,3 +1,7 @@
+Implemented subset — 2026-09-21: U4-F1 now provides only the bounded in-memory fixture described in U4_FIXTURE.md under U-09a. The remaining contract below is a future design, not implemented capability. Focused Windows validation is next.
+
+Current resolution — 2026-09-21: U-09a in UNIVERSITY_ADRS.md permits only U4-F1, an in-memory comparison/display fixture with no I/O or provider capability. The larger contract below is retained as a future design; its external input, real Git binding, hashes and filesystem checks are not claimed implemented. All live/execute/apply/write automation gates remain blocked. See U4_FIXTURE.md for this implementation's exact scope and validation.
+
 # U4 preparation — one offline proposal-review contract
 
 Status: **design prepared, not implemented or unlocked**. Base: accepted U3 safety checkpoint 330420d. This is a University engineering brief, not a new learner worksheet or a PandaBank mission.

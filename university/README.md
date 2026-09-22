@@ -1,3 +1,5 @@
+U4-F1: proposal-preview and proposal-stale-demo display/reject an in-memory fixture without saving or executing anything. For focused Windows validation without repeating U1–U3, run Validate-Proposal-Preview.cmd from Developer PowerShell for VS 2022. See docs/U4_FIXTURE.md; all live/apply/automation gates remain unchanged.
+
 # U3 current use
 
 Launch Start-Pandata-University.cmd. U1 progress and all U2 commands remain available. New commands inside University: `mentor-status`, `mentor-preview`, `mentor-send`. Preview precedes each explicit ask; AI text is advisory and cannot run actions or award progress. Missing/unsupported Codex means offline, not a startup failure. No key, billing fallback or provider install is required for the University checks.

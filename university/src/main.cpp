@@ -2,6 +2,7 @@
 #include "ProgressStore.h"
 #include "RepositoryActions.h"
 #include "mentor/Mentor.h"
+#include "ProposalPreview.h"
 #include <charconv>
 #include <filesystem>
 #include <fstream>
@@ -14,7 +15,8 @@ void actionsHelp() {
                  "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
                  "Actions save command/output/exit evidence. No general shell or source editor is available.\n"
                  "U3: mentor-status | mentor-preview | mentor-send (after preview)\n"
-                 "Mentor is optional, advisory and read-only. No progress is changed by these commands.\n";
+                 "Mentor is optional, advisory and read-only. No progress is changed by these commands.\n"
+                 "U4-F1: proposal-preview | proposal-stale-demo (in-memory fixture; nothing applied or saved)\n";
 }
 void showReport(const pu::ActionReport& r) {
     for (const auto& c:r.commands) {
@@ -53,6 +55,11 @@ void display(const pu::Mission& m,const pu::Progress& p) {
 }
 int main(int argc,char** argv) {
     try {
+        if (argc == 2 && (std::string(argv[1]) == "--proposal-fixture" || std::string(argv[1]) == "--proposal-stale-fixture")) {
+            const auto report = pu::preview::fixturePreview(std::string(argv[1]) == "--proposal-stale-fixture");
+            std::cout << report.text;
+            return report.state == pu::preview::State::displayed ? 0 : 1;
+        }
         if(argc==3 && std::string(argv[1])=="--action") {
             pu::RepositoryActions actions(std::filesystem::current_path());
             auto result=actions.execute(argv[2]);showReport(result);return result.ok()?0:1;
@@ -78,6 +85,10 @@ int main(int argc,char** argv) {
         while (std::cout << "> " && std::getline(std::cin,command)) {
             if (command == "quit") break;
             try {
+                if(command=="proposal-preview"||command=="proposal-stale-demo") {
+                    std::cout << pu::preview::fixturePreview(command=="proposal-stale-demo").text;
+                    continue;
+                }
                 if(command=="mentor-preview") {
                     mentorPreview=pu::mentor::context(mission,loaded.value);
                     std::cout << "Exact context for the fixed mentor question (no files/diffs attached):\n"
