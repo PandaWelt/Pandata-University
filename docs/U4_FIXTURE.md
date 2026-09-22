@@ -39,4 +39,4 @@ C++20 warnings-as-errors builds passed for the focused tests and complete Univer
 
 Syscall tracing was attempted but denied by host ptrace permissions; no syscall absence claim is made from that attempt. Object-symbol/source inspection found no file/process/network/provider dependency in the preview module. These are bounded client/fixture tests, not proof of a native sandbox. Reparse tests are not applicable to a module with no filesystem lookup; the prior Windows U2 junction skip remains skipped, not passed. U1–U3 suites and live mentoring were not rerun.
 
-Machine-readable evidence: validation/u4-fixture.json. No application features or learner mission answers were supplied. Next gate is Chris's focused Windows validation of U4-F1; full U4 is not complete.
+Machine-readable evidence: validation/u4-fixture.json. No application features or learner mission answers were supplied. Windows validation is now accepted from Chris's report at bdc6232; full U4 is not complete. See ../course/evidence/U4_bdc6232_review.md. The next step is prepared in U4_F2_PREPARATION.md; do not repeat this completed validation.

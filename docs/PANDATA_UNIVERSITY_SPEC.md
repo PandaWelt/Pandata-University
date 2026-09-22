@@ -40,13 +40,13 @@ University Maintenance Mode is distinct and explicit. Classes: content-only; cou
 
 ## Foundation staging and honest status
 
-| Stage | Deliverable / acceptance | Status reviewed 2026-09-21 |
+| Stage | Deliverable / acceptance | Status reviewed 2026-09-22 |
 |---|---|---|
 | U0 | Accept pilots, name/spec, architecture and learner policy | Implemented documentation/review. |
 | U1 | Mission loader, validation, separate recoverable progress, one-step presentation, tests | Implemented offline C++ console slice; validation reported in UNIVERSITY_HANDOFF.md. |
 | U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented and accepted from code/evidence and Chris's Windows report; junction automation skipped. No full editor/IDE. |
 | U3 | Read-only mission-aware mentor, account/limits, offline fallback | Adapter implemented; cumulative Windows safety validation accepted at 330420d. Live mentoring remains blocked; no successful auth/allowance/model run claimed. |
-| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | U4-F1 in-memory no-I/O fixture implemented under U-09a; focused Windows validation pending. Full Rescue/Maintenance/application remains gated and unimplemented. |
+| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | U4-F1 in-memory no-I/O fixture implemented under U-09a; focused Windows validation accepted from Chris's report at bdc6232. U4-F2 parsing is design-only. Full Rescue/Maintenance/application remains gated and unimplemented. |
 
 The console is a real minimal presentation for testing the engine, not the promised finished GUI. Windows compilation/interaction requires a local check; the implementation is compiled/tested on the available Linux host. Build/test commands for University are separate from the unchanged PandaBank project. CMake migration of PandaBank is not claimed.
 

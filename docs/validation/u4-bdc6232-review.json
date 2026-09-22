@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-22",
+  "commit": "bdc62321d2967fc90d292b451988d64f4ae57992",
+  "parent": "6c6286d158337bc62c4bd2f10bffd212020fcffe",
+  "commit_and_local_origin_main_verified": true,
+  "remote_push": "user_reported_not_queried",
+  "acceptance": "U4-F1_fixture_only",
+  "windows": {
+    "origin": "user_report",
+    "checks_passed": 33,
+    "preview_stale_fresh": "passed",
+    "no_preview_side_effects": "reported",
+    "raw_console_log_submitted": false,
+    "reviewer_ran_windows": false
+  },
+  "reviewer_linux": {
+    "focused_checks_passed": 33,
+    "cpp20_warnings_as_errors_full_university_build": "passed",
+    "focused_runs": [
+      {
+        "flag": "--proposal-fixture",
+        "exit": 0,
+        "stdout": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+      },
+      {
+        "flag": "--proposal-stale-fixture",
+        "exit": 1,
+        "stdout": "STALE: supplied revision or before-bytes changed. Preview refused; nothing applied.\n"
+      },
+      {
+        "flag": "--proposal-fixture",
+        "exit": 0,
+        "stdout": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+      }
+    ],
+    "empty_path": true,
+    "empty_working_directory_unchanged": true,
+    "syscall_trace": "not_run"
+  },
+  "U1_U2_U3_rerun": false,
+  "live_mentor_passed": false,
+  "full_U4_complete": false,
+  "next": "U4-F2_design_only",
+  "implementation_code_changed_by_review": false
+}

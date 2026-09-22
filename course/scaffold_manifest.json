@@ -145,8 +145,9 @@
       "owner": "University maintainer with Chris Windows validation",
       "origin": "assistant-supplied infrastructure, not learner coursework",
       "release_blocking": false,
-      "acceptance_evidence": "33 focused checks and full University GCC build; preservation/empty-PATH checks. Windows pending. See docs/validation/u4-fixture.json.",
-      "review_trigger": "Any file import, Git binding, provider, process, approval, persistence or application capability requires separate review; U-09a exemption is fixture-only."
+      "acceptance_evidence": "Commit bdc6232 verified; 33 Windows checks and preview/stale/fresh preservation reported by Chris. Reviewer: 33 focused GCC checks and complete University build, focused exits 0/1/0. See course/evidence/U4_bdc6232_review.md. No live or full-U4 acceptance; maintainer ownership review remains scheduled.",
+      "review_trigger": "Any file import, Git binding, provider, process, approval, persistence or application capability requires separate review; U-09a exemption is fixture-only.",
+      "validation_status": "fixture_contract_accepted_windows_user_reported_source_and_linux_verified"
     }
   ],
   "notes": [
