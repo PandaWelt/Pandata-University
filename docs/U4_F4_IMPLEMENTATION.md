@@ -1,3 +1,5 @@
+F4 accepted at **812223b**, including the committed input-file repair. See course/evidence/U4_812223b_review.md. The historical Windows-pending statements below are superseded. F5 hardens the validator without changing runtime controls; see U4_F5_IMPLEMENTATION.md.
+
 # U4-F4 — usable fixture review controls and reliable packaging
 
 Base: d35d5529a9541ba029f82a76ca86cae07e445c53, verified direct child of 6b8081d. F3 accepted; see ../course/evidence/U4_d35d552_review.md. F4 is the next presentation step: Chris can now drive the reviewed lifecycle in the existing University console instead of only watching compiled sequences. It adds no real-file proposal source or write authority.

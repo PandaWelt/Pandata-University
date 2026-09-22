@@ -10,6 +10,7 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 import zipfile
+from validator_input import validate_validator
 
 
 def digest(data):
@@ -62,6 +63,8 @@ def generate(baseline_zip, repository, paths, base, stage, validator, output):
             exists = name in archive.namelist()
             before = archive.read(name) if exists else b''
             after = target.read_bytes()
+            if relative.startswith("Validate-") and relative.endswith(".cmd"):
+                validate_validator(after.decode())
             if exists and before == after:
                 raise ValueError('Unchanged listed file: ' + relative)
             patch += f'diff --git a/{relative} b/{relative}\n'

@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal DisableDelayedExpansion
 set "PUROOT=%~dp0"
 where cl.exe >nul 2>nul
 if errorlevel 1 (
@@ -46,17 +46,32 @@ if not "%ERRORLEVEL%"=="1" goto failed
 echo U4-F4 demo: expected exit 0
 pandata-university.exe --review-controls-demo
 if not "%ERRORLEVEL%"=="0" goto failed
+cl.exe /nologo /std:c++20 /EHsc /W4 /utf-8 "%PUROOT%university\tests\console_input_probe.cpp" /Fe:console-input-probe.exe
+if errorlevel 1 goto failed
 echo Checking actual University console routing...
 pushd "%PUROOT%"
 if errorlevel 1 goto failed
+rem BEGIN DETERMINISTIC CONSOLE INPUT
 > "%PUSTAGE%\console-input.txt" echo(review-status
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-select
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-preview
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-apply
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-dismiss
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-preview
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(review-status
+if errorlevel 1 goto inputfailed
 >> "%PUSTAGE%\console-input.txt" echo(quit
+if errorlevel 1 goto inputfailed
+rem END DETERMINISTIC CONSOLE INPUT
+"%PUSTAGE%\console-input-probe.exe" --verify < "%PUSTAGE%\console-input.txt" > "%PUSTAGE%\input-evidence.json"
+if errorlevel 1 goto inputfailed
+echo PASS: exact 8-command CRLF input verified.
 "%PUSTAGE%\pandata-university.exe" < "%PUSTAGE%\console-input.txt" > "%PUSTAGE%\console.txt"
 set "PUCONSOLEEXIT=%ERRORLEVEL%"
 popd
@@ -76,6 +91,9 @@ echo U1-U3 suites were not rerun. Review operations saved no progress or evidenc
 echo Build and validator console capture: "%PUSTAGE%"
 popd
 exit /b 0
+:inputfailed
+popd
+goto failed
 :failed
 echo FAIL: keep the first compiler/test error or console.txt in the staging directory.
 popd

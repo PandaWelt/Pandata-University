@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "base_commit": "812223b0052dcbf5fa0833516a458a3d723aebd6",
+  "date": "2026-09-22",
+  "f4_acceptance": {
+    "windows": "Chris-reported 33/128/58/48 and demo/refusal/fresh 0/1/0; submitted console/input corroborates routing",
+    "review": "course/evidence/U4_812223b_review.md",
+    "live_mentor": false
+  },
+  "linux": {
+    "f4_checks": 48,
+    "command_boundary_checks": 203,
+    "byte_probe_checks": 53,
+    "maintainer_unittest_cases": 5,
+    "full_build": "GCC C++20 -Wall -Wextra -Werror passed",
+    "demo_exits": [
+      0,
+      1,
+      0
+    ],
+    "actual_console": "passed with LF stdin; not Windows cmd emulation",
+    "U1_U3_rerun": false
+  },
+  "windows": {
+    "native_execution": "not available; cmd.exe/MSVC/PowerShell absent",
+    "expected_boundary_checks": 203,
+    "expected_input_exits": [
+      0,
+      1,
+      0
+    ],
+    "pipeline_diagnostic": "optional native raw-hex capture; failed host stdin was not submitted"
+  },
+  "preservation": {
+    "product_and_university_runtime": "byte-identical to submitted archive",
+    "git_metadata": "byte-identical",
+    "learner_progress_and_existing_evidence": "byte-identical"
+  },
+  "packaging": {
+    "manifest_allowlist_patch": "exact unique equality required",
+    "old_F3_defect": "reproduced and rejected",
+    "grouped_echo_variants": "both rejected by generator regression",
+    "native_powershell": "not run"
+  }
+}

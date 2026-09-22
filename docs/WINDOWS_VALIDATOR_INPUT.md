@@ -1,0 +1,9 @@
+# Windows grouped-pipeline investigation
+
+A piped command block is reconstructed by cmd.exe for execution in another command processor. The documented investigation shows spaces inserted around command separators and before the closing parenthesis. ECHO emits the newly trailing spaces as data. Changing its spelling to echo( does not remove the block reconstruction; separate input-file writes avoid it. This accounts for every exact command, including quit, being refused while manual input works.
+
+Primary first-person investigation: https://stackoverflow.com/questions/29747539/windows-cmd-echo-pipe-is-adding-extra-space-at-the-end-how-to-trim-it (jeb, 2015; block reconstruction and escaped-separator experiment). Microsoft command syntax: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd .
+
+Evidence distinction: the submitted failed console transcripts prove refusals, not their precise raw stdin bytes. The successful submitted input file proves exact CRLF commands. The reconstruction mechanism is a supported diagnosis, not a claim that the reviewer ran Chris's Windows cmd.exe. Diagnose-Cmd-Pipeline.cmd captures both old spellings into a bounded binary stdin probe so the native host can supply exact hex evidence. It never invokes University. Neither failed form is used in production validation.
+
+Prevention: maintain exact runtime command matching. Generate separate prefix-redirection echo( lines from fixed safe tokens, disable delayed expansion, normalize batch files to CRLF, verify the whole input byte stream before the console, and reject pipelines/noncanonical blocks while packaging. Regression tests also reject whitespace/invisible characters/arguments/shell punctuation/case changes without state mutation. Package path uniqueness and exact set equality remain mandatory alongside transport validation.

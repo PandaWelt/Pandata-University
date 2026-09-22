@@ -1,3 +1,7 @@
+# U4-F4 accepted at 812223b; U4-F5 validator transport verification implemented, Windows pending. F4 Windows results are Chris-reported and submitted console/input artifacts corroborate routing. New tests preserve strict commands; production validators use exact input files and byte checks. See docs/U4_F5_IMPLEMENTATION.md. Live mentoring, application/source writes and automation remain blocked; U1–U3 are not reopened.
+
+No learner concepts, mission definitions, saved snapshots or historical evidence changed. F5 is test infrastructure, not learner coursework or runtime feature expansion.
+
 # U4-F3 accepted; U4-F4 controls implemented — 2026-09-22. Verified d35d5529a9541ba029f82a76ca86cae07e445c53 directly follows 6b8081d. Chris reports Windows 33/128/58 checks and lifecycle/stale/rejected/fresh exits 0/1/1/0, with no saved progress/evidence or U1–U3 rerun. Reviewer contract review and Linux checks corroborate F3. F4 exposes four exact fixture review commands in the existing console; 48 new checks and full Linux build pass, Windows pending. The F3 package-only allowlist defect is fixed through a single-source generator, exact manifest/allowlist/patch equality checks and a regression reproducing the defect. Next: apply the complete package and run Validate-Review-Controls.cmd. See docs/U4_F4_IMPLEMENTATION.md. Live mentor/application/writes/automation remain blocked.
 
 No learner confidence/profile, mission definition, saved snapshot or prior evidence was changed. Acceptance and implementation are delivered together. Earlier entries are historical.

@@ -187,8 +187,9 @@
       "owner": "University maintainer; Chris supplies Windows validation",
       "origin": "assistant-supplied infrastructure, not learner coursework",
       "release_blocking": false,
-      "acceptance_evidence": "48 focused Linux checks, full build, fixed demos, actual console and relaunch preservation. Windows pending. docs/validation/u4-f4.json",
-      "review_trigger": "Any proposal input, path, command callback, provider, persistence or approval/apply interface requires separate capability review."
+      "acceptance_evidence": "48 focused Linux checks, full build, fixed demos, actual console and relaunch preservation. Windows pending. docs/validation/u4-f4.json Accepted at 812223b: Chris Windows 33/128/58/48 and demos/routing 0/1/0, submitted successful console/input corroboration. See course/evidence/U4_812223b_review.md.",
+      "review_trigger": "Any proposal input, path, command callback, provider, persistence or approval/apply interface requires separate capability review.",
+      "validation_status": "accepted_fixture_contract_Windows_user_reported_submitted_console_verified"
     },
     {
       "id": "PACKAGE-SCOPE-GENERATOR",
@@ -200,8 +201,21 @@
       "owner": "University maintainer",
       "release_blocking": false,
       "origin": "assistant-supplied maintainer tooling; not a required learner/runtime dependency",
-      "acceptance_evidence": "Linux regression reproduces F3 duplicate Review/omitted Parser and rejects it; runtime PowerShell guards reviewed, Windows execution pending.",
+      "acceptance_evidence": "Linux regression reproduces F3 duplicate Review/omitted Parser and rejects it; runtime PowerShell guards reviewed, Windows execution pending. F5 retains exact F3 duplicate/omitted regression and adds production pipeline rejection tests.",
       "review_trigger": "Every future patch package must pass equality/uniqueness check after final script rendering and before archive creation."
+    },
+    {
+      "id": "U4-F5-VALIDATOR-INPUT",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "Validate-Console-Input.cmd; university/tests/console_input_probe.cpp; command_boundary_tests.cpp; university/tools/validator_input.py",
+      "purpose": "Exact bounded stdin transport verification and strict command regressions; no runtime capability",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "owner": "University maintainer; Chris supplies native Windows evidence",
+      "origin": "assistant-supplied test infrastructure, not learner coursework",
+      "release_blocking": false,
+      "acceptance_evidence": "203 Linux boundary checks, 53 byte-probe checks, maintainer regressions passed; native Windows pending. docs/validation/u4-f5.json",
+      "review_trigger": "Every validator/package modification; native diagnostics must stay separate from production routing."
     }
   ],
   "notes": [

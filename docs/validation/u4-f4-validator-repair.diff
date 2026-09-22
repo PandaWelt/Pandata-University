@@ -1,0 +1,19 @@
+--- delivered-F4/Validate-Review-Controls.cmd
++++ 812223b/Validate-Review-Controls.cmd
+@@ -49,7 +49,15 @@
+ echo Checking actual University console routing...
+ pushd "%PUROOT%"
+ if errorlevel 1 goto failed
+-(echo review-status& echo review-select& echo review-preview& echo review-apply& echo review-dismiss& echo review-preview& echo review-status& echo quit) | "%PUSTAGE%\pandata-university.exe" > "%PUSTAGE%\console.txt"
++> "%PUSTAGE%\console-input.txt" echo(review-status
++>> "%PUSTAGE%\console-input.txt" echo(review-select
++>> "%PUSTAGE%\console-input.txt" echo(review-preview
++>> "%PUSTAGE%\console-input.txt" echo(review-apply
++>> "%PUSTAGE%\console-input.txt" echo(review-dismiss
++>> "%PUSTAGE%\console-input.txt" echo(review-preview
++>> "%PUSTAGE%\console-input.txt" echo(review-status
++>> "%PUSTAGE%\console-input.txt" echo(quit
++"%PUSTAGE%\pandata-university.exe" < "%PUSTAGE%\console-input.txt" > "%PUSTAGE%\console.txt"
+ set "PUCONSOLEEXIT=%ERRORLEVEL%"
+ popd
+ if not "%PUCONSOLEEXIT%"=="0" goto failed

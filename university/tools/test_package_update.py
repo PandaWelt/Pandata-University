@@ -31,4 +31,19 @@ class PackageTests(unittest.TestCase):
             with self.assertRaises(ValueError): validate_package(out)
             with self.assertRaises(ValueError): generate(baseline, repo, paths+paths[:1], 'a'*40, 'U4-F4', 'Validate-Review-Controls.cmd', out)
 
+    def test_generator_rejects_pipelines(self):
+        from validator_input import COMMANDS, input_block
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); repo = root / 'repo'; repo.mkdir()
+            baseline = root / 'base.zip'
+            with zipfile.ZipFile(baseline, 'w'): pass
+            path = 'Validate-Console-Input.cmd'
+            for spelling in ['echo ', 'echo(']:
+                (repo / path).write_text('(' + '& '.join(spelling + c for c in COMMANDS) + ') | app.exe\n')
+                with self.assertRaises(ValueError):
+                    generate(baseline, repo, [path], 'a'*40, 'U4-F5', path, root / 'out')
+            (repo / path).write_text(input_block() + '\napp.exe < "%PUSTAGE%\\console-input.txt"\n')
+            generate(baseline, repo, [path], 'a'*40, 'U4-F5', path, root / 'out')
+            self.assertEqual(validate_package(root / 'out'), 1)
+
 if __name__ == '__main__': unittest.main()
