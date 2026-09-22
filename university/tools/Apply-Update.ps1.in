@@ -1,0 +1,80 @@
+param([Parameter(Mandatory=$true)][string]$Repository)
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$allowed = @(
+@@ALLOWLIST@@
+)
+$manifest = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'manifest.json') -Raw | ConvertFrom-Json
+# Check membership AND uniqueness. Equal counts alone missed the F3 defect.
+if ($allowed.Count -ne @($allowed | Select-Object -Unique).Count) { throw 'Duplicate package allowlist entry.' }
+$seen = @{}
+foreach ($file in $manifest.files) {
+    if ($seen.ContainsKey($file.path) -or $allowed -cnotcontains $file.path) { throw 'Manifest/allowlist mismatch or duplicate. Nothing applied.' }
+    $seen[$file.path] = $true
+}
+if ($seen.Count -ne $allowed.Count) { throw 'Manifest/allowlist mismatch. Nothing applied.' }
+function No-Reparse([string]$Path) {
+    $item = $Path
+    while ($item) {
+        if (Test-Path -LiteralPath $item) {
+            if ((Get-Item -LiteralPath $item -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw "Reparse path refused: $item" }
+        }
+        $parent = [IO.Directory]::GetParent($item)
+        if ($null -eq $parent) { break }
+        $item = $parent.FullName
+    }
+}
+function Hash([string]$Path) {
+    if (-not (Test-Path -LiteralPath $Path)) { return $null }
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { throw "Expected file: $Path" }
+    return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+$repo = (Resolve-Path -LiteralPath $Repository).Path
+function Target([string]$Relative) {
+    if ($allowed -cnotcontains $Relative) { throw 'Path outside package scope.' }
+    $target = Join-Path $repo $Relative
+    No-Reparse $target
+    return $target
+}
+No-Reparse $repo
+No-Reparse (Join-Path $repo '.git')
+$tool = Get-Command git.exe -CommandType Application -ErrorAction SilentlyContinue
+if ($null -eq $tool) { throw 'Git for Windows unavailable on PATH. Nothing applied.' }
+$git = $tool.Source
+$top = & $git --no-optional-locks -C $repo rev-parse --show-toplevel
+if ($LASTEXITCODE -ne 0) { throw 'Select the existing PandaBank Git repository.' }
+if ([IO.Path]::GetFullPath($top).TrimEnd([char]92,[char]47) -ne [IO.Path]::GetFullPath($repo).TrimEnd([char]92,[char]47)) { throw 'Select the repository root.' }
+& $git --no-optional-locks -C $repo merge-base --is-ancestor @@BASE@@ HEAD
+if ($LASTEXITCODE -ne 0) { throw 'Required @@BASE@@ history missing. Nothing applied.' }
+$patch = Join-Path $PSScriptRoot 'implementation.patch'
+No-Reparse $patch
+if ((Hash $patch) -ne $manifest.patch_sha256) { throw 'Patch hash mismatch. Nothing applied.' }
+$patchPaths = @(& $git --no-optional-locks -C $repo apply --numstat $patch)
+if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect patch paths.' }
+$patchSeen = @{}
+foreach ($line in $patchPaths) {
+    $parts = $line -split "`t"
+    if ($parts.Count -ne 3 -or $allowed -cnotcontains $parts[2] -or $patchSeen.ContainsKey($parts[2])) { throw 'Patch paths differ from allowlist.' }
+    $patchSeen[$parts[2]] = $true
+}
+if ($patchSeen.Count -ne $allowed.Count) { throw 'Patch paths differ from allowlist.' }
+$already = $true
+foreach ($file in $manifest.files) {
+    if ((Hash (Target $file.path)) -ne $file.after) { $already = $false }
+}
+if ($already) { Write-Host '@@STAGE@@ already present; nothing changed.'; exit 0 }
+foreach ($file in $manifest.files) {
+    if ((Hash (Target $file.path)) -ne $file.before) { throw "Touched file differs: $($file.path). Preserve edits; do not reset." }
+}
+& $git --no-optional-locks -C $repo apply --check --whitespace=nowarn $patch
+if ($LASTEXITCODE -ne 0) { throw 'Patch preflight failed. Nothing applied.' }
+foreach ($file in $manifest.files) {
+    if ((Hash (Target $file.path)) -ne $file.before) { throw 'Files changed during preflight. Nothing applied.' }
+}
+& $git --no-optional-locks -C $repo apply --whitespace=nowarn $patch
+if ($LASTEXITCODE -ne 0) { throw 'Git refused the patch. Keep the error; do not reset.' }
+foreach ($file in $manifest.files) {
+    if ((Hash (Target $file.path)) -ne $file.after) { throw "Post-apply mismatch: $($file.path). Preserve files for review; do not reset." }
+}
+Write-Host '@@STAGE@@ applied. No staging, commits, resets or learner-progress changes.'
+Write-Host 'Next: in Developer PowerShell for VS 2022 at the repository root, run .\@@VALIDATOR@@'

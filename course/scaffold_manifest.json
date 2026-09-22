@@ -173,8 +173,35 @@
       "release_blocking": false,
       "owner": "University maintainer; Chris supplies Windows evidence",
       "origin": "assistant-supplied infrastructure, not learner coursework",
-      "acceptance_evidence": "58 focused Linux checks, unchanged 33/128 dependencies, full build, demos 0/1/1/0, ASan/UBSan without leak detection; Windows pending. docs/validation/u4-f3.json",
-      "review_trigger": "Any external input, file/Git/provider/process/store access, approval token or apply capability requires separately reviewed boundary; status is historical, not freshness authorization."
+      "acceptance_evidence": "58 focused Linux checks, unchanged 33/128 dependencies, full build, demos 0/1/1/0, ASan/UBSan without leak detection; Windows pending. docs/validation/u4-f3.json Windows accepted at d35d552: 33/128/58 and 0/1/1/0 by Chris report, source/lifecycle review corroborated. Package allowlist typo was corrected outside repo; it is a packaging defect, not a lifecycle code failure.",
+      "review_trigger": "Any external input, file/Git/provider/process/store access, approval token or apply capability requires separately reviewed boundary; status is historical, not freshness authorization.",
+      "validation_status": "accepted_Windows_user_reported_Linux_contract_verified"
+    },
+    {
+      "id": "U4-F4-CONTROLS",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/ReviewControls.h; university/src/ReviewControls.cpp; university/tests/review_controls_tests.cpp; main.cpp routing; Validate-Review-Controls.cmd; launcher integration",
+      "purpose": "Fixed fixture review controls using existing console and unchanged F3 session",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "owner": "University maintainer; Chris supplies Windows validation",
+      "origin": "assistant-supplied infrastructure, not learner coursework",
+      "release_blocking": false,
+      "acceptance_evidence": "48 focused Linux checks, full build, fixed demos, actual console and relaunch preservation. Windows pending. docs/validation/u4-f4.json",
+      "review_trigger": "Any proposal input, path, command callback, provider, persistence or approval/apply interface requires separate capability review."
+    },
+    {
+      "id": "PACKAGE-SCOPE-GENERATOR",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/tools/package_update.py; Apply-Update.ps1.in; test_package_update.py",
+      "purpose": "Generate one literal manifest/allowlist/patch path set; catch duplicate/missing path defect before shipping",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "owner": "University maintainer",
+      "release_blocking": false,
+      "origin": "assistant-supplied maintainer tooling; not a required learner/runtime dependency",
+      "acceptance_evidence": "Linux regression reproduces F3 duplicate Review/omitted Parser and rejects it; runtime PowerShell guards reviewed, Windows execution pending.",
+      "review_trigger": "Every future patch package must pass equality/uniqueness check after final script rendering and before archive creation."
     }
   ],
   "notes": [

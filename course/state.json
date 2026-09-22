@@ -52,7 +52,7 @@
     "university_windows": "U1_U2_accepted_U3_86_checks_passed_user_reported_expected_offline_evidence_verified",
     "codex_app_server": "official_0.155.1_linux_schema_generation_verified_live_not_run",
     "university_u2": "see_docs/validation/u2-validation.txt",
-    "git_submission": "HEAD_6b8081d_verified_direct_child_of_6da8b60_F2_package_bytes_match",
+    "git_submission": "HEAD_d35d552_verified_direct_child_of_6b8081d",
     "windows_u2_junctions": "skipped_creation_denied_not_passed",
     "university_u3": "see_docs/validation/u3-validation.json",
     "u3_compatibility": "windows_safety_validation_accepted_live_mentor_blocked",
@@ -62,7 +62,10 @@
     "u4_review": "course/evidence/U4_bdc6232_review.md",
     "u4_f2": "accepted_33_F1_128_F2_and_0_1_1_0_Windows_user_reported_Linux_corroborated",
     "u4_f2_review": "course/evidence/U4_6b8081d_review.md",
-    "u4_f3": "58_Linux_checks_full_build_and_0_1_1_0_passed_Windows_pending"
+    "u4_f3": "accepted_Windows_33_128_58_and_0_1_1_0_user_reported_Linux_corroborated",
+    "u4_f3_review": "course/evidence/U4_d35d552_review.md",
+    "u4_f4": "48_Linux_checks_full_build_actual_console_and_demos_passed_Windows_pending",
+    "package_scope": "single_path_source_with_exact_uniqueness_and_manifest_allowlist_patch_equality_regression"
   },
   "concepts": {
     "vector_value_storage": "practiced_with_help",
@@ -73,20 +76,20 @@
     "debugger_observation": "practiced_independently",
     "debug_invariants": "practiced_independently"
   },
-  "next_action": "Apply U4-F3 complete package, then run .\\Validate-Proposal-Review.cmd in Developer PowerShell for VS 2022 at the repository root. Return focused results; do not rerun U1-U3.",
+  "next_action": "Apply complete F4 package using Apply-Update.ps1; run .\\Validate-Review-Controls.cmd in Developer PowerShell for VS 2022 at the repository root; return focused results.",
   "review_followups": [
     "Selection/deletion transfer explanation accepted in 002; implementation transfer still due before durable confidence.",
     "Header/source orientation is not a completed refactor or graded knowledge proof.",
     "U1 answers reviewed; orientation completion is not a product refactor or durable mastery.",
     "U3 Windows safety validation accepted; live authentication/allowance/model and native exclusive read isolation remain unaccepted."
   ],
-  "active_experience": "u4_f3_windows_validation",
+  "active_experience": "u4_f4_windows_validation",
   "university": {
     "U0": "review_and_spec_complete",
     "U1": "completed_windows_user_reported_progress_verified",
     "U2": "completed_windows_user_reported_code_history_evidence_verified",
     "U3": "windows_safety_validation_complete_live_mentor_blocked",
-    "U4": "F1_F2_accepted_F3_implemented_Windows_pending_full_automation_blocked",
+    "U4": "F1_F2_F3_accepted_F4_implemented_Windows_pending_automation_blocked",
     "learner_orientation": "completed",
     "progress_source": "course/university/progress/u1-boundaries/*.pup",
     "profile": "course/learner_profile.json",
@@ -100,15 +103,16 @@
     "u3_validation_commit": "330420d36035c71777ff2c1cfeb8f2dbbf714be9",
     "u3_live_mentor": "blocked_exclusive_context_read_isolation_not_established",
     "u4_fixture_commit": "bdc62321d2967fc90d292b451988d64f4ae57992",
-    "u4_f2_commit": "6b8081da77d0413abd1bd5516db9b9c0c44eebf7"
+    "u4_f2_commit": "6b8081da77d0413abd1bd5516db9b9c0c44eebf7",
+    "u4_f3_commit": "d35d5529a9541ba029f82a76ca86cae07e445c53"
   },
   "next_foundation": {
-    "id": "U4-F3",
-    "scope": "one_transient_fixture_review_session_no_external_access_or_apply",
-    "brief": "docs/U4_F3_IMPLEMENTATION.md",
-    "status": "implemented_windows_validation_pending",
+    "id": "U4-F4",
+    "scope": "four_exact_console_controls_for_compiled_fixture_only",
+    "brief": "docs/U4_F4_IMPLEMENTATION.md",
+    "status": "implemented_Windows_validation_pending",
     "implementation_authorized": true,
-    "boundary_decision": "U-09c pure-data review lifecycle only",
+    "boundary_decision": "U-09d existing-console fixed fixture controls; no external proposal input",
     "full_U4_automation_authorized": false
   },
   "delivery_workflow": "On clean returned validation, combine acceptance records and next safe directly testable implementation; stop only for real blocker or material decision."

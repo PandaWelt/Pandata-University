@@ -5,6 +5,7 @@
 #include "ProposalPreview.h"
 #include "ProposalParser.h"
 #include "ProposalReview.h"
+#include "ReviewControls.h"
 #include <charconv>
 #include <filesystem>
 #include <fstream>
@@ -13,6 +14,7 @@
 
 namespace {
 void actionsHelp() {
+    std::cout << "U4-F4 fixture: review-select | review-preview | review-status | review-dismiss (nothing applied or saved)\n";
     std::cout << "\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\n"
                  "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
                  "Actions save command/output/exit evidence. No general shell or source editor is available.\n"
@@ -57,6 +59,16 @@ void display(const pu::Mission& m,const pu::Progress& p) {
 }
 int main(int argc,char** argv) {
     try {
+        if (argc >= 2 && std::string(argv[1]).starts_with("--review-controls")) {
+            const std::string flag = argv[1];
+            if (argc != 2 || (flag != "--review-controls-demo" && flag != "--review-controls-refusal")) {
+                std::cout << "REJECTED: use one fixed review-controls flag without arguments.\n";
+                return 1;
+            }
+            const auto report = pu::preview::reviewControlsDemo(flag == "--review-controls-refusal");
+            std::cout << report.text;
+            return report.ok ? 0 : 1;
+        }
         if (argc >= 2 && std::string(argv[1]).starts_with("--proposal-review")) {
             const std::string flag = argv[1];
             if (argc != 2 || (flag != "--proposal-review-demo" &&
@@ -110,10 +122,15 @@ int main(int argc,char** argv) {
         for (const auto& warning : loaded.warnings) std::cout << "Recovery: " << warning << '\n';
         pu::RepositoryActions actions(std::filesystem::current_path());
         display(mission,loaded.value);actionsHelp();
+        pu::preview::ReviewControls reviewControls;
         std::string command, mentorPreview;
         while (std::cout << "> " && std::getline(std::cin,command)) {
             if (command == "quit") break;
             try {
+                if (command.starts_with("review-")) {
+                    std::cout << reviewControls.execute(command).text;
+                    continue;
+                }
                 if(command=="proposal-preview"||command=="proposal-stale-demo") {
                     std::cout << pu::preview::fixturePreview(command=="proposal-stale-demo").text;
                     continue;

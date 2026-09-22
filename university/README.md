@@ -1,3 +1,5 @@
+U4-F4: `review-select`, `review-preview`, `review-status`, `review-dismiss` now control the compiled fixture in the normal University console. No proposal/path input or apply command exists. Run `Validate-Review-Controls.cmd` in Developer PowerShell for VS 2022. See ../docs/U4_F4_IMPLEMENTATION.md for exact results and packaging safeguards.
+
 U4-F3: one in-memory review session can select, preview, dismiss and invalidate a fixture. Run `Validate-Proposal-Review.cmd` from Developer PowerShell for VS 2022 at the repository root. See ../docs/U4_F3_IMPLEMENTATION.md. No arbitrary input/import, approval/apply, Git, AI or persistence route is added. F2 is accepted at 6b8081d.
 
 U4-F2: focused compiled serialized-proposal demos are available. Run `Validate-Proposal-Parser.cmd` from Developer PowerShell for VS 2022 at the repository root. See ../docs/U4_F2_IMPLEMENTATION.md. This route has no stdin/file import, Git, AI, progress save or apply capability.

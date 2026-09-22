@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-22",
+  "base_commit": "d35d5529a9541ba029f82a76ca86cae07e445c53",
+  "platform": "Linux",
+  "F4_checks": 48,
+  "dependency_checks": {
+    "F1": 33,
+    "F2": 128,
+    "F3": 58
+  },
+  "full_Cpp20_warnings_as_errors_build": "passed",
+  "ASan_UBSan": "passed_leak_detection_disabled_known_host_limit",
+  "focused_and_actual_console_runs": [
+    {
+      "args": [
+        "--review-controls-demo"
+      ],
+      "exit": 0,
+      "stdout": "REVIEW STATUS: empty (last operation only; not approval or a real-file freshness check).\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nDISMISSED: selection cleared. Nothing applied or saved.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\nREVIEW STATUS: dismissed (last operation only; not approval or a real-file freshness check).\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--review-controls-refusal"
+      ],
+      "exit": 1,
+      "stdout": "PROPOSED: fixture selected in memory; preview required. No approval or write authority.\nREJECTED: use exactly review-select, review-preview, review-status or review-dismiss; no arguments.\nREVIEW STATUS: proposed (last operation only; not approval or a real-file freshness check).\n"
+    },
+    {
+      "args": [
+        "--review-controls-demo"
+      ],
+      "exit": 0,
+      "stdout": "REVIEW STATUS: empty (last operation only; not approval or a real-file freshness check).\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nDISMISSED: selection cleared. Nothing applied or saved.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\nREVIEW STATUS: dismissed (last operation only; not approval or a real-file freshness check).\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--review-controls-demo",
+        "C:\\secret"
+      ],
+      "exit": 1,
+      "stdout": "REJECTED: use one fixed review-controls flag without arguments.\n"
+    },
+    {
+      "args": [
+        "--review-controls-unknown"
+      ],
+      "exit": 1,
+      "stdout": "REJECTED: use one fixed review-controls flag without arguments.\n"
+    },
+    {
+      "console_commands": "review-status\nreview-select\nreview-preview\nreview-apply\nreview-dismiss\nreview-preview\nreview-status\nquit\n",
+      "exit": 0,
+      "stdout": "\nPandata University | Offline foundation\nOne responsibility, two C++ files\nPrepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.\nYour responses are saved. U2 repository actions are now available; type run-check to begin.\nU4-F4 fixture: review-select | review-preview | review-status | review-dismiss (nothing applied or saved)\n\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\nrun-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\nActions save command/output/exit evidence. No general shell or source editor is available.\nU3: mentor-status | mentor-preview | mentor-send (after preview)\nMentor is optional, advisory and read-only. No progress is changed by these commands.\nU4-F1: proposal-preview | proposal-stale-demo (in-memory fixture; nothing applied or saved)\n> REVIEW STATUS: empty (last operation only; not approval or a real-file freshness check).\n> PROPOSED: fixture selected in memory; preview required. No approval or write authority.\n> DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n> REJECTED: use exactly review-select, review-preview, review-status or review-dismiss; no arguments.\n> DISMISSED: selection cleared. Nothing applied or saved.\n> NO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\n> REVIEW STATUS: dismissed (last operation only; not approval or a real-file freshness check).\n> "
+    },
+    {
+      "console_commands": "review-status\nreview-preview\nquit\n",
+      "exit": 0,
+      "stdout": "\nPandata University | Offline foundation\nOne responsibility, two C++ files\nPrepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.\nYour responses are saved. U2 repository actions are now available; type run-check to begin.\nU4-F4 fixture: review-select | review-preview | review-status | review-dismiss (nothing applied or saved)\n\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\nrun-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\nActions save command/output/exit evidence. No general shell or source editor is available.\nU3: mentor-status | mentor-preview | mentor-send (after preview)\nMentor is optional, advisory and read-only. No progress is changed by these commands.\nU4-F1: proposal-preview | proposal-stale-demo (in-memory fixture; nothing applied or saved)\n> REVIEW STATUS: empty (last operation only; not approval or a real-file freshness check).\n> NO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\n> "
+    }
+  ],
+  "F3_entry_exits": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "runtime_all_repository_bytes_unchanged": true,
+  "completed_U1_still_complete": true,
+  "fresh_console_review_state": "empty",
+  "U1_U2_U3_suites_rerun": false,
+  "Windows": "not_run_pending_Chris",
+  "live_mentor": "blocked",
+  "new_external_capabilities": false,
+  "syscall_tracing": "not_performed"
+}

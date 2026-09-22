@@ -1,3 +1,5 @@
+Accepted 2026-09-22 at d35d552. Windows results are Chris-reported; Linux contract checks corroborate them. The original package apply allowlist had a generator defect corrected by Chris outside the repository. That installer was not validated by native execution here; prior patch-only checks did not catch its scope mismatch. See U4_F4_IMPLEMENTATION.md for the permanent packaging correction and next validation. Earlier F3 pending/apply instructions below are historical.
+
 # U4-F3 — one transient proposal-review session
 
 Base: verified 6b8081da77d0413abd1bd5516db9b9c0c44eebf7. F2 is accepted from committed-source verification, focused Linux checks and Chris's Windows report. This complete package combines that acceptance with the next directly testable implementation. U-09c documents the boundary before code was added.
