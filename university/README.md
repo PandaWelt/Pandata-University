@@ -1,3 +1,5 @@
+U4-F2: focused compiled serialized-proposal demos are available. Run `Validate-Proposal-Parser.cmd` from Developer PowerShell for VS 2022 at the repository root. See ../docs/U4_F2_IMPLEMENTATION.md. This route has no stdin/file import, Git, AI, progress save or apply capability.
+
 U4-F1: proposal-preview and proposal-stale-demo display/reject an in-memory fixture without saving or executing anything. For focused Windows validation without repeating U1–U3, run Validate-Proposal-Preview.cmd from Developer PowerShell for VS 2022. See docs/U4_FIXTURE.md; all live/apply/automation gates remain unchanged.
 
 # U3 current use

@@ -1,0 +1,61 @@
+{
+  "base_commit": "6da8b60f51587ccbd491264d6b52186064f1261b",
+  "platform": "Linux",
+  "f2_checks_passed": 128,
+  "unchanged_f1_dependency_checks_passed": 33,
+  "full_university_cpp20_warnings_as_errors_build": "passed",
+  "asan_ubsan": "passed_with_leak_detection_disabled",
+  "leak_sanitizer": "unavailable_host_ptrace_restriction_not_passed",
+  "focused_empty_path_runs": [
+    {
+      "args": [
+        "--proposal-json-fixture"
+      ],
+      "exit": 0,
+      "output": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--proposal-json-malformed"
+      ],
+      "exit": 1,
+      "output": "REJECTED: invalid or unsupported serialized fixture proposal. Nothing applied or saved.\n"
+    },
+    {
+      "args": [
+        "--proposal-json-stale"
+      ],
+      "exit": 1,
+      "output": "STALE: supplied revision or before-bytes changed. Preview refused; nothing applied.\n"
+    },
+    {
+      "args": [
+        "--proposal-json-fixture"
+      ],
+      "exit": 0,
+      "output": "DISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--proposal-json-fixture",
+        "C:\\secret"
+      ],
+      "exit": 1,
+      "output": "REJECTED: use one fixed serialized-fixture flag without arguments.\n"
+    },
+    {
+      "args": [
+        "--proposal-json-unknown"
+      ],
+      "exit": 1,
+      "output": "REJECTED: use one fixed serialized-fixture flag without arguments.\n"
+    }
+  ],
+  "empty_working_directory_unchanged": true,
+  "runtime_existing_repository_bytes_unchanged": true,
+  "parser_object_dependencies": "unchanged Json codec, F1 inspect/fixtureSnapshot, standard memory/string/exception support; no filesystem/process/provider/store",
+  "windows": "not_run_pending_Chris_validation",
+  "U1_U2_U3_suites_rerun": false,
+  "F1_completion_reopened": false,
+  "live_mentor_passed": false
+}

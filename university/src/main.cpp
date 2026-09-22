@@ -3,6 +3,7 @@
 #include "RepositoryActions.h"
 #include "mentor/Mentor.h"
 #include "ProposalPreview.h"
+#include "ProposalParser.h"
 #include <charconv>
 #include <filesystem>
 #include <fstream>
@@ -55,6 +56,20 @@ void display(const pu::Mission& m,const pu::Progress& p) {
 }
 int main(int argc,char** argv) {
     try {
+        if (argc >= 2 && std::string(argv[1]).starts_with("--proposal-json")) {
+            // Refuse extra payload/path arguments before any repository/progress access.
+            const std::string flag = argv[1];
+            if (argc != 2 || (flag != "--proposal-json-fixture" &&
+                flag != "--proposal-json-malformed" && flag != "--proposal-json-stale")) {
+                std::cout << "REJECTED: use one fixed serialized-fixture flag without arguments.\n";
+                return 1;
+            }
+            const auto example = flag == "--proposal-json-malformed" ? pu::preview::SerializedFixture::malformed :
+                flag == "--proposal-json-stale" ? pu::preview::SerializedFixture::stale : pu::preview::SerializedFixture::valid;
+            const auto report = pu::preview::serializedFixturePreview(example);
+            std::cout << report.text;
+            return report.state == pu::preview::State::displayed ? 0 : 1;
+        }
         if (argc == 2 && (std::string(argv[1]) == "--proposal-fixture" || std::string(argv[1]) == "--proposal-stale-fixture")) {
             const auto report = pu::preview::fixturePreview(std::string(argv[1]) == "--proposal-stale-fixture");
             std::cout << report.text;

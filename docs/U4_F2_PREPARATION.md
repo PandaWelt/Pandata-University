@@ -1,3 +1,5 @@
+Implementation status — 2026-09-22: Chris explicitly authorized this committed contract; U4-F2 is now implemented. See U4_F2_IMPLEMENTATION.md for the one-package apply/validate sequence. The design-only authorization and next-action text below is historical. This authorization covers only the pure-data parser and compiled demos; no external capability is added.
+
 # U4-F2 preparation — serialized proposal validation in memory
 
 Status: **design only; not implemented or authorized by this records review**. Prerequisite: accepted U4-F1 at bdc6232. This is one University engineering step, not a PandaBank refactor or learner worksheet. U4-F1 need not be repeated.

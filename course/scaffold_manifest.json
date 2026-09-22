@@ -148,6 +148,19 @@
       "acceptance_evidence": "Commit bdc6232 verified; 33 Windows checks and preview/stale/fresh preservation reported by Chris. Reviewer: 33 focused GCC checks and complete University build, focused exits 0/1/0. See course/evidence/U4_bdc6232_review.md. No live or full-U4 acceptance; maintainer ownership review remains scheduled.",
       "review_trigger": "Any file import, Git binding, provider, process, approval, persistence or application capability requires separate review; U-09a exemption is fixture-only.",
       "validation_status": "fixture_contract_accepted_windows_user_reported_source_and_linux_verified"
+    },
+    {
+      "id": "U4-F2-PARSER",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/ProposalParser.h; university/src/ProposalParser.cpp; university/tests/proposal_parser_tests.cpp; main.cpp focused flags; Validate-Proposal-Parser.cmd; launcher build integration",
+      "purpose": "Pure bounded serialized proposal validation feeding unchanged fixture policy",
+      "status": "review_scheduled",
+      "owner": "University maintainer; Chris supplies Windows validation",
+      "origin": "assistant-supplied infrastructure, not learner coursework",
+      "replacement_mission": null,
+      "release_blocking": false,
+      "acceptance_evidence": "128 focused Linux checks, 33 unchanged F1 dependency checks, full C++20 build and valid/rejected/stale/valid 0/1/1/0 passed. ASan/UBSan passed with unsupported leak detection disabled. Windows pending. docs/validation/u4-f2.json",
+      "review_trigger": "Any import, file/Git/process/provider/store/approval/apply interface or schema/snapshot authority expansion requires separate reviewed boundary."
     }
   ],
   "notes": [

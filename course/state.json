@@ -52,14 +52,15 @@
     "university_windows": "U1_U2_accepted_U3_86_checks_passed_user_reported_expected_offline_evidence_verified",
     "codex_app_server": "official_0.155.1_linux_schema_generation_verified_live_not_run",
     "university_u2": "see_docs/validation/u2-validation.txt",
-    "git_submission": "HEAD_bdc6232_verified_direct_child_of_records_6c6286d",
+    "git_submission": "HEAD_6da8b60_verified_records_direct_child_of_bdc6232",
     "windows_u2_junctions": "skipped_creation_denied_not_passed",
     "university_u3": "see_docs/validation/u3-validation.json",
     "u3_compatibility": "windows_safety_validation_accepted_live_mentor_blocked",
     "u3_review": "course/evidence/U3_330420d_review.md",
     "github_backup": "user_reported_remote_and_origin_main_present_not_remotely_verified",
     "u4_fixture": "accepted_source_review_33_Linux_checks_and_33_Windows_checks_user_reported",
-    "u4_review": "course/evidence/U4_bdc6232_review.md"
+    "u4_review": "course/evidence/U4_bdc6232_review.md",
+    "u4_f2": "128_Linux_checks_full_build_and_0_1_1_0_passed_Windows_pending"
   },
   "concepts": {
     "vector_value_storage": "practiced_with_help",
@@ -70,20 +71,20 @@
     "debugger_observation": "practiced_independently",
     "debug_invariants": "practiced_independently"
   },
-  "next_action": "Apply the U4-F1 records-review package, then read docs/U4_F2_PREPARATION.md. No stage rerun or source edit is assigned.",
+  "next_action": "Apply U4-F2 package and run .\\Validate-Proposal-Parser.cmd from Developer PowerShell for VS 2022 in the repository. Return results; no U1-U3 rerun or F1 reacceptance required.",
   "review_followups": [
     "Selection/deletion transfer explanation accepted in 002; implementation transfer still due before durable confidence.",
     "Header/source orientation is not a completed refactor or graded knowledge proof.",
     "U1 answers reviewed; orientation completion is not a product refactor or durable mastery.",
     "U3 Windows safety validation accepted; live authentication/allowance/model and native exclusive read isolation remain unaccepted."
   ],
-  "active_experience": "u4_f2_design_ready_not_implemented",
+  "active_experience": "u4_f2_windows_validation",
   "university": {
     "U0": "review_and_spec_complete",
     "U1": "completed_windows_user_reported_progress_verified",
     "U2": "completed_windows_user_reported_code_history_evidence_verified",
     "U3": "windows_safety_validation_complete_live_mentor_blocked",
-    "U4": "F1_accepted_fixture_only_F2_design_prepared_full_automation_blocked",
+    "U4": "F1_accepted_F2_implemented_Windows_pending_full_automation_blocked",
     "learner_orientation": "completed",
     "progress_source": "course/university/progress/u1-boundaries/*.pup",
     "profile": "course/learner_profile.json",
@@ -101,10 +102,11 @@
   "next_foundation": {
     "id": "U4-F2",
     "scope": "bounded_serialized_proposal_validation_in_memory_only",
-    "brief": "docs/U4_F2_PREPARATION.md",
-    "status": "design_prepared_not_implemented",
-    "implementation_authorized": false,
-    "boundary_decision": "U-09a remains F1-only; F2 capability analysis prepared, not a policy waiver",
+    "brief": "docs/U4_F2_IMPLEMENTATION.md",
+    "status": "implemented_windows_validation_pending",
+    "implementation_authorized": true,
+    "boundary_decision": "U-09b authorized pure-data parser only",
     "full_U4_automation_authorized": false
-  }
+  },
+  "delivery_workflow": "On clean returned validation, combine acceptance records and next safe directly testable implementation; stop only for real blocker or material decision."
 }
