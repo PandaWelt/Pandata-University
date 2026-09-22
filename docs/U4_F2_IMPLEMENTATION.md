@@ -1,3 +1,5 @@
+Accepted — 2026-09-22 at 6b8081d: Chris reports successful Windows validation; source/package identity and focused Linux checks verified. See ../course/evidence/U4_6b8081d_review.md. Do not repeat this completed assignment; F3 validation is now next. Earlier pending/apply instructions below describe the original F2 delivery.
+
 # U4-F2 — bounded in-memory proposal parser
 
 Base: 6da8b60f51587ccbd491264d6b52186064f1261b, verified direct child of accepted F1 implementation bdc6232. Chris explicitly authorized implementation of the committed U4_F2_PREPARATION contract. U-09b records that scoped boundary. This package contains working code and focused validation, not another preparation assignment.

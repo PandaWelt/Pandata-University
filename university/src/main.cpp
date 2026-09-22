@@ -4,6 +4,7 @@
 #include "mentor/Mentor.h"
 #include "ProposalPreview.h"
 #include "ProposalParser.h"
+#include "ProposalReview.h"
 #include <charconv>
 #include <filesystem>
 #include <fstream>
@@ -56,6 +57,19 @@ void display(const pu::Mission& m,const pu::Progress& p) {
 }
 int main(int argc,char** argv) {
     try {
+        if (argc >= 2 && std::string(argv[1]).starts_with("--proposal-review")) {
+            const std::string flag = argv[1];
+            if (argc != 2 || (flag != "--proposal-review-demo" &&
+                flag != "--proposal-review-stale" && flag != "--proposal-review-rejected")) {
+                std::cout << "REJECTED: use one fixed review-fixture flag without arguments.\n";
+                return 1;
+            }
+            const auto example = flag == "--proposal-review-stale" ? pu::preview::ReviewFixture::stale :
+                flag == "--proposal-review-rejected" ? pu::preview::ReviewFixture::rejectedReplacement : pu::preview::ReviewFixture::lifecycle;
+            const auto report = pu::preview::reviewFixtureDemo(example);
+            std::cout << report.text;
+            return report.state == pu::preview::ReviewState::displayed ? 0 : 1;
+        }
         if (argc >= 2 && std::string(argv[1]).starts_with("--proposal-json")) {
             // Refuse extra payload/path arguments before any repository/progress access.
             const std::string flag = argv[1];

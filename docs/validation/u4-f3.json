@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-22",
+  "base_commit": "6b8081da77d0413abd1bd5516db9b9c0c44eebf7",
+  "platform": "Linux",
+  "full_university_cpp20_warnings_as_errors_build": "passed",
+  "f3_checks_passed": 58,
+  "unchanged_dependency_checks": {
+    "F1": 33,
+    "F2": 128
+  },
+  "accepted_F2_entry_sequence": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "asan_ubsan": "passed_leak_detection_disabled_due_known_host_limit_no_leak_claim",
+  "focused_runs": [
+    {
+      "args": [
+        "--proposal-review-demo"
+      ],
+      "exit": 0,
+      "stdout": "PROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nDISMISSED: selection cleared. Nothing applied or saved.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--proposal-review-stale"
+      ],
+      "exit": 1,
+      "stdout": "PROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nSTALE: supplied revision or before-bytes changed. Preview refused; nothing applied.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\n"
+    },
+    {
+      "args": [
+        "--proposal-review-rejected"
+      ],
+      "exit": 1,
+      "stdout": "PROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nREJECTED: invalid or unsupported serialized fixture proposal. Nothing applied or saved.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\n"
+    },
+    {
+      "args": [
+        "--proposal-review-demo"
+      ],
+      "exit": 0,
+      "stdout": "PROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\nDISMISSED: selection cleared. Nothing applied or saved.\nNO ACTIVE PROPOSAL: select a valid fixture before preview. Nothing applied or saved.\nPROPOSED: fixture selected in memory; preview required. No approval or write authority.\nDISPLAYED: U4-F1 in-memory fixture only. No approval or write authority.\nNo files, Git, processes or AI were consulted by this preview.\nLogical path: fixture/review-note.txt (not opened)\nSupplied fixture revision: \"fixture-r1\" (not a Git check)\nExact replacement view; quoted bytes preserve whitespace and escape controls:\n- \"Review pending.\\n\"\n+ \"Review displayed.\\n\"\nUnverified proposal claim: \"This wording is easier to read.\"\nNo compiler/test result is established by this proposal.\nNothing applied or saved. No rollback needed.\n"
+    },
+    {
+      "args": [
+        "--proposal-review-demo",
+        "C:\\secret"
+      ],
+      "exit": 1,
+      "stdout": "REJECTED: use one fixed review-fixture flag without arguments.\n"
+    },
+    {
+      "args": [
+        "--proposal-review-unknown"
+      ],
+      "exit": 1,
+      "stdout": "REJECTED: use one fixed review-fixture flag without arguments.\n"
+    }
+  ],
+  "empty_PATH": true,
+  "empty_working_directory_unchanged": true,
+  "object_dependency_review": "F2 inspectSerialized, F1 fixtureSnapshot and standard memory/string/exception only",
+  "syscall_trace": "not_run_no_OS_isolation_claim",
+  "U1_U2_U3_suites_rerun": false,
+  "windows": "not_run_pending_Chris",
+  "live_mentor": "still_blocked",
+  "full_U4_complete": false
+}

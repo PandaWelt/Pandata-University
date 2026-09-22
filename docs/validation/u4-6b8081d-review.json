@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-22",
+  "commit": "6b8081da77d0413abd1bd5516db9b9c0c44eebf7",
+  "parent": "6da8b60f51587ccbd491264d6b52186064f1261b",
+  "delivered_F2_postimages_match": true,
+  "local_origin_main_matches": true,
+  "remote_push": "user_reported_not_queried",
+  "acceptance": "F2_bounded_fixture_parser_only",
+  "Windows": {
+    "origin": "Chris_report",
+    "dependency_checks": 33,
+    "parser_checks": 128,
+    "exits": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "progress_evidence_saved": false,
+    "U1_U2_U3_rerun": false,
+    "compiler_warnings": "non_blocking_reported",
+    "raw_log_supplied": false,
+    "reviewer_native_run": false
+  },
+  "reviewer_Linux": {
+    "parser_checks": 128,
+    "contract_review": "passed",
+    "full_University_build": "passed_with_additive_F3",
+    "F2_entry_exits": [
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "live_mentor_passed": false,
+  "full_U4_complete": false
+}

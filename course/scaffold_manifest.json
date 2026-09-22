@@ -159,8 +159,22 @@
       "origin": "assistant-supplied infrastructure, not learner coursework",
       "replacement_mission": null,
       "release_blocking": false,
-      "acceptance_evidence": "128 focused Linux checks, 33 unchanged F1 dependency checks, full C++20 build and valid/rejected/stale/valid 0/1/1/0 passed. ASan/UBSan passed with unsupported leak detection disabled. Windows pending. docs/validation/u4-f2.json",
-      "review_trigger": "Any import, file/Git/process/provider/store/approval/apply interface or schema/snapshot authority expansion requires separate reviewed boundary."
+      "acceptance_evidence": "128 focused Linux checks, 33 unchanged F1 dependency checks, full C++20 build and valid/rejected/stale/valid 0/1/1/0 passed. ASan/UBSan passed with unsupported leak detection disabled. Windows pending. docs/validation/u4-f2.json Windows review at 6b8081d: Chris reports 33/128 checks, 0/1/1/0 and no saved progress/evidence; source bytes verified against delivered patch. See course/evidence/U4_6b8081d_review.md. Ownership review remains scheduled.",
+      "review_trigger": "Any import, file/Git/process/provider/store/approval/apply interface or schema/snapshot authority expansion requires separate reviewed boundary.",
+      "validation_status": "accepted_fixture_parser_Windows_user_reported_source_package_verified"
+    },
+    {
+      "id": "U4-F3-REVIEW",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/ProposalReview.h; university/src/ProposalReview.cpp; university/tests/proposal_review_tests.cpp; main.cpp fixed flags; Validate-Proposal-Review.cmd; launcher build integration",
+      "purpose": "One transient proposal selection with explicit review/dismiss and fail-closed stale/replacement invalidation",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "release_blocking": false,
+      "owner": "University maintainer; Chris supplies Windows evidence",
+      "origin": "assistant-supplied infrastructure, not learner coursework",
+      "acceptance_evidence": "58 focused Linux checks, unchanged 33/128 dependencies, full build, demos 0/1/1/0, ASan/UBSan without leak detection; Windows pending. docs/validation/u4-f3.json",
+      "review_trigger": "Any external input, file/Git/provider/process/store access, approval token or apply capability requires separately reviewed boundary; status is historical, not freshness authorization."
     }
   ],
   "notes": [
