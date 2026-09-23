@@ -1,4 +1,10 @@
-Current baseline: PU-OFFLINE-1.0, the practical offline C++ console. Combined
+Current graphical milestone: Desktop 1 supplies the dashboard/lesson/workspace
+view over the accepted c4f6640 offline engine. Native validation is pending;
+see DESKTOP_MILESTONE.md. The console fallback and all saved formats remain intact.
+Live mentor and writing/automation gates are not reopened. The following older
+baseline status is historical; PU-OFFLINE-1.0 is complete.
+
+Historical baseline: PU-OFFLINE-1.0, the practical offline C++ console. Combined
 implementation c2d3a75 is accepted; final native integration is the one remaining
 Windows execution. See OFFLINE_BASELINE.md and course/foundation_baseline.json
 for acceptance without a third records commit. Final receipt/returned-result

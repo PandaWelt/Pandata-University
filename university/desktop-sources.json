@@ -1,0 +1,8 @@
+{
+  "core": ["university/src/Mission.cpp", "university/src/ProgressStore.cpp", "university/src/Process.cpp", "university/src/RepositoryActions.cpp", "university/src/StudyDesk.cpp", "university/src/desktop/DeskController.cpp"],
+  "view": ["university/src/desktop/DesktopView.cpp"],
+  "host": ["university/src/desktop/desktop_main.cpp"],
+  "imgui": ["thirdparty/imgui/imgui.cpp", "thirdparty/imgui/imgui_draw.cpp", "thirdparty/imgui/imgui_tables.cpp", "thirdparty/imgui/imgui_widgets.cpp"],
+  "backends": ["thirdparty/imgui/backends/imgui_impl_sdl2.cpp", "thirdparty/imgui/backends/imgui_impl_opengl3.cpp"],
+  "tests": ["university/tests/desktop_tests.cpp"]
+}

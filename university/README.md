@@ -1,4 +1,14 @@
-## Current: Offline Foundation 1.0
+## Current: Desktop 1
+
+Primary graphical launch: Start-Pandata-University-Desktop.cmd. Dashboard, lessons,
+expandable help, answers, progress, read-only code and checks/output use the same
+accepted offline engine. Live mentor is disabled. Build/one Windows validation:
+Validate-University-Desktop.cmd; full instructions in ../docs/DESKTOP_MILESTONE.md.
+Console fallback Start-Pandata-University.cmd and its source are unchanged.
+PU-OFFLINE-1.0 is accepted at c4f6640; no foundation validation is requested again.
+Earlier entries are historical. Desktop native validation is the only pending run.
+
+## Historical: Offline Foundation 1.0
 
 Combined checkpoint c2d3a75 is accepted. Final integration validation (Windows
 run 2 of 2): `Validate-Offline-Baseline.cmd` once; see ../docs/OFFLINE_BASELINE.md.

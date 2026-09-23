@@ -243,6 +243,19 @@
       "release_blocking": false,
       "acceptance_evidence": "Linux retained regressions and complete console workflow pass; final native Windows run 2 pending. Passing receipt plus returned-result review closes baseline without another commit.",
       "review_trigger": "Changed launcher/store/course registry or additional source/process/provider/write authority"
+    },
+    {
+      "id": "DESKTOP-1",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/desktop; university/src/desktop; university/desktop-sources.json; university/licenses/DESKTOP_NOTICES.txt; university/tests/desktop_tests.cpp; university/tools/Build-Desktop.ps1; university/tools/Validate-Desktop.ps1; university/tools/test_desktop_package.py; university/tools/test_desktop_linux.py; Build-University-Desktop.cmd; Start-Pandata-University-Desktop.cmd; Validate-University-Desktop.cmd",
+      "purpose": "Separate graphical presentation and asynchronous fixed action controller over the accepted offline engine",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "release_blocking": false,
+      "owner": "University maintainer; Chris provides native/visual result",
+      "origin": "assistant-supplied UI infrastructure; no learner solution",
+      "acceptance_evidence": "47 Linux desktop controller/render checks and real SDL/OpenGL smoke/refusal/fresh passed; Windows one combined validator and visual inspection pending.",
+      "review_trigger": "Integrated editor/native accessibility/mobile UI, new source-writing/provider authority, or dependency provenance changes."
     }
   ],
   "notes": [

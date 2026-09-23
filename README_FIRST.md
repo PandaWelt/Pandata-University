@@ -1,9 +1,20 @@
-# PandaBank + Pandata University U2
+# PandaBank + Pandata University Desktop 1
 
-Your U1 orientation remains complete. After applying the delivered U2 patch to this existing checkout, **double-click Start-Pandata-University.cmd and type run-check.**
+The offline foundation is accepted at c4f6640. The graphical milestone adds a
+separate dashboard over the same lessons and saved progress. No PandaBank source
+or learner mission is implemented for you.
 
-U2 provides a numbered read-only file viewer, one real University build/check with a harmless failure demonstration, saved command/output/exit evidence, Git status/diff and Open in Visual Studio. Use help for commands. No PandaBank refactor, editor, mentor, Rescue or Maintenance is implemented.
+Apply the Desktop 1 package once, run **Validate-University-Desktop.cmd** once in
+x64 Developer PowerShell for VS 2022, then double-click
+**Start-Pandata-University-Desktop.cmd** and visually inspect the dashboard.
+See docs/DESKTOP_MILESTONE.md for exact results and the short inspection checklist.
+Review, commit and push once. No foundation suites or acceptance cycle are reopened.
 
-See docs/U2_HANDOFF.md for the exact scope, preservation evidence and complete changed-file list. Follow docs/U2_WINDOWS_VALIDATION.md for the remaining native check. Linux validation passed; your previous Windows U1 success is recorded separately.
+Daily use: Continue learning, expandable explanations, Save answer / Next step,
+prepared hints, saved report, read-only Code/files, and Checks/output.
+Mission 003 is your next real PandaBank extraction; University does not write it.
+AI mentoring is disabled; editor/application/Rescue/Maintenance remain gated.
 
-Keep your local Git history, completed course/university/progress, unrelated work and newer edits. The delivery's APPLY_U2.md explains patch application and conflicts; never replace the whole repository. Back up course/university/evidence with progress. No extra dependency or subscription is needed.
+Console fallback: the unchanged Start-Pandata-University.cmd. Both views share
+course/university/progress; avoid simultaneous study sessions and back up that
+ignored directory with matching definitions. Git alone does not back it up.

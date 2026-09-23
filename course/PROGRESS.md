@@ -1,4 +1,19 @@
-# Final offline integration — 2026-09-23
+# Graphical milestone — 2026-09-23
+
+PU-OFFLINE-1.0 is accepted at c4f6640; foundation construction is closed. The
+receipt's source digest and 19 expected exits matched the submitted source/history.
+Symlinks remain SKIPPED, not passed. Long physical-path staging required a short
+copy; SUBST did not help. Future UI validation uses shallow external temp staging.
+
+Chris authorized one consolidated graphical milestone. PU-DESKTOP-1 supplies
+dashboard/lesson explanations, short answers, read-only code, checks/output,
+existing saved progress and disabled mentor, with a separate C++ controller/view.
+Linux desktop/controller/render validation passed; one new Windows UI validator
+and visual inspection are pending. See docs/DESKTOP_MILESTONE.md. No U1–U4 suites
+are reopened. Learner confidence, U1 snapshots and Mission 003 status are unchanged.
+Next: apply once, validate once, launch/inspect, commit and push once.
+
+# Final offline integration — 2026-09-23 (historical)
 
 Accepted c2d3a755a0e7e9112b384026d1b355c01ae110b9, direct child of 114c272.
 Windows run 1 passed by Chris's report and submitted routing/state evidence;

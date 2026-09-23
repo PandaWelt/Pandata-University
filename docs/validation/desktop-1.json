@@ -1,0 +1,27 @@
+{
+  "milestone": "PU-DESKTOP-1",
+  "base": "c4f664009d45e8e2f7befd9457883362c009d4b5",
+  "foundation": "accepted_closed_not_retested",
+  "linux": {
+    "compiler": "g++ C++20 -Wall -Wextra -Werror -pthread",
+    "full_desktop_build": "passed",
+    "controller_render_checks": 47,
+    "render_sizes": ["1440x900", "880x620", "2200x1400"],
+    "pages": ["dashboard", "current lesson"],
+    "real_backend": "SDL2 offscreen + Mesa OpenGL; 20 frames per smoke",
+    "graphics_invalid_argument_fresh_exits": [0, 1, 0],
+    "maintainer_static_package_regression_cases": 9,
+    "foundation_suites_rerun": false,
+    "real_source_course_thirdparty_preserved": true,
+    "layout_review": "Actual rendered home/lesson images inspected; lesson-selection harness used for lesson screenshot"
+  },
+  "windows": {
+    "status": "pending_one_combined_desktop_validator_and_visual_inspection",
+    "validator": "Validate-University-Desktop.cmd",
+    "native_MSVC_cmd_PowerShell_executed_by_reviewer": false,
+    "symlink_coverage": "previous_SKIPPED_status_unchanged_not_claimed_passed"
+  },
+  "live_mentor": "disabled_not_linked",
+  "new_source_writes_or_proposal_application": false,
+  "package_tests": "See delivery VALIDATION.json for exact manifest/apply/conflict/hash results."
+}

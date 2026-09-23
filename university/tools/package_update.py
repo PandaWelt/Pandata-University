@@ -40,7 +40,7 @@ def validate_package(folder):
 
 
 def generate(baseline_zip, repository, paths, base, stage, validator, output):
-    if not re.fullmatch(r'[0-9a-f]{40}', base) or not re.fullmatch(r'(?:U4-F[0-9]+|OFFLINE-FOUNDATION|OFFLINE-INTEGRATION)', stage):
+    if not re.fullmatch(r'[0-9a-f]{40}', base) or not re.fullmatch(r'(?:U4-F[0-9]+|OFFLINE-FOUNDATION|OFFLINE-INTEGRATION|PU-DESKTOP-1)', stage):
         raise ValueError('Invalid base/stage')
     if not re.fullmatch(r'Validate-[A-Za-z0-9-]+\.cmd', validator):
         raise ValueError('Invalid validator')

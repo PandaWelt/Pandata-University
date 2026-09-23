@@ -1,3 +1,26 @@
+## U-16 — separate desktop presentation over accepted engine, 2026-09-23
+
+Chris authorizes one functional UI milestone after offline closure at c4f6640.
+Reuse bundled SDL2/OpenGL/Dear ImGui without changing third-party bytes or compiling
+PandaBank application source. Compared native Win32 controls (more layout/code
+work and Windows coupling), a new toolkit (new integration/dependency audit), and
+embedding University in PandaBank (wrong ownership/runtime boundary).
+
+The new C++ DeskController wraps existing StudyDesk/store and fixed U2 actions;
+DesktopView alone owns graphics widgets/transient drafts. SDL/OpenGL lives in the
+host. No mentor adapter is linked. One asynchronous, bounded action at a time
+keeps the UI responsive; machine output cannot grant learner completion. Future
+editor, source-writing and safe mentor require separately reviewed controllers
+and authority, not loosening read-only widgets. ImGui is replaceable; native
+accessibility, richer text editing and mobile needs are concrete review triggers.
+
+Keep console and saved formats unchanged. New Windows validation compiles and
+renders the actual GUI, tests controller/store integration in disposable state,
+and checks preservation without reopening U1–U4. Stage outside the repository in
+a short physical temp path; no nested checkout and no SUBST long-path workaround.
+Embedded fonts and explicit notices are the only assets; no downloads at launch.
+Existing WIP source/SDL binary provenance remains release-audit debt.
+
 ## U-15 — close the offline baseline in one final integration, 2026-09-23
 
 Accept c2d3a75, direct child of 114c272, with Chris's Windows run-1 report and

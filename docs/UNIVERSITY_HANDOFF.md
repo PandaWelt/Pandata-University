@@ -1,4 +1,11 @@
-Current handoff — 2026-09-23: c2d3a75 accepted from history/source, Chris's Windows
+Current handoff: Desktop 1 functional package on accepted c4f6640. Apply once,
+run Validate-University-Desktop.cmd in x64 Developer PowerShell, launch
+Start-Pandata-University-Desktop.cmd for the visual inspection, then commit/push
+once. See DESKTOP_MILESTONE.md. No foundation rerun, preparation-only package,
+live mentor, editor or source-writing authority is introduced. Offline foundation
+closure stands; old pending/next-action text below is historical.
+
+Historical handoff — 2026-09-23: c2d3a75 accepted from history/source, Chris's Windows
 run 1 and submitted workflow artifacts. Final package establishes PU-OFFLINE-1.0
 conditionally on the one remaining native run: **Validate-Offline-Baseline.cmd**.
 It invokes the real launcher, disposable study/restart/recovery and read-only

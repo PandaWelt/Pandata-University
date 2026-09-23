@@ -1,4 +1,13 @@
-Current — 2026-09-23: combined offline checkpoint c2d3a75 accepted, direct child
+Current graphical milestone: PU-DESKTOP-1 is implemented over accepted c4f6640.
+Dashboard, short-step lessons, expandable help, short answers, saved progress,
+read-only files and asynchronous fixed repository actions are available in a
+separate SDL2/OpenGL/ImGui executable. Linux validation passed; native Windows
+UI validation is pending. See DESKTOP_MILESTONE.md. The console remains unchanged.
+PandaBank source, course definitions/progress and dependencies were not modified.
+Live mentor/editor/application and automation remain disabled or unimplemented.
+PU-OFFLINE-1.0 is complete; earlier pending acceptance/next-action text is historical.
+
+Historical — 2026-09-23: combined offline checkpoint c2d3a75 accepted, direct child
 of 114c272. PU-OFFLINE-1.0 final integration is implemented; native acceptance is
 pending only Windows run 2 of 2. Use docs/OFFLINE_BASELINE.md, not older next-step
 text below. No PandaBank source/refactor or real learner snapshot was changed.
