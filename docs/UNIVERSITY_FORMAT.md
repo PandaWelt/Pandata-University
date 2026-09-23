@@ -35,7 +35,7 @@ pilot 1
 completed "001_stable_object_identity" "course/evidence/001_review.md" "review provenance"
 ```
 
-The explicit reviewer-authored index imports accepted pilot completions. The engine checks required IDs are present; it does not independently verify Markdown evidence, Git commits or authorship. U1 currently resolves prerequisites against this index only; intermission progression through runtime snapshots awaits a tested extension. Do not fabricate a completed entry to bypass a prerequisite.
+The explicit reviewer-authored index imports accepted pilot completions. The engine checks required IDs are present; it does not independently verify Markdown evidence, Git commits or authorship. The U1 engine resolves pilot prerequisites against this index. StudyDesk now resolves registered prerequisites against validated matching snapshots first. Index entries cannot spoof a registered lesson. Recovered prerequisite snapshots need explicit review. Do not fabricate a completed entry to bypass a prerequisite.
 
 ## Progress (.pup)
 
@@ -72,3 +72,7 @@ The last flag prevents runtime advisory text being confused with a maintainer's 
 of the native provider/sandbox. It is not a claim that a successful answer came from a fixture.
 Thread references are ephemeral audit references, never resume instructions. These records
 cannot be imported into progress or reviewed pilot completions. No U1 schema or fingerprint changed.
+
+## Offline course desk
+
+No wire-schema change. Fixed registered IDs are u1-boundaries and 003-object-types, in prerequisite order. Paths reject links/reparse traversal. Arbitrary mission-file arguments are refused; use lesson numbers. Registered prerequisites must have complete fingerprint-matched snapshots without recovery warnings. Responses are presence evidence, not correctness or reviewer acceptance. home/history/step/report/check-course do not save. Study saves use the same append-only store with definition/prerequisite rechecks. No runtime authoring, hot reload, progress migration or source writes.

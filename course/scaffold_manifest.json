@@ -214,8 +214,22 @@
       "owner": "University maintainer; Chris supplies native Windows evidence",
       "origin": "assistant-supplied test infrastructure, not learner coursework",
       "release_blocking": false,
-      "acceptance_evidence": "203 Linux boundary checks, 53 byte-probe checks, maintainer regressions passed; native Windows pending. docs/validation/u4-f5.json",
-      "review_trigger": "Every validator/package modification; native diagnostics must stay separate from production routing."
+      "acceptance_evidence": "203 Linux boundary checks, 53 byte-probe checks, maintainer regressions passed; native Windows pending. docs/validation/u4-f5.json Accepted at 114c272: Chris Windows 203 checks/exact/refused/fresh/routing pass; all package postimages verified. course/evidence/U4_114c272_review.md.",
+      "review_trigger": "Every validator/package modification; native diagnostics must stay separate from production routing.",
+      "validation_status": "accepted_Windows_user_reported_source_hash_verified"
+    },
+    {
+      "id": "OFFLINE-STUDY-DESK",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "university/include/StudyDesk.h; university/src/StudyDesk.cpp; main.cpp; Build-University.cmd; Start-Pandata-University.cmd; course/university/missions/003-object-types.pum",
+      "purpose": "Catalog/prerequisite snapshots/resume/review/report/help and next learner lesson; launch without suite reruns",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "owner": "University maintainer; Chris validates Windows and owns learner extraction",
+      "origin": "supplied course infrastructure/content, not completed learner source work",
+      "release_blocking": false,
+      "acceptance_evidence": "Linux checks/integration; Windows run 1/2 pending. docs/validation/offline-foundation.json",
+      "review_trigger": "New registered prerequisites/lessons, migration, source/provider/write authority, or console/store replacement."
     }
   ],
   "notes": [

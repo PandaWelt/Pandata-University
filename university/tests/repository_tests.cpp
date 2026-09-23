@@ -57,7 +57,7 @@ int main(int argc,char** argv) {
             auto to=scratch/n;fs::create_directories(to.parent_path());fs::copy_file(original/n,to);
         }
         pu::RepositoryActions actions(scratch);
-        check(actions.files().size()==9,"bounded relevant file list");
+        check(actions.files().size()==11 && actions.files()[9]=="src/Objects/ObjectTypes.h" && actions.files()[10]=="src/Objects/ObjectTypes.cpp","bounded relevant file list with exact reviewed learner slots");
         auto before=read(scratch/"src/UI/AppUISetup.cpp");
         check(actions.view(3).find("ObjectSpawner")!=std::string::npos,"view actual relevant source");
         check(read(scratch/"src/UI/AppUISetup.cpp")==before,"view preserves bytes");

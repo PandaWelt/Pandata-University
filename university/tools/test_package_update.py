@@ -46,4 +46,21 @@ class PackageTests(unittest.TestCase):
             generate(baseline, repo, [path], 'a'*40, 'U4-F5', path, root / 'out')
             self.assertEqual(validate_package(root / 'out'), 1)
 
+    def test_offline_stage_keeps_progress_and_existing_definition_protected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); repo=root/'repo'; repo.mkdir()
+            baseline=root/'base.zip'
+            with zipfile.ZipFile(baseline,'w'): pass
+            for path in ['course/university/progress/u1-boundaries/1.pup',
+                         'course/university/evidence/u2/evidence.json',
+                         'course/university/missions/u1-boundaries.pum',
+                         'course/university/pilot.puc']:
+                target=repo/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_text('refuse\n')
+                with self.assertRaises(ValueError):
+                    generate(baseline,repo,[path],'a'*40,'OFFLINE-FOUNDATION','Validate-Offline-Foundation.cmd',root/'out')
+            path='course/university/missions/003-object-types.pum'
+            (repo/path).write_text('reviewed new lesson\n')
+            generate(baseline,repo,[path],'a'*40,'OFFLINE-FOUNDATION','Validate-Offline-Foundation.cmd',root/'out')
+            self.assertEqual(validate_package(root/'out'),1)
+
 if __name__ == '__main__': unittest.main()

@@ -1,3 +1,7 @@
+# Offline consolidation — 2026-09-22: F5 accepted at 114c272f5e6477f35b0d095e76bef830002647f5, direct child of 812223b. All 22 submitted F5 paths matched delivered postimage hashes during review. Chris reports Windows 33/128/58/48/203, exact CRLF input/refusal/routing and 0/1/0. U1 snapshot 9 is present and preserved. Next: combined offline foundation, Windows run 1 of TWO remaining runs, then one final integration package. No more F-numbered fixture or acceptance-only cycles. See docs/OFFLINE_FOUNDATION.md.
+
+The combined implementation provides lesson selection/resume/review/report, prepared help, Mission 003 for Chris to implement, and ordinary launch without suites. U1–U3 acceptance stays closed. Product source, old definition fingerprints, snapshots, confidence and prior evidence remain unchanged. Mission 003 is prepared, not completed. Earlier entries are historical.
+
 # U4-F4 accepted at 812223b; U4-F5 validator transport verification implemented, Windows pending. F4 Windows results are Chris-reported and submitted console/input artifacts corroborate routing. New tests preserve strict commands; production validators use exact input files and byte checks. See docs/U4_F5_IMPLEMENTATION.md. Live mentoring, application/source writes and automation remain blocked; U1–U3 are not reopened.
 
 No learner concepts, mission definitions, saved snapshots or historical evidence changed. F5 is test infrastructure, not learner coursework or runtime feature expansion.

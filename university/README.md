@@ -1,3 +1,7 @@
+## Offline course workspace
+
+Start-Pandata-University.cmd builds and opens without suites. Use lessons/resume, history/step/report, prepared help and project actions. Mission 003 follows saved U1. Run only Validate-Offline-Foundation.cmd for this package. See ../docs/OFFLINE_FOUNDATION.md for the two-run closeout. Earlier entries are historical.
+
 Current: F4 accepted at 812223b. Next validation is `.\Validate-Console-Input.cmd` for U4-F5 deterministic transport regression. See ../docs/U4_F5_IMPLEMENTATION.md. Runtime review controls are unchanged; live mentor/application remain blocked.
 
 U4-F4: `review-select`, `review-preview`, `review-status`, `review-dismiss` now control the compiled fixture in the normal University console. No proposal/path input or apply command exists. Run `Validate-Review-Controls.cmd` in Developer PowerShell for VS 2022. See ../docs/U4_F4_IMPLEMENTATION.md for exact results and packaging safeguards.

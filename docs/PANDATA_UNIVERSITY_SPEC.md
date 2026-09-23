@@ -46,8 +46,12 @@ University Maintenance Mode is distinct and explicit. Classes: content-only; cou
 | U1 | Mission loader, validation, separate recoverable progress, one-step presentation, tests | Implemented offline C++ console slice; validation reported in UNIVERSITY_HANDOFF.md. |
 | U2 | Restricted file view; allowlisted real build/check execution and captured output; visible Git status/diff; Open in VS | Implemented and accepted from code/evidence and Chris's Windows report; junction automation skipped. No full editor/IDE. |
 | U3 | Read-only mission-aware mentor, account/limits, offline fallback | Adapter implemented; cumulative Windows safety validation accepted at 330420d. Live mentoring remains blocked; no successful auth/allowance/model run claimed. |
-| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | U4-F1 in-memory no-I/O fixture implemented under U-09a; focused Windows validation accepted from Chris's report at bdc6232. U4-F2 in-memory parsing accepted at 6b8081d from source review and Chris's Windows result. U4-F3 accepted at d35d552. U4-F4 fixed console review controls implemented; 48 Linux checks pass, Windows pending. Full Rescue/Maintenance/application remains gated and unimplemented. |
+| U4 | Approved Rescue/Maintenance, hot reload, staged updates, rollback | U4-F1 in-memory no-I/O fixture implemented under U-09a; focused Windows validation accepted from Chris's report at bdc6232. U4-F2 in-memory parsing accepted at 6b8081d from source review and Chris's Windows result. U4-F3 accepted at d35d552. U4-F4 accepted at 812223b; F5 accepted at 114c272. Fixture staging is closed. Full Rescue/Maintenance/application remains gated and unimplemented. |
 
 The console is a real minimal presentation for testing the engine, not the promised finished GUI. Windows compilation/interaction requires a local check; the implementation is compiled/tested on the available Linux host. Build/test commands for University are separate from the unchanged PandaBank project. CMake migration of PandaBank is not claimed.
 
 U2 status/evidence and limitations: U2_HANDOFF.md and U2_ACTION_CONTRACT.md. U1 definition/progress contract remains unchanged. New repository evidence never auto-promotes lesson completion or mastery.
+
+## Offline consolidation
+
+U-14 and OFFLINE_FOUNDATION.md replace further fixture stages. The C++ console selects/resumes reviewed lessons, records evidence and provides help/reports with existing project tools. Mission 003 is prepared, not implemented for Chris. Two remaining implementation/Windows runs cover combined functionality then final integration. Offline completion is separate from blocked live/automation capabilities; no automatic mastery or source authority.

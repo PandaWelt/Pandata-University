@@ -1,3 +1,5 @@
+Accepted at 114c272 from source/history/hash review and Chris's Windows results. See ../course/evidence/U4_114c272_review.md. Stop multiplying fixture stages; the combined offline foundation supersedes earlier next-step instructions.
+
 # U4-F5 — deterministic validator input and boundary regression
 
 Base: 812223b0052dcbf5fa0833516a458a3d723aebd6. F4 accepted; see course/evidence/U4_812223b_review.md. This is the smallest missing validation slice exposed by the Windows pipeline defect, not another fixture feature. U-09e documents the scope. University implementation, PandaBank, learner snapshots and historical evidence are unchanged.

@@ -1,4 +1,5 @@
 #include "Mission.h"
+#include "StudyDesk.h"
 #include "ProgressStore.h"
 #include "RepositoryActions.h"
 #include "mentor/Mentor.h"
@@ -14,7 +15,7 @@
 
 namespace {
 void actionsHelp() {
-    std::cout << "U4-F4 fixture: review-select | review-preview | review-status | review-dismiss (nothing applied or saved)\n";
+    std::cout << "Course: home | lessons | lesson <number> | resume | history | step <number> | report | feedback | check-course\n";
     std::cout << "\nU2: files | view <number> | run-check | failure-demo | git-status | git-diff | open-vs | help | quit\n"
                  "run-check compiles and runs University engine tests; failure-demo uses a temporary invalid fixture.\n"
                  "Actions save command/output/exit evidence. No general shell or source editor is available.\n"
@@ -36,17 +37,12 @@ void showReport(const pu::ActionReport& r) {
     if(r.action=="failure-demo")std::cout << "The deliberately invalid scratch mission should fail. This is not a normal check pass; original mission/progress are unchanged.\n";
 }
 
-std::ifstream open(const std::filesystem::path& file) {
-    std::ifstream stream(file,std::ios::binary);
-    if (!stream) throw pu::Error("Cannot read " + file.string() + ". Launch from the PandaBank repository root.");
-    return stream;
-}
 void display(const pu::Mission& m,const pu::Progress& p) {
     const auto i = pu::currentStep(p);
     std::cout << "\nPandata University | Offline foundation\n" << m.title << '\n';
     if (i == m.steps.size()) {
-        std::cout << "Prepared orientation steps recorded. No PandaBank mission or concept was automatically marked mastered.\n"
-                     "Your responses are saved. U2 repository actions are now available; type run-check to begin.\n";
+        std::cout << "Prepared lesson evidence recorded; correctness and mastery still need review.\n"
+                     "Use lessons to choose the next available lesson; history/report review your saved observations.\n";
         return;
     }
     const auto& s = m.steps[i];
@@ -54,7 +50,7 @@ void display(const pu::Mission& m,const pu::Progress& p) {
               << s.why << "\n\nAction: " << s.action << "\nExpected: " << s.expected << '\n';
     if (!p.steps[i].attempts.empty()) std::cout << "Saved response: " << p.steps[i].attempts.back() << '\n';
     std::cout << "\nCommands: next | answer <short response> | more | syntax | professional | hint | check | quit\n"
-                 "Use mentor-preview for an optional explanation. Rescue and Maintenance remain unavailable.\n";
+                 "Use prepared help offline. Live mentor, Rescue and Maintenance remain unavailable.\n";
 }
 }
 int main(int argc,char** argv) {
@@ -105,21 +101,19 @@ int main(int argc,char** argv) {
             pu::RepositoryActions actions(std::filesystem::current_path());
             auto result=actions.execute(argv[2]);showReport(result);return result.ok()?0:1;
         }
-        bool validate = false;
-        std::filesystem::path missionFile = "course/university/missions/u1-boundaries.pum";
-        if (argc >= 2 && std::string(argv[1]) == "--validate") validate = true;
-        else if (argc >= 2) missionFile = argv[1];
-        if (argc > 2) throw pu::Error("Usage: pandata-university [--validate | mission-file | --action ACTION]");
-        auto input = open(missionFile); const auto mission = pu::loadMission(input);
-        auto pilotInput = open("course/university/pilot.puc");
-        const auto pilot = pu::loadPilot(pilotInput); pu::checkPrerequisites(mission,pilot);
-        if (validate) {
-            std::cout << "Mission/schema and reviewed pilot prerequisites valid. No progress written.\n";
+        if(argc > 2 || (argc == 2 && std::string(argv[1]) != "--validate"))
+            throw pu::Error("Use no arguments or --validate; select a reviewed lesson with lesson <number>.");
+        pu::StudyDesk desk(std::filesystem::current_path());
+        desk.validateDefinitions();
+        if(argc == 2) {
+            std::cout << "Registered lesson definitions/prerequisite graph valid. No progress written.\n";
             return 0;
         }
-        const auto progressDirectory = std::filesystem::path("course/university/progress") / mission.id;
-        auto loaded = pu::loadProgress(progressDirectory,mission);
-        for (const auto& warning : loaded.warnings) std::cout << "Recovery: " << warning << '\n';
+        std::cout << desk.home();
+        auto lesson=desk.resume();
+        auto& mission=lesson.mission;
+        auto& loaded=lesson.progress;
+        for(const auto& warning:loaded.warnings)std::cout<<"Recovery: "<<warning<<'\n';
         pu::RepositoryActions actions(std::filesystem::current_path());
         display(mission,loaded.value);actionsHelp();
         pu::preview::ReviewControls reviewControls;
@@ -127,6 +121,20 @@ int main(int argc,char** argv) {
         while (std::cout << "> " && std::getline(std::cin,command)) {
             if (command == "quit") break;
             try {
+                if(command=="home" || command=="lessons") {std::cout<<desk.home();continue;}
+                if(command=="check-course") {
+                    desk.validateDefinitions();std::cout<<desk.home()<<"Course definitions checked; no completion or source-build claim.\n";continue;
+                }
+                if(command=="resume" || command.starts_with("lesson ")) {
+                    auto selected=command=="resume"?desk.resume():desk.open(pu::studyNumber(command.substr(7)));
+                    lesson=std::move(selected);mentorPreview.clear();
+                    for(const auto& warning:loaded.warnings)std::cout<<"Recovery: "<<warning<<'\n';
+                    display(mission,loaded.value);continue;
+                }
+                if(command=="history") {std::cout<<pu::StudyDesk::history(lesson);continue;}
+                if(command.starts_with("step ")) {std::cout<<pu::StudyDesk::reviewStep(lesson,pu::studyNumber(command.substr(5)));continue;}
+                if(command=="report") {std::cout<<pu::StudyDesk::report(lesson);continue;}
+                if(command=="feedback") {std::cout<<pu::StudyDesk::feedback();continue;}
                 if (command.starts_with("review-")) {
                     std::cout << reviewControls.execute(command).text;
                     continue;
@@ -170,7 +178,7 @@ int main(int argc,char** argv) {
                     showReport(actions.execute(command));continue;
                 }
                 const auto i = pu::currentStep(loaded.value);
-                if(i==mission.steps.size()) {std::cout << "Orientation is already complete. Use a U2 action or quit.\n";continue;}
+                if(i==mission.steps.size()) {std::cout << "Lesson evidence is already recorded. Use lessons, history, report or quit.\n";continue;}
                 const auto& step=mission.steps[i];
                 auto candidate = loaded; std::string feedback; bool changed = false;
                 if (command == "next") { pu::advance(mission,candidate.value); changed = true; }
@@ -191,7 +199,7 @@ int main(int argc,char** argv) {
                 } else feedback = "Unknown command. Use next, answer <text>, more, syntax, professional, hint, check or quit.";
                 if (changed) {
                     // Save first. On failure keep the current in-memory step unchanged.
-                    pu::saveProgress(progressDirectory,mission,candidate); loaded = std::move(candidate);
+                    desk.save(lesson,std::move(candidate));
                     std::cout << "Saved snapshot " << loaded.generation << ".\n";
                 }
                 if (!feedback.empty()) std::cout << feedback << '\n';

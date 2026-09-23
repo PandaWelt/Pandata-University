@@ -38,7 +38,8 @@ RepositoryActions::RepositoryActions(fs::path root) {
     files_={"src/main.cpp","src/UI/AppUISetup.h","src/UI/AppUISetup.cpp",
             "university/include/Mission.h","university/src/Mission.cpp",
             "university/include/ProgressStore.h","university/src/ProgressStore.cpp",
-            "university/tests/engine_tests.cpp","visualstudio/Pandata.bank.vcxproj"};
+            "university/tests/engine_tests.cpp","visualstudio/Pandata.bank.vcxproj",
+            "src/Objects/ObjectTypes.h","src/Objects/ObjectTypes.cpp"};
     if(!fs::is_regular_file(safePath(root_,"university/include/Mission.h")) || !fs::is_regular_file(safePath(root_,"src/UI/AppUISetup.cpp"))) throw Error("Launch University from the PandaBank repository root");
 }
 std::string RepositoryActions::view(std::size_t n) const {

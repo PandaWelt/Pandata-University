@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "base_commit": "114c272f5e6477f35b0d095e76bef830002647f5",
+  "date": "2026-09-22",
+  "stage": "OFFLINE-FOUNDATION",
+  "windows_run": 1,
+  "max_remaining_runs": 2,
+  "f5_acceptance": {
+    "commit_verified": true,
+    "source_postimages_verified": 22,
+    "windows": "Chris-reported 33/128/58/48/203 exact/refused/fresh/routing 0/1/0",
+    "live_mentoring": false
+  },
+  "linux": {
+    "compiler": "g++ C++20 -Wall -Wextra -Werror",
+    "full_build": "passed",
+    "retained_u4_checks": [
+      33,
+      128,
+      58,
+      48,
+      203
+    ],
+    "new_study_checks": 59,
+    "byte_probe_checks": 53,
+    "actual_console_integration_checks": 15,
+    "maintainer_regression_cases": 8,
+    "demo_exits": [
+      0,
+      1,
+      0
+    ],
+    "study_process_exits": [
+      0,
+      0
+    ],
+    "uploaded_completed_U1_opens_Mission003": true,
+    "stdin_note": "Linux console uses LF; CRLF raw probe checked separately, not cmd emulation",
+    "U1_U3_suites_rerun": false
+  },
+  "windows": {
+    "status": "pending_one_combined_run",
+    "cmd_exe_available": false,
+    "MSVC_available": false,
+    "PowerShell_available": false,
+    "study_check_count": "59 if symlink creation permitted; 58 plus explicit SKIP otherwise",
+    "symlink_skipped_is_pass": false
+  },
+  "preservation": {
+    "PandaBank": "byte-identical",
+    "git_metadata": "byte-identical",
+    "existing_progress_and_evidence": "byte-identical",
+    "U1_definition": "byte-identical",
+    "mentor_implementation": "byte-identical"
+  },
+  "limits": [
+    "No live mentor acceptance",
+    "No source/application/Rescue/Maintenance capability",
+    "No native Windows execution claimed",
+    "No mastery or learner refactor completion inferred"
+  ],
+  "packaging": {
+    "canonical_scope": "manifest/allowlist/patch exact unique equality",
+    "protected_scope": "existing progress/evidence/U1 definitions remain refused by generator",
+    "native_apply_script": "PowerShell not available; Linux git preflight/apply/conflict checks separately recorded"
+  }
+}
