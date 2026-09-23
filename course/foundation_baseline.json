@@ -1,0 +1,20 @@
+{
+  "id": "PU-OFFLINE-1.0",
+  "name": "Pandata University Offline Foundation 1.0",
+  "accepted_predecessor": "c2d3a755a0e7e9112b384026d1b355c01ae110b9",
+  "predecessor_parent": "114c272f5e6477f35b0d095e76bef830002647f5",
+  "status_at_delivery": "implemented_final_native_acceptance_pending",
+  "final_validator": "Validate-Offline-Baseline.cmd",
+  "windows_run": 2,
+  "receipt": "build/university/final-*/acceptance.json",
+  "completion_rule": "Final validator exit 0, final PASS, passed=true receipt for reviewed source, and review of Chris's returned result establish completion without editing this record again.",
+  "no_third_acceptance_commit": true,
+  "extra_validation": "only_after_a_genuine_failure",
+  "next_learner_mission": "003-object-types",
+  "learner_mastery_granted": false,
+  "live_mentor": "blocked_unproven_native_exclusive_context_read_isolation",
+  "application_source_writes": false,
+  "proposal_application": false,
+  "rescue_automation": false,
+  "maintenance_automation": false
+}

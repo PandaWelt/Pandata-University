@@ -118,7 +118,7 @@ if not "%PUSECOND%"=="0" goto failed
 study-tests.exe --verify "%PUSTAGE%"
 if errorlevel 1 goto failed
 echo PASS: combined offline foundation; retained regressions, study desk, input refusal and console restart passed.
-echo This is Windows run 1 of 2. U1-U3 suites were not rerun. No real learner progress was written.
+echo Retained regression group. U1-U3 suites were not rerun. No real learner progress was written.
 echo Keep the staging logs: "%PUSTAGE%"
 popd
 exit /b 0

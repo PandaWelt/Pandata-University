@@ -1,3 +1,11 @@
+Current handoff — 2026-09-23: c2d3a75 accepted from history/source, Chris's Windows
+run 1 and submitted workflow artifacts. Final package establishes PU-OFFLINE-1.0
+conditionally on the one remaining native run: **Validate-Offline-Baseline.cmd**.
+It invokes the real launcher, disposable study/restart/recovery and read-only
+actions. See OFFLINE_BASELINE.md for the full expected result and no-third-commit
+acceptance rule. No U1–U3 suites or live mentor are requested. After a pass, move
+to Mission 003, not another framework stage. Earlier next actions are historical.
+
 Offline consolidation — 2026-09-22: F5 accepted at 114c272f5e6477f35b0d095e76bef830002647f5, direct child of 812223b. All 22 submitted F5 paths matched delivered postimage hashes during review. Chris reports Windows 33/128/58/48/203, exact CRLF input/refusal/routing and 0/1/0. U1 snapshot 9 is present and preserved. Next: combined offline foundation, Windows run 1 of TWO remaining runs, then one final integration package. No more F-numbered fixture or acceptance-only cycles. See docs/OFFLINE_FOUNDATION.md. Use only Validate-Offline-Foundation.cmd for this package. Ordinary launch: Start-Pandata-University.cmd, without test suites.
 
 ## Current handoff — 2026-09-22

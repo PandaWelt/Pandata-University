@@ -39,7 +39,7 @@ void showReport(const pu::ActionReport& r) {
 
 void display(const pu::Mission& m,const pu::Progress& p) {
     const auto i = pu::currentStep(p);
-    std::cout << "\nPandata University | Offline foundation\n" << m.title << '\n';
+    std::cout << "\nPandata University | Offline Foundation 1.0\n" << m.title << '\n';
     if (i == m.steps.size()) {
         std::cout << "Prepared lesson evidence recorded; correctness and mastery still need review.\n"
                      "Use lessons to choose the next available lesson; history/report review your saved observations.\n";

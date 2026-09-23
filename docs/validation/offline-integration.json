@@ -1,0 +1,28 @@
+{
+  "baseline": "PU-OFFLINE-1.0",
+  "accepted_predecessor": "c2d3a755a0e7e9112b384026d1b355c01ae110b9",
+  "verified_single_parent": "114c272f5e6477f35b0d095e76bef830002647f5",
+  "committed_changed_files_matching_submission": 32,
+  "run1_windows": "accepted_Chris_report_and_submitted_routing_state_artifacts",
+  "run1_symlink": "SKIPPED_creation_denied_not_passed",
+  "linux": {
+    "compiler": "g++ C++20 -Wall -Wextra -Werror",
+    "full_university_build": "passed",
+    "f1_f2_f3_f4_boundary_checks": [33, 128, 58, 48, 203],
+    "study_checks": 59,
+    "existing_console_integration_checks": 15,
+    "byte_probe_checks": 53,
+    "maintainer_unittest_cases": 8,
+    "final_workflow": "passed_actual_console_and_loader_first_restart_complete_refusal_readonly_git_backup_corrupt_recovery_mismatch_fresh",
+    "real_source_git_course_unchanged": true,
+    "new_static_checks": "launcher_path_pause_gate_input_fixture_and_final_preservation_receipt_order",
+    "u1_u2_u3_suites_rerun": false
+  },
+  "native_final": {
+    "status": "pending_Chris_single_Windows_run_2_of_2",
+    "cmd_exe_MSVC_PowerShell_available_on_reviewer_host": false,
+    "command": "Validate-Offline-Baseline.cmd",
+    "no_live_mentor_claim": true
+  },
+  "packaging": "See package VALIDATION.json for final exact path-set, apply/conflict and preservation verification."
+}

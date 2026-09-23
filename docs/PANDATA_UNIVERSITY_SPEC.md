@@ -1,3 +1,10 @@
+Current baseline: PU-OFFLINE-1.0, the practical offline C++ console. Combined
+implementation c2d3a75 is accepted; final native integration is the one remaining
+Windows execution. See OFFLINE_BASELINE.md and course/foundation_baseline.json
+for acceptance without a third records commit. Final receipt/returned-result
+review closes offline foundation, not live mentoring or full U4 automation.
+Further work is useful course content and chronological learner missions.
+
 # Pandata University specification
 
 Authority: Chris's 2026-09-17 transition brief, preserved as UNIVERSITY_TRANSITION_REQUEST.md. This specification replaces the Markdown-only pilot as the intended normal experience. The pilot records remain evidence, not assignments to repeat.

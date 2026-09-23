@@ -1,3 +1,14 @@
+## Current: Offline Foundation 1.0
+
+Combined checkpoint c2d3a75 is accepted. Final integration validation (Windows
+run 2 of 2): `Validate-Offline-Baseline.cmd` once; see ../docs/OFFLINE_BASELINE.md.
+After it passes, normal use is `Start-Pandata-University.cmd`, then Mission 003.
+The final receipt closes acceptance without another records-only commit.
+`--no-pause` suppresses only launcher pauses for redirected integration tests;
+ordinary double-click builds/validates/opens exactly as before. No test suites
+run during ordinary launch. Live mentor and write/automation gates remain closed.
+All older validation requests below are historical.
+
 ## Offline course workspace
 
 Start-Pandata-University.cmd builds and opens without suites. Use lessons/resume, history/step/report, prepared help and project actions. Mission 003 follows saved U1. Run only Validate-Offline-Foundation.cmd for this package. See ../docs/OFFLINE_FOUNDATION.md for the two-run closeout. Earlier entries are historical.

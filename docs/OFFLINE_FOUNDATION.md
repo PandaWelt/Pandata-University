@@ -1,3 +1,7 @@
+Superseded handoff: run 1 at c2d3a75 is accepted. The final and only remaining
+validation is **Validate-Offline-Baseline.cmd**, described in OFFLINE_BASELINE.md.
+Do not execute the historical run-1 instructions below separately.
+
 # Combined offline foundation — run 1 of 2
 
 Base: 114c272f5e6477f35b0d095e76bef830002647f5. F5 is accepted; see course/evidence/U4_114c272_review.md. This is the combined offline implementation, not another F-numbered fixture stage. U-14 records its capability boundary.

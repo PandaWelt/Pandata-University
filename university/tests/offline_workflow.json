@@ -1,0 +1,9 @@
+{
+  "first": ["next", "answer SYNTHETIC orientation prediction", "next", "answer SYNTHETIC inspection", "next", "answer SYNTHETIC responsibility", "next", "next", "lessons", "lesson 2", "next", "answer SYNTHETIC final prediction", "hint", "report", "quit"],
+  "restart": ["resume", "history", "next", "answer SYNTHETIC trace", "next", "answer SYNTHETIC attempt - no product edit", "next", "answer SYNTHETIC build observation - not a real build claim", "next", "answer SYNTHETIC transfer", "next", "next", "report", "quit"],
+  "refused": ["review-select ", " Review-select", "Review-select", "review-select\t", "review-select\u200b", "\ufeffreview-select", "review-select extra", "review-select & echo unsafe", "review-apply", "lesson ../x", "lesson 2 extra", "view ../x", "view 999", "git-status & echo unsafe", "apply", "write source", "rescue", "maintenance", "quit"],
+  "views": ["files", "view 1", "view 3", "view 9", "git-status", "git-diff", "quit"],
+  "report": ["report", "quit"],
+  "blocked": ["lesson 2", "quit"],
+  "fresh": ["resume", "report", "quit"]
+}

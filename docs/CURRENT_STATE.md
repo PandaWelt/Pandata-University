@@ -1,3 +1,10 @@
+Current — 2026-09-23: combined offline checkpoint c2d3a75 accepted, direct child
+of 114c272. PU-OFFLINE-1.0 final integration is implemented; native acceptance is
+pending only Windows run 2 of 2. Use docs/OFFLINE_BASELINE.md, not older next-step
+text below. No PandaBank source/refactor or real learner snapshot was changed.
+Live mentor and automation remain blocked. Passing final receipt/returned-result
+review closes offline construction without a third acceptance commit.
+
 Offline consolidation — 2026-09-22: F5 accepted at 114c272f5e6477f35b0d095e76bef830002647f5, direct child of 812223b. All 22 submitted F5 paths matched delivered postimage hashes during review. Chris reports Windows 33/128/58/48/203, exact CRLF input/refusal/routing and 0/1/0. U1 snapshot 9 is present and preserved. Next: combined offline foundation, Windows run 1 of TWO remaining runs, then one final integration package. No more F-numbered fixture or acceptance-only cycles. See docs/OFFLINE_FOUNDATION.md. No PandaBank refactor or application feature was implemented. Earlier entries are historical.
 
 Current accepted review — 2026-09-21: commit 330420d and complete history bundle verified; Windows 86 U3 checks passed by Chris's report, corroborated by submitted offline named-profile evidence. U3 cumulative safety validation is complete. Live mentor/auth/allowance/model acceptance remains blocked by exclusive read isolation. No U3 rerun is requested. Next: docs/U4_PREPARATION.md, design-only offline proposal review; U-09's implementation/isolation gate remains intact. Full review: ../course/evidence/U3_330420d_review.md. Earlier entries below are historical.

@@ -94,7 +94,7 @@
       "acceptance_evidence": "course/evidence/002_review.md; learner fault report, source and preprocessing checks",
       "owner": "Chris",
       "release_blocking": false,
-      "review_trigger": "Before large scene performance work: pairwise O(n\u00b2) per insertion; review ID lookup policy then."
+      "review_trigger": "Before large scene performance work: pairwise O(n²) per insertion; review ID lookup policy then."
     },
     {
       "id": "U1-ENGINE",
@@ -228,8 +228,21 @@
       "owner": "University maintainer; Chris validates Windows and owns learner extraction",
       "origin": "supplied course infrastructure/content, not completed learner source work",
       "release_blocking": false,
-      "acceptance_evidence": "Linux checks/integration; Windows run 1/2 pending. docs/validation/offline-foundation.json",
+      "acceptance_evidence": "Linux checks/integration; Windows run 1/2 pending. docs/validation/offline-foundation.json Accepted c2d3a75 Windows run 1: Chris reports 58 study/15 integration checks; symlink SKIP; submitted restart artifacts corroborate. Final native launcher integration pending.",
       "review_trigger": "New registered prerequisites/lessons, migration, source/provider/write authority, or console/store replacement."
+    },
+    {
+      "id": "OFFLINE-BASELINE-INTEGRATION",
+      "classification": "PRODUCTION_INFRASTRUCTURE",
+      "location": "Start-Pandata-University.cmd --no-pause; Validate-Offline-Baseline.cmd; Build-Offline-Acceptance.cmd; university/tools/Validate-Offline-Baseline.ps1; university/tools/test_final_integration.py; university/tests/final_integration_tests.cpp; university/tests/offline_workflow.json",
+      "purpose": "Real launcher/synthetic learner workflow, backup/recovery/refusal/preservation and final acceptance receipt",
+      "status": "review_scheduled",
+      "replacement_mission": null,
+      "owner": "University maintainer; Chris supplies final native result",
+      "origin": "supplied integration infrastructure, not learner coursework",
+      "release_blocking": false,
+      "acceptance_evidence": "Linux retained regressions and complete console workflow pass; final native Windows run 2 pending. Passing receipt plus returned-result review closes baseline without another commit.",
+      "review_trigger": "Changed launcher/store/course registry or additional source/process/provider/write authority"
     }
   ],
   "notes": [

@@ -1,3 +1,17 @@
+# Final offline integration — 2026-09-23
+
+Accepted c2d3a755a0e7e9112b384026d1b355c01ae110b9, direct child of 114c272.
+Windows run 1 passed by Chris's report and submitted routing/state evidence;
+symlink creation was SKIPPED, not passed. See evidence/OFFLINE_c2d3a75_review.md.
+PU-OFFLINE-1.0 is implemented, awaiting only final Windows run 2 of 2 via
+Validate-Offline-Baseline.cmd. See docs/OFFLINE_BASELINE.md and foundation_baseline.json.
+The passing final receipt plus returned-result review closes the offline foundation
+without another records commit/package. No further fixture stages. Then launch
+normally and start Mission 003; its code is Chris's work, not implemented here.
+U1–U3 acceptance, confidence and real snapshots remain unchanged. Live mentoring,
+application/source writes and Rescue/Maintenance automation stay deferred.
+Earlier entries below are historical, not additional validation requests.
+
 # Offline consolidation — 2026-09-22: F5 accepted at 114c272f5e6477f35b0d095e76bef830002647f5, direct child of 812223b. All 22 submitted F5 paths matched delivered postimage hashes during review. Chris reports Windows 33/128/58/48/203, exact CRLF input/refusal/routing and 0/1/0. U1 snapshot 9 is present and preserved. Next: combined offline foundation, Windows run 1 of TWO remaining runs, then one final integration package. No more F-numbered fixture or acceptance-only cycles. See docs/OFFLINE_FOUNDATION.md.
 
 The combined implementation provides lesson selection/resume/review/report, prepared help, Mission 003 for Chris to implement, and ordinary launch without suites. U1–U3 acceptance stays closed. Product source, old definition fingerprints, snapshots, confidence and prior evidence remain unchanged. Mission 003 is prepared, not completed. Earlier entries are historical.

@@ -1,3 +1,29 @@
+## U-15 — close the offline baseline in one final integration, 2026-09-23
+
+Accept c2d3a75, direct child of 114c272, with Chris's Windows run-1 report and
+submitted workflow artifacts. Symlink coverage was skipped, not passed. Run 1
+loaded real progress read-only; final sessions must instead use disposable state.
+
+Name the offline baseline PU-OFFLINE-1.0. Add only a strict --no-pause launcher
+switch (same real builder/schema/session path), a visible version label, and final
+workflow/receipt tooling. No runtime store/policy/command relaxation. Built-in
+PowerShell is maintainer validation glue, already used for patch application;
+University and PandaBank remain C++ with no new learner dependency.
+
+All final test processes target the fresh copy; synthetic Git commits/backups and
+deliberate corruption exist only there. Hash real source/history/progress before
+and after. Deterministic BOM-free CRLF input files replace shell echo pipelines.
+Retained U4 checks run once inside the final validator, unchanged U1–U3 suites do
+not. Real Start launcher gets two clean builds and learner sessions; accepted
+Open-in-VS/run-check behavior is not redundantly retested or used to launch the IDE.
+
+The final passing receipt plus review of Chris's returned result establishes
+completion without another records-only package/commit. Native Windows result is
+pending at delivery; no manufactured PASS or learner mastery. Only a genuine
+failure justifies another run. After completion, move to Mission 003/content.
+GUI/editor, CMake, live mentor, apply/source-writing and automation remain separately
+deferred with existing gates intact; none freezes the useful offline baseline.
+
 # Pandata University architecture decisions — 2026-09-17
 
 These scoped decisions implement the authorized early spike. Each preserves a reconsideration trigger rather than declaring a permanent universal solution.

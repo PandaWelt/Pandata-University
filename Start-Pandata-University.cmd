@@ -1,5 +1,8 @@
 @echo off
 setlocal DisableDelayedExpansion
+if not "%~2"=="" exit /b 2
+if not "%~1"=="" if not "%~1"=="--no-pause" exit /b 2
+set "PUNOPAUSE=%~1"
 set "PUROOT=%~dp0"
 pushd "%PUROOT%"
 if errorlevel 1 exit /b 1
@@ -18,12 +21,12 @@ if errorlevel 1 goto failed
 if errorlevel 1 goto failed
 echo Session ended. Responses remain in course\university\progress.
 popd
-pause
+if not defined PUNOPAUSE pause
 exit /b 0
 :failed
 echo University stopped safely. Keep the first error; no progress or source was reset.
 popd
-pause
+if not defined PUNOPAUSE pause
 exit /b 1
 :tools
 where cl.exe >nul 2>nul
